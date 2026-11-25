@@ -133,3 +133,8 @@ Versiones preliminares revisadas al 25 de noviembre de 2026:
 - [Presentación preliminar en Canva](https://www.canva.com/d/kGASGIjBrTgCsAa).
 
 Los diagramas, resultados experimentales y evidencias de ejecución siguen pendientes. Las claves de evaluación incluidas en el informe deben permanecer fuera del corpus y del contexto de los agentes evaluados.
+
+## Arquitectura de alto nivel
+
+[HLD de ArquiWiki](docs/diagramas/HLD.png).
+
