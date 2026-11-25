@@ -1,0 +1,21 @@
+# Secretos y entorno local
+.env
+.env.*
+!.env.example
+
+# Vault y worktrees de ejecución (se siembran desde kb-wiki/vault)
+.runtime/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Obsidian (configuración personal)
+kb-wiki/vault/.obsidian/workspace*.json
+
+# Sistema
+.DS_Store
