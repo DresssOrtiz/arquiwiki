@@ -138,3 +138,4 @@ Los diagramas, resultados experimentales y evidencias de ejecución siguen pendi
 
 [HLD de ArquiWiki](docs/diagramas/HLD.png).
 
+[C4 de contexto](docs/diagramas/C4-Contexto.png).
