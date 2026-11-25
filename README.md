@@ -122,3 +122,14 @@ scripts/             Utilidades de despliegue y demo
 ## Documentos de muestra
 
 Los archivos `*-muestra.md` de `kb-wiki/vault/raw/` son sintéticos y sirven para probar los pipelines. Se reemplazan por los apuntes reales de las clases 1 a 5 y los documentos del proyecto MANI.
+
+## Avances de documentación — persona A
+
+Versiones preliminares revisadas al 25 de noviembre de 2026:
+
+- [Documento de investigación](docs/investigacion.pdf).
+- [Guion del video](video/guion.md).
+- [Checklist de cobertura y pendientes](checklist.md).
+- [Presentación preliminar en Canva](https://www.canva.com/d/kGASGIjBrTgCsAa).
+
+Los diagramas, resultados experimentales y evidencias de ejecución siguen pendientes. Las claves de evaluación incluidas en el informe deben permanecer fuera del corpus y del contexto de los agentes evaluados.
