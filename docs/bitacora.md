@@ -147,3 +147,9 @@ Se hizo en 3 tandas (P01 del piloto, P02-P05, P06-P10 y P11-P15) para no agotar 
   - El costo de actualización (`costo_actualizacion.py`), después de la calificación, porque cambia la línea base.
   - La medición del overhead (`run.py --overhead`).
   - El cotejo PDF→Markdown de A.
+
+## 2026-11-25 · Resultados marcados como preliminares (cotejo del corpus en curso)
+
+- Después de la corrida principal, A corrigió `raw/1-2-definiciones-1.md`, diap. 31 (el diagrama de las funciones del arquitecto, que es la fuente de P02), como parte del cotejo PDF→Markdown (commit 52e24c7 en `main`).
+- KB-A (`kb-a-baseline`) y el índice de KB-B se construyeron con la versión anterior. Todas las cifras y observaciones de la corrida principal quedan como **preliminares**, en especial la de P02.
+- Decisión del equipo: no se repite P02 ni el experimento hasta que A confirme la versión definitiva del corpus, para ahorrar tokens. Entonces se decidirá qué reconstruir (reingesta y reindexado) y qué preguntas repetir. Mientras tanto no se modifica el corpus ni el vault de ejecución.
