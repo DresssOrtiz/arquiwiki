@@ -127,11 +127,12 @@ Las cuatro muestras sintéticas están en [`kb-wiki/muestras/`](kb-wiki/muestras
 
 Versiones preliminares revisadas al 25 de noviembre de 2026:
 
-- [Documento de investigación](docs/investigacion.pdf).
+- [Documento de investigación](docs/investigacion.pdf) — fuente editable en [Drive](https://docs.google.com/document/d/1uFmCr0120qSVLiMvn05fTBuXrhV1pCGu08XgdMnWA38/edit); hay cambios editoriales recientes que requieren reexportar el PDF.
 - [Guion del video](video/guion.md).
 - [Checklist de cobertura y pendientes](checklist.md).
+- [Cinco matrices comparativas exportadas a Markdown editable](docs/matrices/README.md), con fuente maestra en Google Drive.
 - [Presentación preliminar en Canva](https://www.canva.com/d/kGASGIjBrTgCsAa).
-- [Presentación exportada en PDF](presentacion/presentacion.pdf).
+- [Presentación exportada en PDF](presentacion/presentacion.pdf) — **reexportación pendiente**, porque el archivo se publicó antes de la última edición del Canva de diez diapositivas.
 
 Ya están publicados **cinco diagramas** (HLD, C4 de contexto y tres UML de paquetes). Faltan cuatro modelos C4 y los resultados del experimento. La [bitácora](docs/bitacora.md) registra pruebas locales de Docker, API, MCP y RAG, pero aún no existe un conjunto final y comparable de respuestas y métricas. Las claves de evaluación nunca se entregan a los agentes ni se indexan.
 
@@ -149,7 +150,7 @@ Ya están publicados **cinco diagramas** (HLD, C4 de contexto y tres UML de paqu
 
 ## Corpus original del curso
 
-Los seis PDF originales están en [`docs/corpus-original/`](docs/corpus-original/); sus seis Markdown en [`kb-wiki/vault/raw/`](kb-wiki/vault/raw/) conservan **183 de 183 marcadores de diapositiva**. La revisión detectó y corrigió el orden mezclado de tres columnas de la diapositiva 31 de `1.2 Definiciones 1.pdf`; aún se requiere **cotejo visual adicional de las diapositivas con gráficos** antes de congelar el corpus para el experimento. KB-A y KB-B deben usar exactamente las mismas versiones y hashes, sin materiales de muestra.
+Los seis PDF originales están en [`docs/corpus-original/`](docs/corpus-original/); sus seis Markdown en [`kb-wiki/vault/raw/`](kb-wiki/vault/raw/) conservan **183 de 183 marcadores de diapositiva**. La revisión detectó y corrigió el orden mezclado de tres columnas de la diapositiva 31 de `1.2 Definiciones 1.pdf`; la inspección visual de **28 diapositivas** detectó gráficos cuyas relaciones no están completamente expresadas en el texto (p. ej., 1.2 diap. 11/21 y 3.1 diap. 8/9). Se debe cotejar y preservar la información visual antes de congelar el corpus. **No editar raw/ mientras B/C ejecutan las pruebas:** acordar cualquier corrección y volver a construir ambas bases con exactamente la misma versión. KB-A y KB-B deben usar exactamente las mismas versiones y hashes, sin materiales de muestra.
 
 ## Material del experimento (fuera de la indexación)
 

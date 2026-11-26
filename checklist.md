@@ -36,7 +36,7 @@ Esta checklist es un archivo auxiliar del repositorio; no crea un cuarto entrega
 
 ☐ Capítulo 6: resultados medidos y análisis; requiere logs y respuestas auténticas de KB-A y KB-B.
 
-☐ Bibliografía y maquetación finales por revisar por Andrés antes de publicar.
+☑ Revisión general de bibliografía y coherencia del documento: enlace ISO/IEC 25010:2023, Gist LLM Wiki, encuesta Stack Overflow 2026 y documentación principal consultables; se corrigieron referencias desactualizadas a los diagramas y se retiró una referencia docente duplicada. ☑ Las cinco matrices se muestran completas en páginas separadas del PDF (39 páginas). ⚠ Las tablas están a 9 pt y pueden requerir ampliación si el profesor pide lectura en impresión.
 
 # 3. Presentación en Canva
 
@@ -52,7 +52,7 @@ Esta checklist es un archivo auxiliar del repositorio; no crea un cuarto entrega
 
 # 4. Archivos editables destinados a GitHub
 
-☑ Fuente de investigación completa y matrices dentro del documento maestro de Drive.
+☑ Investigación y cinco tablas maestras conservadas en el documento original de Drive. ☑ Las cinco matrices se exportaron sin reinterpretar sus celdas a Markdown editable en `docs/matrices/` de GitHub, con enlace de regreso al documento maestro.
 
 ☑ Preguntas y respuestas de referencia conservadas en el capítulo 4 del documento principal. ☑ En `experiment/preguntas.md` se publicó SOLO el enunciado de las 15 preguntas. Las claves no están en el vault ni en el archivo que reciben los sistemas; no deben entregarse a los agentes.
 
@@ -60,11 +60,11 @@ Esta checklist es un archivo auxiliar del repositorio; no crea un cuarto entrega
 
 ☑ Guion redactado en Drive y archivo `video/guion.md` presente en GitHub. ☐ Verificar que la última versión en Drive y el Markdown del repositorio coincidan antes de entregar.
 
-☑ Checklist de control mantenida en Drive y sincronizada con `checklist.md` en GitHub. Se actualizará de nuevo tras la ejecución experimental y el video.
+☑ Checklist editada en el documento original de Drive y sincronizada como `checklist.md` en GitHub (última auditoría de matrices, corpus, enlaces y estado del PDF de presentación).
 
-☑ Cinco diagramas PNG publicados y seis PDF originales en `docs/corpus-original/`. ☑ Santiago convirtió los seis PDF a Markdown: 183 diapositivas conservadas en `kb-wiki/vault/raw/`, sin muestras sintéticas. ☑ Se verificó estructura y numeración; se corrigió la disposición de tres columnas de la diapositiva 31 de 1.2. ☐ Cotejo visual adicional de diapositivas gráficas con Santiago. ☐ Publicar fuentes editables de diagramas y resultados cuando existan (sin crear diagramas en esta etapa).
+☑ Cinco diagramas PNG y seis PDF originales publicados. ☑ Seis Markdown (183/183 encabezados de diapositiva) estructuralmente verificados, y 28 diapositivas gráficas relevantes revisadas visualmente. ⚠ Los diagramas visuales no quedan totalmente representados por el texto extraído (p. ej., 1.2 diap. 11/21 y 3.1 diap. 8/9). La diapositiva 31 de 1.2 ya se reconstruyó. ☐ Cotejar y transcribir fielmente las relaciones de los gráficos relevantes con Santiago antes de congelar nuevamente el corpus; NO modificar los archivos raw mientras B/C ejecuten las corridas definitivas. ☐ Publicar fuentes editables .drawio de los diagramas existentes si están disponibles.
 
-☑ Enlace de la presentación publicado en el README. ☐ Publicar el enlace del video cuando esté disponible. ☐ Comprobar enlaces y estructura del README antes de la entrega final.
+☑ Se comprobaron 26 enlaces internos de los documentos principales del repositorio: no hay rutas internas rotas. ☑ Canva mantiene la presentación original con diez diapositivas. ☐ Volver a exportar `presentacion/presentacion.pdf` desde Canva: el PDF publicado precede la última actualización del diseño (no se puede certificar que contenga las diez). ☐ Añadir enlace del video cuando esté publicado y verificar su reproducción.
 
 # 5. Información y evidencia de Tomás (B)
 
