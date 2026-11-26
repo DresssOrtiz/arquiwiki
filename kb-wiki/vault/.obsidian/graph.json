@@ -1,0 +1,16 @@
+{
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "colorGroups": [
+    {"query": "path:wiki/conceptos", "color": {"a": 1, "rgb": 5017087}},
+    {"query": "path:wiki/entidades", "color": {"a": 1, "rgb": 5025616}},
+    {"query": "path:wiki/comparaciones", "color": {"a": 1, "rgb": 16750592}},
+    {"query": "path:wiki/consultas", "color": {"a": 1, "rgb": 10233776}},
+    {"query": "path:wiki/auditoria", "color": {"a": 1, "rgb": 16007990}},
+    {"query": "path:raw", "color": {"a": 1, "rgb": 10395294}}
+  ],
+  "nodeSizeMultiplier": 1.2,
+  "linkDistance": 200
+}

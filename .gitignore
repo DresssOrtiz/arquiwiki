@@ -19,3 +19,6 @@ kb-wiki/vault/.obsidian/workspace*.json
 
 # Sistema
 .DS_Store
+
+# Worktrees de agentes de Claude Code
+.claude/worktrees/
