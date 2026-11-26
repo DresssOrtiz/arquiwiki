@@ -143,3 +143,5 @@ Los diagramas, resultados experimentales y evidencias de ejecución siguen pendi
 [UML de paquetes de la API](docs/diagramas/UML-Paquetes-API.png).
 
 [UML de paquetes del gateway](docs/diagramas/UML-Paquetes-Gateway.png).
+
+[UML de paquetes del RAG](docs/diagramas/UML-Paquetes-RAG.png).
