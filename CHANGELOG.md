@@ -16,4 +16,4 @@
 
 ### Decisiones
 - `mcp-gateway` fija `mcp<2`: la serie 2.x renombró `FastMCP` a `MCPServer`.
-- Fragmentos de 200 tokens (no 400) porque el modelo de embeddings multilingüe elegido rinde mejor con textos cortos.
+- Fragmentos de 120 tokens: el modelo de embeddings multilingüe elegido solo procesa 128 tokens por texto. La primera versión usaba 200, pero el contador saturado impedía ver que superaban la ventana (ver "Corregido").
