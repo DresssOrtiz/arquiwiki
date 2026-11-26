@@ -131,6 +131,7 @@ Versiones preliminares revisadas al 25 de noviembre de 2026:
 - [Guion del video](video/guion.md).
 - [Checklist de cobertura y pendientes](checklist.md).
 - [Presentación preliminar en Canva](https://www.canva.com/d/kGASGIjBrTgCsAa).
+- [Presentación exportada en PDF](presentacion/presentacion.pdf).
 
 Los diagramas, resultados experimentales y evidencias de ejecución siguen pendientes. Las claves de evaluación incluidas en el informe deben permanecer fuera del corpus y del contexto de los agentes evaluados.
 

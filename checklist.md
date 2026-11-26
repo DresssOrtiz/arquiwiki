@@ -10,13 +10,13 @@ Esta checklist es un archivo auxiliar del repositorio; no crea un cuarto entrega
 
 ☑ 2. Investigación adicional del profesor: tipos y comparación de RAG, funcionamiento de LLM Wiki, vínculo con agentes, evolución, casos de uso, mercado e ISO en el capítulo 2.
 
-◐ 3. Cinco matrices desarrolladas y corregidas en Drive. Se corrigieron celdas cruzadas entre SOLID, compatibilidad y modificabilidad; la oferta de Mercado Libre queda sin evaluar. ☑ Auditoría completada: aprobado para publicación como avance preliminar. ☐ Revisión editorial final del formato por Andrés. ☐ Documentar búsquedas en Indeed y Computrabajo si se mantiene ese alcance.
+◐ 3. Cinco matrices desarrolladas y corregidas en Drive. Se corrigieron celdas cruzadas entre SOLID, compatibilidad y modificabilidad; la oferta de Mercado Libre queda sin evaluar. ☑ Auditoría de contenido completada y avance preliminar aprobado. ☐ Revisión editorial final del formato por Andrés. ☐ Documentar búsquedas en Indeed y Computrabajo si se mantiene ese alcance.
 
-☐ 4. Diagramas arquitectónicos: todavía NO realizados, por decisión de Andrés. Se incorporarán al capítulo 5 del mismo documento y sus fuentes editables irán al repositorio.
+◐ 4. Diagramas arquitectónicos: HLD, C4 de Contexto y UML de paquetes de API, Gateway MCP y RAG ya incorporados al documento (cinco figuras). ☐ Quedan los C4 de Contenedores, Componentes del sistema, Dinámico y Despliegue, sujetos a validar la integración. Existe además una vista C4 de componentes del Gateway que no sustituye sus diagramas UML.
 
 ☑ 5a. Quince preguntas redactadas en esquema 5/4/4/2 y referencias cotejadas con las diapositivas del profesor. Corregidas P03 (diapositivas 41–42) y P04 (seis componentes del escenario). ☑ 5b. Rúbrica escrita. ☐ 5c. Carga equivalente de Markdown en KB-A/KB-B. ☐ 5d. Experimento, calificación y análisis pendiente de B/C.
 
-☑ 6a. Presentación preliminar de nueve diapositivas con portada, resultados conceptuales y método 5/4/4/2 actualizados. ☐ 6b. Integrar diagramas y resultados reales más adelante.
+☑ 6a. Presentación preliminar de diez diapositivas con portada, resultados conceptuales y método 5/4/4/2 actualizados. ☑ 6b. HLD integrado en la presentación. ☐ Seleccionar otros modelos pertinentes e incorporar resultados reales cuando estén disponibles.
 
 ☑ 7a. Checklist de cobertura actualizada con requisitos del curso, roles y evidencias. ☐ 7b. Verificación final contra implementación, video y tag público.
 
@@ -32,11 +32,11 @@ Esta checklist es un archivo auxiliar del repositorio; no crea un cuarto entrega
 
 ☑ Capítulo 4: preguntas y claves, rúbrica, protocolo de estados restaurados, conversión de PDF a Markdown y control de fuga de respuestas. ☐ Ejecutar, verificar y analizar.
 
-☐ Capítulo 5: diagramas, pendiente por instrucción de Andrés.
+◐ Capítulo 5: cinco diagramas incorporados (HLD, C4 de Contexto, UML API, UML Gateway MCP y UML RAG). Faltan los otros cuatro modelos C4.
 
 ☐ Capítulo 6: resultados medidos y análisis; requiere logs y respuestas auténticas de KB-A y KB-B.
 
-☑ Documento aprobado para publicación preliminar. ☐ Revisión final de bibliografía y maquetación antes de la entrega definitiva.
+☐ Bibliografía y maquetación finales por revisar por Andrés antes de publicar.
 
 # 3. Presentación en Canva
 
@@ -46,7 +46,7 @@ Esta checklist es un archivo auxiliar del repositorio; no crea un cuarto entrega
 
 ☑ Hallazgos y límites de las matrices integrados en la presentación preliminar de Canva; la metodología 5/4/4/2 también fue incorporada.
 
-☐ Incorporar diagramas cuando se elaboren y se validen contra la implementación; aún no se han realizado.
+☑ Diagramas HLD, C4 Contexto y tres UML incorporados en el documento de investigación. ☑ HLD integrado en Canva. ☐ Seleccionar e integrar otros modelos pertinentes y actualizar las conclusiones con datos reales cuando existan.
 
 ☐ Sustituir la lámina de estado por resultados medidos y conclusiones verificables cuando se reciban de B/C.
 
@@ -58,13 +58,13 @@ Esta checklist es un archivo auxiliar del repositorio; no crea un cuarto entrega
 
 ☑ Rúbrica del experimento escrita; ☐ convertir a archivo editable del repositorio.
 
-☑ Guion actualizado, exportado a Markdown y aprobado como preliminar: PUT, carpeta `wiki/consultas/` y responsabilidades corregidos. Archivo del repositorio: `video/guion.md`.
+☑ Guion redactado en Drive y archivo `video/guion.md` presente en GitHub. ☐ Verificar que la última versión en Drive y el Markdown del repositorio coincidan antes de entregar.
 
-☑ Checklist exportada, actualizada y aprobada como preliminar. Archivo editable del repositorio: `checklist.md`.
+☑ Checklist de control escrita en Drive y `checklist.md` publicado en GitHub. ☐ Sincronizar el archivo de GitHub con la última versión de Drive y verificarla.
 
-☐ Publicar matrices y, posteriormente, diagramas editables; ☐ subir registros y análisis después de medir.
+☑ Cinco diagramas PNG publicados en `docs/diagramas/` de GitHub. ☑ Seis PDF originales del curso publicados en `docs/corpus-original/` (commit `9450e164a5`). ☐ Convertir y cotejar el corpus Markdown compartido entre KB-A/KB-B (Santiago y Tomás). ☐ Añadir fuentes editables .drawio, matrices exportadas y resultados únicamente después de medir.
 
-☐ Publicar enlace de presentación y video; ☐ comprobar enlaces y estructura del README.
+☑ Enlace de la presentación publicado en el README. ☐ Publicar el enlace del video cuando esté disponible. ☐ Comprobar enlaces y estructura del README antes de la entrega final.
 
 # 5. Información y evidencia de Tomás (B)
 
