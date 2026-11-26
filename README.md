@@ -163,3 +163,5 @@ No incluir `experiment/`, `docs/investigacion.pdf`, preguntas, rúbrica ni respu
 [C4 de contenedores](docs/diagramas/C4-Contenedores.png).
 
 [C4 de componentes del Gateway MCP](docs/diagramas/C4-Componentes-Gateway.png).
+
+[C4 dinámico: consulta KB-B](docs/diagramas/C4-Dinamico.png). Representa el flujo del runner de experimento implementado en el [PR #7](https://github.com/DresssOrtiz/arquiwiki/pull/7).
