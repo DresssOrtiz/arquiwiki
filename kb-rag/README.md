@@ -4,7 +4,7 @@ Servicio RAG: fragmenta el corpus de `raw/`, calcula embeddings locales, los gua
 
 ## Cómo funciona
 
-1. **Fragmentación** (`app/chunker.py`): por encabezados markdown. Cada fragmento lleva su ruta de encabezados como prefijo. Máximo 200 tokens por fragmento: el modelo multilingüe elegido rinde mejor con textos cortos. Los párrafos más largos se parten con solapamiento de 20 palabras.
+1. **Fragmentación** (`app/chunker.py`): por encabezados markdown. Cada fragmento lleva su ruta de encabezados como prefijo. Máximo 120 tokens por fragmento (`RAG_CHUNK_TOKENS`): el modelo de embeddings solo procesa 128 tokens por texto y descarta el resto, así que un fragmento más largo quedaría parcialmente invisible a la búsqueda. Si se configura un valor mayor que la ventana del modelo, el servicio lo recorta y lo avisa en el log. Los tokens se cuentan con una copia del tokenizador sin truncamiento ni relleno; contar con el tokenizador original satura el conteo en 128 y subestima el texto. Los párrafos más largos se parten con solapamiento de 20 palabras.
 2. **Embeddings** (`app/embedder.py`): `paraphrase-multilingual-MiniLM-L12-v2` (384 dimensiones) con fastembed/ONNX. Corre en el contenedor y el modelo se descarga al construir la imagen. No consume tokens de ningún LLM.
 3. **Almacén** (`app/store.py`): tablas `rag.documents` y `rag.chunks` con índice HNSW de similitud coseno.
 4. **Consulta** (`app/service.py`): embebe la pregunta, recupera los `k` fragmentos más cercanos y, si hay `ANTHROPIC_API_KEY`, pide la respuesta a Claude con esos fragmentos como único contexto (`app/llm.py`).

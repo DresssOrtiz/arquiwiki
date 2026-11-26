@@ -29,7 +29,8 @@ def load_settings() -> Settings:
         anthropic_api_key=os.getenv("ANTHROPIC_API_KEY", ""),
         anthropic_model=os.getenv("ANTHROPIC_MODEL", "claude-sonnet-5-5"),
         top_k=int(os.getenv("RAG_TOP_K", "5")),
-        # El modelo de embeddings multilingüe rinde mejor con fragmentos cortos.
-        chunk_max_tokens=int(os.getenv("RAG_CHUNK_TOKENS", "200")),
+        # Debe caber en la ventana del modelo de embeddings (128 tokens en MiniLM): lo que
+        # excede se descarta al embeber. main.py lo recorta si se configura un valor mayor.
+        chunk_max_tokens=int(os.getenv("RAG_CHUNK_TOKENS", "120")),
         answer_max_tokens=int(os.getenv("RAG_ANSWER_MAX_TOKENS", "600")),
     )

@@ -17,7 +17,7 @@ class RagService:
         llm: LLM | None,
         corpus_dir: Path,
         results_dir: Path,
-        chunk_max_tokens: int = 200,
+        chunk_max_tokens: int = 120,
         top_k: int = 5,
     ):
         self.store = store
