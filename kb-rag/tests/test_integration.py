@@ -39,5 +39,7 @@ def test_indexa_y_recupera_la_fuente_correcta(tmp_path):
 
     out = svc.query("¿Cómo se evalúa una arquitectura de software?", k=2, use_llm=False)
     assert out["sources"][0] == "raw/atam.md"
+    # ningún fragmento excede la ventana del modelo (si no, el embedding no ve todo el texto)
+    assert all(f["tokens"] <= embedder.max_seq_len for f in out["fragments"])
     out = svc.query("alertas de existencias en bodega", k=2, use_llm=False)
     assert out["sources"][0] == "raw/inventario.md"

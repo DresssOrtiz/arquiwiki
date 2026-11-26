@@ -11,6 +11,9 @@
 - Documentos de muestra sintéticos en `kb-wiki/vault/raw/` y guía de demo en `demo/comandos.md`.
 - `README.md` con los pasos de despliegue.
 
+### Corregido
+- `kb-rag`: el conteo de tokens se saturaba en 128 (ventana del modelo de embeddings), por lo que el fragmentador no partía los fragmentos largos y el embedding descartaba el final de 40 de 189 fragmentos. Ahora se cuenta sin truncar, el tamaño por defecto es 120 tokens y se recorta a la ventana del modelo. El índice del corpus real pasa de 189 a 280 fragmentos y los tokens registrados coinciden con los reales. Requiere reindexar con `{"force": true}`.
+
 ### Decisiones
 - `mcp-gateway` fija `mcp<2`: la serie 2.x renombró `FastMCP` a `MCPServer`.
-- Fragmentos de 200 tokens (no 400) porque el modelo de embeddings multilingüe elegido rinde mejor con textos cortos.
+- Fragmentos de 120 tokens: el modelo de embeddings multilingüe elegido solo procesa 128 tokens por texto. La primera versión usaba 200, pero el contador saturado impedía ver que superaban la ventana (ver "Corregido").

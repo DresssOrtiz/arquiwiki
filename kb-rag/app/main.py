@@ -1,3 +1,4 @@
+import logging
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, HTTPException, Request
@@ -21,13 +22,19 @@ async def lifespan(app: FastAPI):
             if s.anthropic_api_key
             else None
         )
+        chunk_max = min(s.chunk_max_tokens, embedder.max_seq_len)
+        if chunk_max < s.chunk_max_tokens:
+            logging.getLogger("rag").warning(
+                "RAG_CHUNK_TOKENS=%d supera la ventana del modelo (%d); se usa %d",
+                s.chunk_max_tokens, embedder.max_seq_len, chunk_max,
+            )
         app.state.service = RagService(
             store=PgStore(s.database_url, embedder.dim),
             embedder=embedder,
             llm=llm,
             corpus_dir=s.corpus_dir,
             results_dir=s.results_dir,
-            chunk_max_tokens=s.chunk_max_tokens,
+            chunk_max_tokens=chunk_max,
             top_k=s.top_k,
         )
     yield

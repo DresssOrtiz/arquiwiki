@@ -21,6 +21,7 @@ def _bag_of_words(text: str) -> list[float]:
 
 class FakeEmbedder:
     dim = DIM
+    max_seq_len = 128
 
     def embed(self, texts):
         return [_bag_of_words(t) for t in texts]

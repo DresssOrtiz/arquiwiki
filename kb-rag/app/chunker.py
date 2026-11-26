@@ -61,7 +61,7 @@ def _split_long(paragraph: str, max_tokens: int, count: CountTokens, overlap_wor
 def chunk_markdown(
     markdown: str,
     count_tokens: CountTokens,
-    max_tokens: int = 200,
+    max_tokens: int = 120,
     overlap_words: int = 20,
 ) -> list[Chunk]:
     chunks: list[Chunk] = []
