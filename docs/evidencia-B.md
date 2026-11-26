@@ -78,22 +78,34 @@ Pregunta P03, `use_llm:false`, `k=5`:
 
 Recuperación en 22 ms. Las diapositivas 41 y 42 de la clase 1.2 son la fuente de referencia de P03. Con `use_llm:false` no hay consumo de tokens de LLM. La ruta de generación nativa (`AnthropicLLM`) no se ejecutó aquí por falta de clave; los tokens de la corrida preliminar vienen del CLI `claude -p` de Santiago.
 
-## 6. Hallazgo técnico: el contador de tokens de KB-B se satura en 128
+## 6. Hallazgo técnico: el contador de tokens de KB-B se saturaba en 128
 
-**Qué ocurre.** El tokenizador de `paraphrase-multilingual-MiniLM-L12-v2` tiene truncamiento a 128 tokens y `FastEmbedder.count_tokens` lo usa tal cual. Como el contador nunca supera 128, el fragmentador (límite configurado de 200) no parte los fragmentos largos, y el modelo de embeddings solo ve los primeros 128 tokens de cada uno.
+**Qué ocurría.** El tokenizador de `paraphrase-multilingual-MiniLM-L12-v2` trunca y rellena a 128 tokens, y `FastEmbedder.count_tokens` lo usaba tal cual. Como el contador nunca superaba 128, el fragmentador (límite configurado de 200) no partía los fragmentos largos, y el modelo de embeddings solo veía los primeros 128 tokens de cada uno.
 
-**Medición sobre el índice actual (189 fragmentos).**
+**Medición sobre el índice de `main` (189 fragmentos).** Se reprodujo el índice exacto (189 fragmentos y 14 412 tokens) y se recontó con un tokenizador sin truncar ni rellenar:
 
 | Medida | Valor |
 |--------|-------|
 | Fragmentos cuyo texto real supera 128 tokens | 40 (21 %) |
-| Fragmentos que superan el límite configurado de 200 | 40; el máximo real es 384 |
-| Tokens reales del corpus indexado | 20 684 |
-| Tokens registrados (`embedded_tokens` y `rag.chunks.tokens`) | 14 412, un 30,3 % menos |
-| Tokens de texto que el embedding no ve | 6 272 (30,3 % del corpus) |
+| Fragmentos que superan el límite configurado de 200 | 19; el máximo real es 375 |
+| Tokens reales del corpus indexado | 17 613 |
+| Tokens registrados (`embedded_tokens`) | 14 412, un 18,2 % menos |
+| Tokens de texto que el embedding no veía | 3 201 (18,2 % del corpus) |
+
+Una primera medición de este mismo hallazgo dio 30 % y un máximo de 384 tokens. Estaba inflada, porque los trozos desbordados por el tokenizador vienen rellenados hasta 128. Las cifras de la tabla son las correctas.
 
 **Consecuencias.**
-- La recuperación es ciega al final de los fragmentos largos. Es una causa plausible, **no demostrada**, de los fallos de KB-B en P02 y P09 de la corrida preliminar.
-- `embedded_tokens` y `retrieved_tokens` son cotas inferiores. Las cifras de tokens de entrada que usa el experimento salen del CLI y no se afectan, pero `rag_builds.jsonl` subestima el costo de construcción en un 30 %.
+- La recuperación era ciega al final de los fragmentos largos. Es una causa plausible, **no demostrada**, de los fallos de KB-B en P02 y P09 de la corrida preliminar. No se comprobó con las 15 preguntas a propósito, para no ajustar el recuperador mirando el conjunto de evaluación; lo mostrará la repetición oficial.
+- `embedded_tokens` y `retrieved_tokens` eran cotas inferiores. Los tokens de entrada que usa el experimento salen del CLI y no se afectan.
 
-**Corrección propuesta (no aplicada).** Contar los tokens sumando `encoding.overflowing` (sin cambiar el truncamiento que usa el modelo) y fijar el tamaño de fragmento en unos 120 tokens para que el embedding cubra todo el texto. Cambia el índice, así que debe hacerse antes de repetir KB-B con el corpus congelado y habría que reindexar con `force`.
+**Corrección (rama `fix/rag-conteo-tokens`).** El contador usa una copia del tokenizador sin truncamiento ni relleno; el tamaño de fragmento por defecto baja a 120 tokens y se recorta a la ventana del modelo si se configura un valor mayor. Resultado sobre el mismo corpus de `main`, con pgvector real:
+
+| Medida | Antes | Después |
+|--------|-------|---------|
+| Fragmentos | 189 | 280 |
+| Tokens embebidos (`embedded_tokens`) | 14 412 (registrado) | 20 234 |
+| Máximo de tokens por fragmento | 375 | 118 |
+| Fragmentos sobre la ventana de 128 | 40 | 0 |
+| Tokens registrados igual a los reales | no | sí |
+
+Pruebas de `kb-rag`: 21 correctas, con la de integración contra pgvector y el modelo reales. El índice cambia, así que hay que reindexar con `{"force": true}` antes de repetir KB-B con el corpus congelado.
