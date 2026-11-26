@@ -3,7 +3,8 @@
 > Evaluación asistida; cotejar con el texto oficial de cada norma. Requisito de ejemplo; reemplazar por el RF real del SRS de MANI.
 
 ## Fuentes consultadas
-- Wiki: sin páginas en `wiki/conceptos/` al momento de generar el ejemplo. Se usaron `raw/clase-03-atributos-calidad-muestra.md` (muestra) y las references de la skill. Wiki no disponible para citas definitivas.
+- Wiki: sin páginas en `wiki/conceptos/` al momento de generar el ejemplo, por lo que no se cita ninguna. Se usaron las references de la skill y, como fuente del corpus, `raw/3-2-atributos-de-calidad-3.md`, diap. 19 (tácticas de eficiencia de ejecución). Wiki no disponible para citas definitivas.
+- Extracto de SRS: `kb-wiki/muestras/mani-srs-muestra.md` (extracto sintético de SRS, no es del corpus del curso).
 - Artefactos evaluados: `requisito.md`, `modelo.dsl`, `paquetes.puml`, `secuencia.puml`, `decisiones.md`, `criterios.feature`.
 
 ## 1. ISO/IEC 25010:2023 (calidad del producto)
@@ -24,7 +25,7 @@ Se evalúa el RF-02 y el RNF-02-R. Conjunto: no evaluable con solo dos requisito
 
 | Característica | Veredicto | Evidencia | Reescritura sugerida |
 |---|---|---|---|
-| Necesario | Cumple | RNF-01 del extracto de SRS fija el mismo objetivo de rendimiento | n/a |
+| Necesario | Cumple | RNF-01 de `kb-wiki/muestras/mani-srs-muestra.md` (extracto sintético) fija el mismo objetivo de rendimiento | n/a |
 | Apropiado | Cumple | No impone caché ni base de datos | n/a |
 | Inequívoco | Parcial | RF-02: "buscar por nombre o código" no define el tipo de coincidencia | "El sistema debe devolver los productos cuyo nombre contenga el texto buscado (sin distinguir mayúsculas) o cuyo código coincida exactamente." |
 | Completo | Parcial | RNF-02-R no indica duración de la medición ni qué operación se mide | "Durante 10 minutos de carga sostenida, la búsqueda debe cumplir p95 < 2 s." |
