@@ -7,7 +7,7 @@ El caso práctico construye dos bases de conocimiento sobre el mismo material de
 - **KB-A, LLM Wiki:** un vault de markdown (`raw/` fuentes, `wiki/` páginas) que mantienen agentes de IA conectados por MCP, visible en Obsidian.
 - **KB-B, RAG:** fragmentación, embeddings locales y búsqueda vectorial en pgvector, con respuesta de Claude.
 
-Mide el consumo de tokens de cada enfoque y añade un agente "Ingeniero de Sistemas" (modelado, criterios de aceptación y evaluación con normas ISO).
+El experimento comparará consumo de tokens y calidad de respuesta; incorpora un agente "Ingeniero de Sistemas" (modelado, criterios de aceptación y evaluación con normas ISO).
 
 > Video de demostración: _pendiente de publicar_ (se enlazará aquí).
 
@@ -64,7 +64,7 @@ Todos los puertos se publican solo en `127.0.0.1`. Detalle de cada componente en
 
 ```bash
 curl -s -X POST localhost:8000/fuentes -H 'content-type: application/json' \
-  -d '{"titulo":"Clase 2: ATAM","tipo":"markdown","archivo_o_url":"raw/clase-02-atam-muestra.md"}'
+  -d '{"titulo":"Atributos de calidad 3","tipo":"markdown","archivo_o_url":"raw/3-2-atributos-de-calidad-3.md"}'
 curl -s localhost:8000/fuentes
 ```
 
@@ -75,7 +75,7 @@ También se puede usar la interfaz interactiva en http://localhost:8000/docs.
 ```bash
 curl -s -X POST localhost:8001/index -H 'content-type: application/json' -d '{}'
 curl -s -X POST localhost:8001/query -H 'content-type: application/json' \
-  -d '{"question":"¿Qué es ATAM y qué pasos tiene?","question_id":"P01"}'
+  -d '{"question":"¿Cómo define el curso la arquitectura de software y qué elementos la componen?","question_id":"P01","use_llm":false}'
 ```
 
 Cada consulta queda registrada en `experiment/results/rag_queries.jsonl` con tokens, latencia y fuentes citadas.
@@ -121,7 +121,7 @@ scripts/             Utilidades de despliegue y demo
 
 ## Documentos de muestra
 
-Los archivos `*-muestra.md` de `kb-wiki/vault/raw/` son sintéticos y sirven para probar los pipelines. Se reemplazan por los apuntes reales de las clases 1 a 5 y los documentos del proyecto MANI.
+Las cuatro muestras sintéticas están en [`kb-wiki/muestras/`](kb-wiki/muestras/), **fuera del corpus de evaluación**. `kb-wiki/vault/raw/` contiene exclusivamente los seis Markdown derivados de las presentaciones del profesor (183 diapositivas). MANI no forma parte del corpus académico de esta versión.
 
 ## Avances de documentación — persona A
 
@@ -133,7 +133,7 @@ Versiones preliminares revisadas al 25 de noviembre de 2026:
 - [Presentación preliminar en Canva](https://www.canva.com/d/kGASGIjBrTgCsAa).
 - [Presentación exportada en PDF](presentacion/presentacion.pdf).
 
-Los diagramas, resultados experimentales y evidencias de ejecución siguen pendientes. Las claves de evaluación incluidas en el informe deben permanecer fuera del corpus y del contexto de los agentes evaluados.
+Ya están publicados **cinco diagramas** (HLD, C4 de contexto y tres UML de paquetes). Faltan cuatro modelos C4 y los resultados del experimento. La [bitácora](docs/bitacora.md) registra pruebas locales de Docker, API, MCP y RAG, pero aún no existe un conjunto final y comparable de respuestas y métricas. Las claves de evaluación nunca se entregan a los agentes ni se indexan.
 
 ## Arquitectura de alto nivel
 
@@ -149,6 +149,12 @@ Los diagramas, resultados experimentales y evidencias de ejecución siguen pendi
 
 ## Corpus original del curso
 
-Los seis PDF originales del profesor se conservan con sus nombres en [docs/corpus-original/](docs/corpus-original/). Antes de alimentar KB-A (LLM Wiki) y KB-B (RAG), deben convertirse a Markdown revisado y cotejado con los PDF, conservando referencias al documento y a cada diapositiva. Ambas bases deben utilizar las mismas versiones revisadas.
+Los seis PDF originales están en [`docs/corpus-original/`](docs/corpus-original/); sus seis Markdown en [`kb-wiki/vault/raw/`](kb-wiki/vault/raw/) conservan **183 de 183 marcadores de diapositiva**. La revisión detectó y corrigió el orden mezclado de tres columnas de la diapositiva 31 de `1.2 Definiciones 1.pdf`; aún se requiere **cotejo visual adicional de las diapositivas con gráficos** antes de congelar el corpus para el experimento. KB-A y KB-B deben usar exactamente las mismas versiones y hashes, sin materiales de muestra.
 
-Los archivos de muestra existentes se mantienen para pruebas y no deben mezclarse con el corpus académico de evaluación.
+## Material del experimento (fuera de la indexación)
+
+- [Quince preguntas — solo enunciados](experiment/preguntas.md), sin claves ni fuentes indicadas a los sistemas.
+- [Rúbrica de evaluación 0–10](experiment/rubrica.md) para los evaluadores, nunca para los agentes.
+- [Plantilla vacía de calificación](experiment/plantilla-evaluacion.csv), sin métricas ficticias.
+
+No incluir `experiment/`, `docs/investigacion.pdf`, preguntas, rúbrica ni respuestas de referencia en `raw/`, `wiki/`, el índice vectorial o el contexto de los agentes evaluados. Separar las preguntas del material de aprendizaje no impide enviarlas individualmente durante la prueba.

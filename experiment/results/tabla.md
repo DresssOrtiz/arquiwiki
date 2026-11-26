@@ -6,7 +6,11 @@ Generado por `experiment/reporte.py`. Mismo modelo y mismo CLI en ambos brazos.
 
 ### KB-A: tokens de LLM (kba_runs.jsonl; ingesta, lint y corrección)
 
-_Sin registros de construcción de KB-A._
+| Operación | Ejecuciones | Con error | Entrada total (tokens LLM) | Entrada nueva (input + cache_creation) | Salida (tokens LLM) | Tiempo (s) |
+|---|---|---|---|---|---|---|
+| ingesta | 6 | 0 | 1 037 380 | 233 557 | 113 087 | 608.5 |
+| lint | 1 | 0 | 603 745 | 128 957 | 24 622 | 229.8 |
+| correccion | 1 | 0 | 945 846 | 156 879 | 72 026 | 326.7 |
 
 ### KB-B: indexación (rag_builds.jsonl, modo full)
 

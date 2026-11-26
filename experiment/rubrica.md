@@ -1,57 +1,27 @@
-# Rúbrica de calificación (0-10)
+# ArquiWiki — Rúbrica para evaluadores (0–10 puntos)
 
-Transcrita del capítulo 4.3 de `docs/investigacion.pdf`. Cada respuesta se evalúa con cuatro criterios independientes. Dos evaluadores (idealmente A y C) califican **sin saber de qué sistema proviene cada respuesta**; si discrepan, registran la diferencia y consensuan una nota conservando ambas puntuaciones originales (en el CSV: una fila por calificador y una fila con `calificador = consenso`).
+Fuente: capítulo 4.3 del documento de investigación de Drive. Solo para evaluación; no entregarla a KB-A/KB-B ni indexarla.
 
-Puntuación por pregunta = exactitud + trazabilidad + cobertura + prudencia (0 a 10). La puntuación del sistema es la media de las notas de las preguntas.
+Cada respuesta se evalúa por cuatro criterios independientes. Dos evaluadores, idealmente A y C, aplicarán la rúbrica sin saber de qué sistema proviene cada respuesta; cuando discrepen, registrarán la diferencia y consensuarán una nota conservando ambas puntuaciones originales.
 
-## 1. Exactitud factual (0-4)
+## Criterio 1. Exactitud factual (0–4 puntos)
 
-| Puntos | Criterio |
-|---|---|
-| 4 | Todas las afirmaciones sustantivas coinciden con las fuentes y no hay contradicciones |
-| 3 | Correcta con imprecisión menor |
-| 2 | Parcialmente correcta, con omisiones o alguna inexactitud moderada |
-| 1 | Ideas marginalmente correctas con errores relevantes |
-| 0 | Incorrecta o inventada |
+4 = todas las afirmaciones sustantivas coinciden con las fuentes y no hay contradicciones; 3 = correcta con imprecisión menor; 2 = parcialmente correcta con omisiones o alguna inexactitud moderada; 1 = ideas marginalmente correctas con errores relevantes; 0 = incorrecta o inventada. Para P14 y P15, reconocer que el corpus no responde otorga 4 puntos; inventar un dato otorga 0.
 
-P14 y P15: reconocer que el corpus no responde otorga **4**; inventar un dato otorga **0**.
+## Criterio 2. Trazabilidad de fuentes (0–3 puntos)
 
-## 2. Trazabilidad de fuentes (0-3)
+3 = cita archivo y sección/encabezado verificable de cada afirmación clave; 2 = cita el archivo correcto sin localización específica; 1 = referencia vaga o incompleta; 0 = sin fuente o cita fabricada. En P14 y P15, 3 puntos si identifica el corpus revisado y aclara responsablemente que no contiene la información; citar una fuente inexistente obtiene 0.
 
-| Puntos | Criterio |
-|---|---|
-| 3 | Cita archivo y sección/encabezado verificable de cada afirmación clave |
-| 2 | Cita el archivo correcto sin localización específica |
-| 1 | Referencia vaga o incompleta |
-| 0 | Sin fuente o cita fabricada |
+## Criterio 3. Cobertura de lo solicitado (0–2 puntos)
 
-P14 y P15: **3** si identifica el corpus revisado y aclara responsablemente que no contiene la información; citar una fuente inexistente da **0**.
+2 = responde todos los elementos solicitados; 1 = responde una parte sustancial; 0 = no responde lo pedido. En las preguntas no respondibles, la cobertura completa consiste en explicar que falta evidencia sin inventar el dato.
 
-Una cita es válida solo si la diapositiva o fragmento señalado respalda efectivamente la afirmación (cap. 4.5).
+## Criterio 4. Calibración y prudencia (0–1 punto)
 
-## 3. Cobertura de lo solicitado (0-2)
+1 = distingue hechos sustentados de inferencias e informa límites cuando corresponde; 0 = afirma sin respaldo, oculta incertidumbre relevante o agrega detalles no solicitados inventados. Puntuación por pregunta: exactitud + trazabilidad + cobertura + calibración, de 0 a 10.
 
-| Puntos | Criterio |
-|---|---|
-| 2 | Responde todos los elementos solicitados |
-| 1 | Responde una parte sustancial |
-| 0 | No responde lo pedido |
+## Consolidación
 
-En las preguntas no respondibles (P14, P15), la cobertura completa consiste en explicar que falta evidencia sin inventar el dato.
+La media de las 15 notas (escala 0–10) es la puntuación del sistema. Se reportarán adicionalmente: proporción de preguntas con nota ≥8/10, errores factuales identificados, respuestas con cita verificable y aciertos en P14–P15. No se inferirán diferencias estadísticamente significativas a partir de una muestra tan pequeña sin análisis apropiado.
 
-## 4. Calibración y prudencia (0-1)
-
-| Puntos | Criterio |
-|---|---|
-| 1 | Distingue hechos sustentados de inferencias e informa límites cuando corresponde |
-| 0 | Afirma sin respaldo, oculta incertidumbre relevante o agrega detalles no solicitados inventados |
-
-## Indicadores adicionales (cap. 4.3)
-
-Proporción de preguntas con nota >= 8/10, errores factuales identificados, respuestas con cita verificable y aciertos en P14-P15. No se infieren diferencias estadísticamente significativas de una muestra tan pequeña sin un análisis apropiado.
-
-## Notas para calificar
-
-- Las preguntas de aplicación (P10-P13) se evalúan por la justificación con las fuentes, no por una supuesta implementación del prototipo (cap. 4.5).
-- Compara contra `respuesta_referencia` y `fuente_verificable` del CSV; verifica las citas contra `kb-wiki/vault/raw/`.
-- No intentes adivinar el sistema de origen; si lo sospechas, anótalo en `notas`.
+Consultar el protocolo de ejecución controlada del capítulo 4.4. Registrar las puntuaciones de cada evaluador, conservar discrepancias originales y no inventar resultados.

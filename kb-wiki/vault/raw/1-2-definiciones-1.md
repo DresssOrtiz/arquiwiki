@@ -407,25 +407,15 @@ Flujo de datos - Flux
 
 ## Diapositiva 31
 
-ARQUITECTURA DE SOFTWARE: FUNCIONES DE UN
-ARQUITECTO DE SOFTWARE
-ANALIZA EL  POSEE HERRAMIENTAS  DISEÑA LA
-CONTEXTO  DE DISEÑO  SOLUCIÓN
+### Arquitectura de software: funciones de un arquitecto de software
 
-Requerimientos  Atributos de
-Modelo
-Calidad
+La diapositiva organiza su contenido en **tres columnas**, sin asociar por filas equivalentes los conceptos de cada una:
 
-No  Estilos de
-Funcionales  Razonamientos
-Funcionales  Arquitectura
+1. **Analiza el contexto:** requerimientos (funcionales y no funcionales), riesgos y restricciones.
+2. **Posee herramientas de diseño:** atributos de calidad, estilos de arquitectura, patrones de arquitectura y tácticas.
+3. **Diseña la solución:** modelo, razonamientos, documentación e implementación. La figura incluye flechas de retroalimentación entre esos elementos.
 
-Patrones de
-Riesgos  Documentación
-Arquitectura
-
-31
-Restricciones  Tácticas  Implementación
+*Texto estructurado tras revisión visual de la diapositiva 31 del PDF original; no se añadieron requisitos ni resultados del prototipo.*
 
 ## Diapositiva 32
 
