@@ -1,0 +1,4 @@
+{"ts": "2026-11-26T00:52:31+00:00", "mode": "full", "files_total": 6, "files_changed": 6, "files_removed": 0, "chunks_written": 189, "embedded_tokens": 14388, "llm_tokens": 0, "elapsed_ms": 3243}
+{"ts": "2026-11-26T01:32:06+00:00", "mode": "full", "files_total": 6, "files_changed": 6, "files_removed": 0, "chunks_written": 189, "embedded_tokens": 14388, "llm_tokens": 0, "elapsed_ms": 2985}
+{"ts": "2026-11-26T01:32:06+00:00", "mode": "incremental", "files_total": 6, "files_changed": 0, "files_removed": 0, "chunks_written": 0, "embedded_tokens": 0, "llm_tokens": 0, "elapsed_ms": 7}
+{"ts": "2026-11-26T01:33:13+00:00", "mode": "incremental", "files_total": 6, "files_changed": 0, "files_removed": 0, "chunks_written": 0, "embedded_tokens": 0, "llm_tokens": 0, "elapsed_ms": 10}
