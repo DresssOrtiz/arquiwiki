@@ -2,6 +2,8 @@
 
 Registro de cómo se construyó KB-A, qué se decidió, qué falló y cuánto costó en tokens cada paso. Las entradas son cronológicas; los números salen de `experiment/results/*.jsonl`.
 
+> Registro histórico: las aclaraciones metodológicas al final corrigen el porcentaje de caché, el costo equivalente y los estados anteriores al piloto. Consultar también [el análisis actual](../experiment/results/analisis-provisional.md).
+
 ## 2026-11-25 · Preparación y línea base
 
 - Se clonó el repositorio y se trabajó en la rama `feat/kb-wiki`. `.env` se generó con secretos aleatorios (`openssl rand`) y nunca se versiona.
@@ -153,3 +155,12 @@ Se hizo en 3 tandas (P01 del piloto, P02-P05, P06-P10 y P11-P15) para no agotar 
 - Después de la corrida principal, A corrigió `raw/1-2-definiciones-1.md`, diap. 31 (el diagrama de las funciones del arquitecto, que es la fuente de P02), como parte del cotejo PDF→Markdown (commit 52e24c7 en `main`).
 - KB-A (`kb-a-baseline`) y el índice de KB-B se construyeron con la versión anterior. Todas las cifras y observaciones de la corrida principal quedan como **preliminares**, en especial la de P02.
 - Decisión del equipo: no se repite P02 ni el experimento hasta que A confirme la versión definitiva del corpus, para ahorrar tokens. Entonces se decidirá qué reconstruir (reingesta y reindexado) y qué preguntas repetir. Mientras tanto no se modifica el corpus ni el vault de ejecución.
+
+
+## 2026-11-25 · Revisión de métricas y validez experimental
+
+Las entradas anteriores conservan su orden histórico. La versión `7bdce5b` incluye los PR #7/#8/#9 fusionados y los nueve diagramas. El [análisis provisional](../experiment/results/analisis-provisional.md) reúne las métricas recalculadas y las limitaciones de la corrida, sin sustituir registros ni respuestas.
+
+Correcciones a cifras/frases históricas: la suma exacta de `cost_usd_equiv` de las treinta consultas es USD 1,4577345 (A 1,1775345 y B 0,2802), no aproximadamente 1,30. Es un equivalente del CLI, no factura ni costo total de suscripción. En construcción A, 2 067 578 de 2 586 971 tokens de entrada fueron lecturas de caché: 79,92 %, no más del 99 %. La frase «3 tandas» enumera cuatro grupos si se incluye el piloto P01; se conservan 30 respuestas únicas, sin duplicar ese piloto. La frase «no se ejecutó ninguna corrida» corresponde al estado anterior al piloto, no al estado actual.
+
+El corpus cambió en 1.2/31 tras la corrida y el PR #9 corrigió después el truncamiento de embeddings. P02/P09 no prueban inferioridad general de RAG. Las treinta notas del CSV nuevo son asistencia de IA pendiente de Andrés; la evaluación ciega humana original y los logs siguen intactos. Las muestras fueron restauradas fuera del corpus en `kb-wiki/muestras/`, como registra la entrada de revisión del PR #4. Archivado y ejecución completa de las tres skills para el requisito final requieren demostraciones separadas; no se derivan de la corrida de solo lectura.

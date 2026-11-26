@@ -1,0 +1,212 @@
+{
+  "A": {
+    "n": 15,
+    "errores": 0,
+    "modelos": [
+      "claude-sonnet-5-5"
+    ],
+    "input_tokens": {
+      "suma": 116,
+      "media": 7.733333333333333,
+      "mediana": 8,
+      "desv": 1.2798809468443688
+    },
+    "cache_creation_input_tokens": {
+      "suma": 227910,
+      "media": 15194,
+      "mediana": 13417,
+      "desv": 6225.05448054186
+    },
+    "cache_read_input_tokens": {
+      "suma": 393225,
+      "media": 26215,
+      "mediana": 26299,
+      "desv": 11078.898694622778
+    },
+    "total_input_tokens": {
+      "suma": 621251,
+      "media": 41416.73333333333,
+      "mediana": 41795,
+      "desv": 16641.416734275044
+    },
+    "output_tokens": {
+      "suma": 22634,
+      "media": 1508.9333333333334,
+      "mediana": 1458,
+      "desv": 659.9917171197428
+    },
+    "latencia_total_ms": {
+      "suma": 298605,
+      "media": 19907,
+      "mediana": 16523,
+      "desv": 15086.587150748934
+    },
+    "num_turns": {
+      "suma": 118,
+      "media": 7.866666666666666,
+      "mediana": 8,
+      "desv": 1.9591057240729093
+    },
+    "cost_usd_equiv": {
+      "suma": 1.1775345000000002,
+      "media": 0.0785023,
+      "mediana": 0.075341,
+      "desv": 0.030771403772101694
+    },
+    "retrieval_ms": null,
+    "retrieval_wall_ms": null,
+    "retrieved_tokens": null,
+    "entrada_nueva": {
+      "suma": 228026,
+      "media": 15201.733333333334,
+      "mediana": 13425,
+      "desv": 6225.972677498062
+    }
+  },
+  "B": {
+    "n": 15,
+    "errores": 0,
+    "modelos": [
+      "claude-sonnet-5-5"
+    ],
+    "input_tokens": {
+      "suma": 30,
+      "media": 2,
+      "mediana": 2,
+      "desv": 0.0
+    },
+    "cache_creation_input_tokens": {
+      "suma": 44395,
+      "media": 2959.6666666666665,
+      "mediana": 2929,
+      "desv": 242.25449035103168
+    },
+    "cache_read_input_tokens": {
+      "suma": 0,
+      "media": 0,
+      "mediana": 0,
+      "desv": 0.0
+    },
+    "total_input_tokens": {
+      "suma": 44425,
+      "media": 2961.6666666666665,
+      "mediana": 2931,
+      "desv": 242.25449035103168
+    },
+    "output_tokens": {
+      "suma": 10256,
+      "media": 683.7333333333333,
+      "mediana": 518,
+      "desv": 403.93147697999234
+    },
+    "latencia_total_ms": {
+      "suma": 118957,
+      "media": 7930.466666666666,
+      "mediana": 7326,
+      "desv": 2648.9333936151593
+    },
+    "num_turns": {
+      "suma": 15,
+      "media": 1,
+      "mediana": 1,
+      "desv": 0.0
+    },
+    "cost_usd_equiv": {
+      "suma": 0.2802,
+      "media": 0.01868,
+      "mediana": 0.018352,
+      "desv": 0.004214793741776018
+    },
+    "retrieval_ms": {
+      "suma": 782,
+      "media": 52.13333333333333,
+      "mediana": 48,
+      "desv": 16.154904901637533
+    },
+    "retrieval_wall_ms": {
+      "suma": 966,
+      "media": 64.4,
+      "mediana": 61,
+      "desv": 18.430564676257596
+    },
+    "retrieved_tokens": {
+      "suma": 7534,
+      "media": 502.26666666666665,
+      "mediana": 523,
+      "desv": 82.83500525284039
+    },
+    "entrada_nueva": {
+      "suma": 44425,
+      "media": 2961.6666666666665,
+      "mediana": 2931,
+      "desv": 242.25449035103168
+    }
+  },
+  "calidad_asistida": {
+    "A": {
+      "n": 15,
+      "media": 9.266666666666667,
+      "al_menos_8": 13,
+      "criterios_medios": {
+        "exactitud": 3.6,
+        "trazabilidad": 2.933333333333333,
+        "cobertura": 1.8,
+        "prudencia": 0.9333333333333333
+      },
+      "exactitud_maxima": 10,
+      "trazabilidad_maxima": 14,
+      "abstenciones_correctas_P14_P15": 2
+    },
+    "B": {
+      "n": 15,
+      "media": 7.666666666666667,
+      "al_menos_8": 8,
+      "criterios_medios": {
+        "exactitud": 2.6,
+        "trazabilidad": 2.933333333333333,
+        "cobertura": 1.1333333333333333,
+        "prudencia": 1
+      },
+      "exactitud_maxima": 6,
+      "trazabilidad_maxima": 14,
+      "abstenciones_correctas_P14_P15": 2
+    }
+  },
+  "construccion_historica": {
+    "A": {
+      "ejecuciones": 8,
+      "entrada_total": 2586971,
+      "entrada_nueva": 519393,
+      "cache_read": 2067578,
+      "salida": 209735,
+      "wall_ms": 1165007
+    },
+    "B_ejecuciones_full": [
+      {
+        "ts": "2026-11-26T00:52:31+00:00",
+        "mode": "full",
+        "files_total": 6,
+        "files_changed": 6,
+        "files_removed": 0,
+        "chunks_written": 189,
+        "embedded_tokens": 14388,
+        "llm_tokens": 0,
+        "elapsed_ms": 3243
+      },
+      {
+        "ts": "2026-11-26T01:32:06+00:00",
+        "mode": "full",
+        "files_total": 6,
+        "files_changed": 6,
+        "files_removed": 0,
+        "chunks_written": 189,
+        "embedded_tokens": 14388,
+        "llm_tokens": 0,
+        "elapsed_ms": 2985
+      }
+    ]
+  },
+  "actualizacion": null,
+  "overhead_controlado": null,
+  "estado": "Resultados descriptivos de la corrida histórica; calificación asistida provisional pendiente de validación humana."
+}

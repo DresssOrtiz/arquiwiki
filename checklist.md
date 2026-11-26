@@ -1,103 +1,75 @@
-# ARQUIWIKI — CONTROL DE COBERTURA Y PENDIENTES
+# ArquiWiki: cobertura y estado de entrega
 
-Arquitectura de Software · Andrés David Ortiz Forero (persona A) · Control al 25 de noviembre de 2026
+Arquitectura de Software · 25 de noviembre de 2026
 
-Esta checklist es un archivo auxiliar del repositorio; no crea un cuarto entregable. La entrega del equipo tiene tres piezas: (1) documento único de investigación; (2) presentación en Canva; (3) repositorio GitHub con código, archivos editables y evidencias. «☑» significa contenido o evidencia disponible; «☐» significa pendiente o sin prueba verificable. No se marca como completado un sistema solo porque exista código.
+☑ Contenido o evidencia disponible · ◐ Desarrollo provisional · ☐ Pendiente de validación o entrega.
 
-# 1. Estado de las ocho responsabilidades de A
+## 1. Investigación y matrices
 
-☑ 1. Investigación de cinco temas: LLM Wiki, Obsidian, agentes, MCP y RAG incluidos en el capítulo 1 del documento.
+☑ Investigación de LLM Wiki, Obsidian, agentes de IA, MCP y RAG en el documento maestro.
 
-☑ 2. Investigación adicional del profesor: tipos y comparación de RAG, funcionamiento de LLM Wiki, vínculo con agentes, evolución, casos de uso, mercado e ISO en el capítulo 2.
+☑ Investigación adicional: tipos de RAG, funcionamiento y evolución de LLM Wiki, casos de uso, mercado e ISO.
 
-☑ 3. Cinco matrices terminadas y auditadas en el capítulo 3 del documento principal: SOLID, calidad ISO/IEC 25010:2023, tácticas, patrones y mercado laboral. Se verificaron las cinco tablas y se ajustaron celdas y paginación. La muestra laboral se limita a tres vacantes verificadas; Mercado Libre no se evalúa.
+☑ Cinco matrices: SOLID, calidad ISO/IEC 25010:2023, tácticas, patrones y mercado laboral. La muestra laboral se limita a tres ofertas verificadas; Mercado Libre permanece sin evaluación.
 
-◐ 4. Diagramas arquitectónicos: HLD, C4 de Contexto y UML de paquetes de API, Gateway MCP y RAG ya incorporados al documento (cinco figuras). ☐ Quedan los C4 de Contenedores, Componentes del sistema, Dinámico y Despliegue, sujetos a validar la integración. Existe además una vista C4 de componentes del Gateway que no sustituye sus diagramas UML.
+☑ Matrices editables exportadas en [docs/matrices](docs/matrices/README.md). El documento maestro conserva las cinco matrices y nueve figuras; la exportación publicada requiere actualización.
 
-☑ 5a. Quince preguntas redactadas (5/4/4/2), referencias cotejadas y correcciones de P03/P04 incorporadas. ☑ 5b. Rúbrica de 0–10 definida. ☑ 5c. Preguntas sin respuestas, rúbrica y plantilla de evaluación separadas en `experiment/`, fuera del vault indexado. ☐ 5d. Ejecutar ambas bases, calificar y analizar resultados reales (requiere B/C).
+## 2. Arquitectura y corpus
 
-☑ 6. Presentación conceptual lista en el Canva original: diez diapositivas, un solo HLD, metodología 5/4/4/2 y tres ofertas laborales verificadas. Los resultados experimentales se añadirán únicamente cuando B/C entreguen evidencia auténtica.
+☑ Nueve diagramas en [docs/diagramas](docs/diagramas/): HLD; C4 Contexto, Contenedores, Componentes del Gateway, Dinámico y Despliegue; UML de paquetes API, Gateway y RAG.
 
-☑ 7. Checklist de cobertura realizada y revisada en Google Drive. Se mantendrá actualizada como documento de seguimiento mientras el equipo termina la implementación y entrega; esa actualización continua no deja incompleta la tarea personal de control.
+☑ Seis PDF originales en [docs/corpus-original](docs/corpus-original/) y seis Markdown derivados en [raw](kb-wiki/vault/raw/), con 183/183 marcadores consecutivos.
 
-☑ 8. Guion del video terminado por Andrés: estructura, libreto para los tres integrantes, pruebas previstas, metodología y cierre. El video es responsabilidad compartida; las demostraciones y cifras auténticas se incorporarán al grabar. Santiago coordina edición y publicación. Andrés debe grabar sus intervenciones, pero la redacción del guion está finalizada.
+◐ Revisión de fidelidad: control estructural/léxico de 183 páginas y revisión visual seleccionada de 50; quedan 133 sin revisión visual completa. Persisten pérdidas de relaciones gráficas, especialmente 1.2/11,21, 3.1/8-9 y 5.1/10,12-13. La corrección de 1.2/31 ya está incorporada y es posterior a la corrida.
 
-# 2. Documento único de investigación
+☑ Cuatro muestras sintéticas conservadas fuera del corpus en [kb-wiki/muestras](kb-wiki/muestras/).
 
-☑ Portada académica con nombres, profesor y escudo de la universidad, adaptada del Laboratorio 2.
+☐ Fuentes editables de los diagramas, si están disponibles.
 
-☑ Capítulos 1 y 2: investigación principal y nota extra.
+## 3. Evaluación experimental
 
-☑ Capítulo 3: cinco matrices editables revisadas en contenido, consistencia de filas, valoración, términos ISO y presentación. Se corrigieron observabilidad, disponibilidad, seguridad operacional y paginación para evitar tablas partidas.
+☑ Quince preguntas (5 puntuales, 4 de síntesis, 4 de aplicación, 2 de abstención), claves y rúbrica 0–10 disponibles fuera del corpus indexado en [experiment](experiment/README.md).
 
-☑ Capítulo 4: diseño del experimento, 15 preguntas, claves, rúbrica y protocolo documentados. ☑ Material operativo de preguntas/rúbrica separado en `experiment/`. ☐ Ejecutar, verificar y analizar los resultados auténticos de KB-A y KB-B.
+☑ Runner integrado mediante PR #7. Treinta respuestas históricas: quince por brazo, una repetición y cero errores de proceso. Control de línea base y modo de solo lectura de KB-A documentados.
 
-◐ Capítulo 5: cinco diagramas incorporados (HLD, C4 de Contexto, UML API, UML Gateway MCP y UML RAG). Faltan los otros cuatro modelos C4.
+◐ [Treinta calificaciones asistidas provisionales](experiment/results/calificacion-asistida-provisional.csv), con fuentes, justificaciones y observaciones; sin aprobación humana ni segundo evaluador. El CSV humano original conserva sus columnas de notas vacías.
 
-☐ Capítulo 6: resultados medidos y análisis; requiere logs y respuestas auténticas de KB-A y KB-B.
+☑ [Métricas descriptivas](experiment/results/metricas-experimento-provisional.json) y [análisis exploratorio](experiment/results/analisis-provisional.md). La corrida precede la corrección de corpus 1.2/31 y la del tokenizador RAG del PR #9; no demuestra un ganador definitivo ni significancia estadística.
 
-☑ Revisión general de bibliografía y coherencia del documento: enlace ISO/IEC 25010:2023, Gist LLM Wiki, encuesta Stack Overflow 2026 y documentación principal consultables; se corrigieron referencias desactualizadas a los diagramas y se retiró una referencia docente duplicada. ☑ Las cinco matrices se muestran completas en páginas separadas del PDF (39 páginas). ⚠ Las tablas están a 9 pt y pueden requerir ampliación si el profesor pide lectura en impresión.
+☐ Validación humana de las calificaciones y definición del alcance final de las conclusiones.
 
-# 3. Presentación en Canva
+☐ Costo de actualización y overhead controlado del CLI: sin registros de medición. Los incrementales sin cambios y el spike de desarrollo no sustituyen esos experimentos.
 
-☑ Presentación original de Canva actualizada a diez diapositivas: portada, problema, conceptos, herramientas, matrices, un único HLD, método y cierre provisional.
+## 4. Implementación y pruebas documentadas
 
-☑ Nombres de los tres integrantes y del profesor incorporados en la portada de Canva.
+☑ PR #8: [evidencia del bloque B](docs/evidencia-B.md), con despliegue, CRUD de Fuente/Página, relación N:M, casos de error, autenticación/autorización MCP y recuperación RAG.
 
-☑ Hallazgos y límites de las matrices integrados en la presentación preliminar de Canva; la metodología 5/4/4/2 también fue incorporada.
+☑ PR #9: corrección del contador de tokens y ajuste de fragmentación. La verificación posterior registra 280 fragmentos y ninguno por encima de la ventana de 128 tokens; no corresponde a una repetición de las treinta respuestas.
 
-☑ La presentación ya incluye el HLD requerido por el guion. Los modelos C4 y UML adicionales permanecen en el documento de investigación y no se duplican en Canva. ☐ Incorporar resultados finales solo tras recibir mediciones verificadas de KB-A y KB-B.
+☑ [Bitácora del bloque C](docs/bitacora.md): seis ingestas, lint, corrección y consultas con registros individuales. El estado `ok` de las 54 páginas es resultado del flujo automatizado, no una certificación de fidelidad al PDF.
 
-☐ Sustituir la lámina de estado por resultados medidos y conclusiones verificables cuando se reciban de B/C.
+☑ Agente Ingeniero de Sistemas y skills `modelar`, `criterios-aceptacion` y `evaluar-iso` implementados, con ejemplos y verificación documentada de precarga/criterios.
 
-# 4. Archivos editables destinados a GitHub
+☐ Evidencia de una demostración completa de las tres skills sobre el requisito definitivo. Los ejemplos sintéticos no constituyen esa evidencia.
 
-☑ Investigación y cinco tablas maestras conservadas en el documento original de Drive. ☑ Las cinco matrices se exportaron sin reinterpretar sus celdas a Markdown editable en `docs/matrices/` de GitHub, con enlace de regreso al documento maestro.
+## 5. Documento, presentación y video
 
-☑ Preguntas y respuestas de referencia conservadas en el capítulo 4 del documento principal. ☑ En `experiment/preguntas.md` se publicó SOLO el enunciado de las 15 preguntas. Las claves no están en el vault ni en el archivo que reciben los sistemas; no deben entregarse a los agentes.
+☑ Documento maestro con investigación, cinco matrices y nueve figuras; [PDF publicado](docs/investigacion.pdf) y fuente editable en Drive disponibles.
 
-☑ Rúbrica documentada en Drive y disponible como `experiment/rubrica.md` en GitHub; plantilla vacía de calificación en `experiment/plantilla-evaluacion.csv`. Ninguno de estos archivos forma parte del corpus indexado.
+☐ Incorporación de resultados, discusión y conclusiones al documento maestro; nueva exportación desde la fuente original.
 
-☑ Guion redactado en Drive y archivo `video/guion.md` presente en GitHub. ☐ Verificar que la última versión en Drive y el Markdown del repositorio coincidan antes de entregar.
+☑ Presentación original de diez diapositivas, con HLD y método 5/4/4/2.
 
-☑ Checklist editada en el documento original de Drive y sincronizada como `checklist.md` en GitHub (última auditoría de matrices, corpus, enlaces y estado del PDF de presentación).
+☐ Actualización de resultados y estado de entrega en las láminas 9 y 10; nueva exportación desde el diseño original de Canva.
 
-☑ Cinco diagramas PNG y seis PDF originales publicados. ☑ Seis Markdown (183/183 encabezados de diapositiva) estructuralmente verificados, y 28 diapositivas gráficas relevantes revisadas visualmente. ⚠ Los diagramas visuales no quedan totalmente representados por el texto extraído (p. ej., 1.2 diap. 11/21 y 3.1 diap. 8/9). La diapositiva 31 de 1.2 ya se reconstruyó. ☐ Cotejar y transcribir fielmente las relaciones de los gráficos relevantes con Santiago antes de congelar nuevamente el corpus; NO modificar los archivos raw mientras B/C ejecuten las corridas definitivas. ☐ Publicar fuentes editables .drawio de los diagramas existentes si están disponibles.
+☑ [Guion](video/guion.md) con evidencias verificables y límites de la evaluación exploratoria.
 
-☑ Se comprobaron 26 enlaces internos de los documentos principales del repositorio: no hay rutas internas rotas. ☑ Canva mantiene la presentación original con diez diapositivas. ☐ Volver a exportar `presentacion/presentacion.pdf` desde Canva: el PDF publicado precede la última actualización del diseño (no se puede certificar que contenga las diez). ☐ Añadir enlace del video cuando esté publicado y verificar su reproducción.
+☐ Grabaciones finales, demostración de archivado separada del experimento de solo lectura, demostración del requisito definitivo, montaje y publicación del video.
 
-# 5. Información y evidencia de Tomás (B)
+☐ Enlace público del video y comprobación de reproducción.
 
-☑ Existen en GitHub archivos de API/CRUD, RAG, Docker y gateway MCP; eso prueba código escrito, NO ejecución integral.
+## 6. Límites de interpretación
 
-◐ Existen evidencias de ejecución local en `docs/bitacora.md`: Docker Compose healthy, `scripts/smoke.sh`, `mcp_check.py` y RAG reindexado con corpus real. ☐ Confirmar reproducción de la demostración final y conservar sus registros reales.
+La evidencia de implementación se distingue de las propuestas de diseño. Los resultados históricos se conservan separados de las verificaciones posteriores del corpus y del RAG. Una nueva evaluación requiere una versión común congelada y reconstrucción/reindexado de ambas bases; las cifras actuales describen la corrida exploratoria existente.
 
-☐ Demostrar operaciones de Fuente y Página y pruebas de permisos de MCP.
-
-☐ Usar exactamente los mismos archivos Markdown revisados que KB-A, con referencias a documento y diapositiva. ☐ Obtener respuestas, citas, tokens y tiempos. ☐ Restaurar estado inicial entre preguntas o documentar el aislamiento equivalente.
-
-☐ Compartir fragmentos reales de su demo y un hallazgo técnico verificable para guion/conclusiones.
-
-# 6. Información y evidencia de Santiago (C)
-
-☑ Estructura de vault publicada y seis Markdown reales con referencias por diapositiva. ☐ Santiago debe realizar el cotejo visual de láminas gráficas y mostrar ingesta, consulta con archivado y lint usando el corpus real; coordina el video.
-
-☐ Demostrar con agentes ingesta, consulta y auditoría; guardar fuentes y registros.
-
-☑ Agente Ingeniero de Sistemas y tres skills disponibles (`modelar`, `criterios-aceptacion`, `evaluar-iso`) con pruebas de instalación y ejemplos. ☐ Validar en demo las tres ejecuciones y las salidas reales correspondientes al caso requerido por el docente.
-
-☐ Ejecutar las 15 preguntas sobre el mismo corpus y con estado controlado; compartir respuestas, citas, tiempos y tokens disponibles. ☐ Mostrar archivado de una respuesta como página en demostración separada.
-
-☐ Compartir grabaciones/capturas auténticas para el video.
-
-# 7. Reglas de cierre
-
-No hay ganador entre KB-A y KB-B hasta ejecutar las mismas preguntas con las mismas fuentes y comparar evidencia verificable. No mezclar documentos sintéticos de prueba con fuentes académicas. No declarar cumplida una característica arquitectónica solo por haberla descrito. Separar evidencias de implementación de propuestas conceptuales. Cada casilla se actualizará cuando exista el archivo o la prueba correspondiente.
-
-Documento: https://docs.google.com/document/d/1uFmCr0120qSVLiMvn05fTBuXrhV1pCGu08XgdMnWA38/edit
-
-Presentación: https://www.canva.com/d/kGASGIjBrTgCsAa
-
-Repositorio: https://github.com/DresssOrtiz/arquiwiki
-
-Guion: https://docs.google.com/document/d/1ppXKEFwHOFFCjVWrD1GOWT3ME4-x5gSlOXaol0pQpt4/edit
+Fuentes originales: [Documento de investigación](https://docs.google.com/document/d/1uFmCr0120qSVLiMvn05fTBuXrhV1pCGu08XgdMnWA38/edit) · [Presentación](https://www.canva.com/d/kGASGIjBrTgCsAa) · [Guion original](https://docs.google.com/document/d/1ppXKEFwHOFFCjVWrD1GOWT3ME4-x5gSlOXaol0pQpt4/edit).

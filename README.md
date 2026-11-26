@@ -7,7 +7,7 @@ El caso práctico construye dos bases de conocimiento sobre el mismo material de
 - **KB-A, LLM Wiki:** un vault de markdown (`raw/` fuentes, `wiki/` páginas) que mantienen agentes de IA conectados por MCP, visible en Obsidian.
 - **KB-B, RAG:** fragmentación, embeddings locales y búsqueda vectorial en pgvector, con respuesta de Claude.
 
-El experimento comparará consumo de tokens y calidad de respuesta; incorpora un agente "Ingeniero de Sistemas" (modelado, criterios de aceptación y evaluación con normas ISO).
+El experimento dispone de una corrida exploratoria de 30 respuestas para comparar consumo de tokens y calidad; incorpora un agente "Ingeniero de Sistemas" (modelado, criterios de aceptación y evaluación con normas ISO).
 
 > Video de demostración: _pendiente de publicar_ (se enlazará aquí).
 
@@ -134,7 +134,9 @@ Versiones preliminares revisadas al 25 de noviembre de 2026:
 - [Presentación preliminar en Canva](https://www.canva.com/d/kGASGIjBrTgCsAa).
 - [Presentación exportada en PDF](presentacion/presentacion.pdf) — **reexportación pendiente**, porque el archivo se publicó antes de la última edición del Canva de diez diapositivas.
 
-Ya están publicados **cinco diagramas** (HLD, C4 de contexto y tres UML de paquetes). Faltan cuatro modelos C4 y los resultados del experimento. La [bitácora](docs/bitacora.md) registra pruebas locales de Docker, API, MCP y RAG, pero aún no existe un conjunto final y comparable de respuestas y métricas. Las claves de evaluación nunca se entregan a los agentes ni se indexan.
+Ya están publicados los **nueve diagramas**: HLD, cinco vistas C4 (contexto, contenedores, componentes del Gateway, dinámica y despliegue) y tres UML de paquetes. Los PR [#7](https://github.com/DresssOrtiz/arquiwiki/pull/7), [#8](https://github.com/DresssOrtiz/arquiwiki/pull/8) y [#9](https://github.com/DresssOrtiz/arquiwiki/pull/9) están fusionados. Hay [pruebas documentadas de B](docs/evidencia-B.md), [bitácora de C](docs/bitacora.md) y [30 respuestas históricas](experiment/results/respuestas/), una repetición de las quince preguntas por brazo. Las claves de evaluación nunca se entregan a los agentes ni se indexan.
+
+El [análisis exploratorio](experiment/results/analisis-provisional.md), las [30 calificaciones asistidas provisionales](experiment/results/calificacion-asistida-provisional.csv) y las [métricas del experimento](experiment/results/metricas-experimento-provisional.json) documentan los resultados disponibles. Las notas están pendientes de validación humana y no constituyen una evaluación ciega ni definitiva. La corrida precede la corrección del corpus 1.2/31 y el arreglo de truncamiento del RAG (PR #9). No hay mediciones controladas de actualización ni overhead del CLI.
 
 ## Arquitectura de alto nivel
 
@@ -150,7 +152,7 @@ Ya están publicados **cinco diagramas** (HLD, C4 de contexto y tres UML de paqu
 
 ## Corpus original del curso
 
-Los seis PDF originales están en [`docs/corpus-original/`](docs/corpus-original/); sus seis Markdown en [`kb-wiki/vault/raw/`](kb-wiki/vault/raw/) conservan **183 de 183 marcadores de diapositiva**. La revisión detectó y corrigió el orden mezclado de tres columnas de la diapositiva 31 de `1.2 Definiciones 1.pdf`; la inspección visual de **28 diapositivas** detectó gráficos cuyas relaciones no están completamente expresadas en el texto (p. ej., 1.2 diap. 11/21 y 3.1 diap. 8/9). Se debe cotejar y preservar la información visual antes de congelar el corpus. **No editar raw/ mientras B/C ejecutan las pruebas:** acordar cualquier corrección y volver a construir ambas bases con exactamente la misma versión. KB-A y KB-B deben usar exactamente las mismas versiones y hashes, sin materiales de muestra.
+Los seis PDF originales están en [`docs/corpus-original/`](docs/corpus-original/). Deben convertirse a **Markdown revisado** para alimentar KB-A y KB-B. Sus seis Markdown en [`kb-wiki/vault/raw/`](kb-wiki/vault/raw/) conservan 183/183 marcadores. La revisión de fidelidad comprende control estructural/léxico de las 183 páginas y revisión visual seleccionada de 50; quedan 133 sin revisión visual completa. La corrección de 1.2/31 ya existe, pero imágenes y relaciones de otras láminas siguen incompletas en texto. Una nueva evaluación requiere una versión congelada común del corpus, con archivos/hashes idénticos en ambos brazos y reconstrucción/reindexado de las bases. Las muestras siguen separadas fuera del corpus.
 
 ## Material del experimento (fuera de la indexación)
 

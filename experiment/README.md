@@ -2,6 +2,16 @@
 
 Compara, sobre el mismo corpus (6 PDF del curso en `kb-wiki/vault/raw/*.md`, una sección `## Diapositiva N` por página), un agente que navega la wiki por MCP (KB-A) y un RAG con pgvector (KB-B). Protocolo: capítulo 4 de `docs/investigacion.pdf`. Restricción: sin API keys de pago; toda la generación usa `claude -p` (suscripción) con **el mismo modelo** en ambos brazos.
 
+## Estado de la evaluación exploratoria
+
+Los PR #7, #8 y #9 están fusionados. Hay treinta respuestas históricas (15 por brazo, una repetición), no noventa, y cero errores de proceso. La corrida precede la corrección de `raw/1-2-definiciones-1.md`, diap. 31, y la corrección del tokenizador del PR #9. Su alcance es exploratorio.
+
+- [Análisis provisional](results/analisis-provisional.md): métricas recalculadas y juicio asistido, sin ganador definitivo.
+- [CSV asistido separado](results/calificacion-asistida-provisional.csv): 30 filas justificadas; NO ciego ni aprobado por Andrés. No reemplaza `calificacion.csv` ni requiere publicar su mapa privado.
+- [Métricas del experimento provisional](results/metricas-experimento-provisional.json): valores recalculados a partir de los registros históricos.
+
+`tabla.md`, `calificacion.csv`, las respuestas y todos los JSONL históricos se conservan intactos. No hay `actualizacion.jsonl` ni `overhead.jsonl`; el spike de la bitácora no sustituye la medición protocolizada. Los comandos siguientes describen el protocolo implementado. Las mediciones de actualización modifican la línea base y se realizan después de la evaluación principal, conservando por separado los resultados de cada versión.
+
 ## Archivos
 
 | Archivo | Para qué |

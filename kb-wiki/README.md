@@ -32,7 +32,7 @@ Para ver el trabajo de un rol en vivo, abrir `.runtime/worktrees/<rol>` como vau
 
 ## Operaciones con `run_agent.py`
 
-Requisitos: gateway arriba (`docker compose ps`), `claude` en el PATH con sesión iniciada y tokens en `.env` (`GATEWAY_TOKEN_INGESTOR|CONSULTOR|AUDITOR`). El runner no tiene dependencias (Python 3.11+). Cada ejecución lanza `claude -p` en un directorio temporal vacío, sin herramientas propias, sin CLAUDE.md del repo, sin hooks ni plugins (`--tools "" --setting-sources "" --strict-mcp-config ...`), y con las herramientas MCP permitidas según rol. Eso baja la sobrecarga fija a unos 2,7k tokens. El token va en un archivo temporal (permisos 600) que se borra siempre; nunca se imprime ni se registra.
+Requisitos: gateway arriba (`docker compose ps`), `claude` en el PATH con sesión iniciada y tokens en `.env` (`GATEWAY_TOKEN_INGESTOR|CONSULTOR|AUDITOR`). El runner no tiene dependencias (Python 3.11+). Cada ejecución lanza `claude -p` en un directorio temporal vacío, sin herramientas propias, sin CLAUDE.md del repo, sin hooks ni plugins (`--tools "" --setting-sources "" --strict-mcp-config ...`), y con las herramientas MCP permitidas según rol. El spike documentó una entrada inicial de unos 2,7k tokens con esta configuración; no equivale a la medición controlada de overhead por configuración, que sigue pendiente (ver `experiment/README.md`). El token va en un archivo temporal (permisos 600) que se borra siempre; nunca se imprime ni se registra.
 
 | Operación | Rol | Ejemplo |
 |-----------|-----|---------|

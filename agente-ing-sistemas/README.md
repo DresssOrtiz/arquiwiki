@@ -83,7 +83,7 @@ Flujo completo: modelar, luego criterios de aceptación, luego evaluar. La evalu
 | `ejemplos/RF-ejemplo-1/` | Registro e inicio de sesión | Seguridad |
 | `ejemplos/RF-ejemplo-2/` | Búsqueda de existencias | Rendimiento (p95 < 2 s, 60 usuarios concurrentes) |
 
-Cada carpeta contiene `requisito.md`, `modelo.dsl`, `paquetes.puml`, `secuencia.puml`, `decisiones.md`, `criterios.feature` y `evaluacion-iso.md`. Los requisitos son **de ejemplo**: reemplazar por el RF real del SRS de MANI. La wiki aún no tiene páginas en `wiki/conceptos/`, así que los ejemplos no citan páginas de wiki: citan el corpus crudo con número de diapositiva (`raw/<archivo>.md, diap. N`) cuando la diapositiva respalda la afirmación, y "conocimiento general" cuando no. Lo que proviene del SRS de MANI de muestra se cita a `kb-wiki/muestras/mani-srs-muestra.md`, un extracto sintético que no forma parte del corpus evaluado.
+Cada carpeta contiene `requisito.md`, `modelo.dsl`, `paquetes.puml`, `secuencia.puml`, `decisiones.md`, `criterios.feature` y `evaluacion-iso.md`. Los requisitos son **de ejemplo**: reemplazar por el RF real del SRS de MANI. Cuando se prepararon los ejemplos aún no había páginas en `wiki/conceptos/`; actualmente sí existen páginas exportadas. Los ejemplos históricos no se reescribieron y no citan páginas de wiki: citan el corpus crudo con número de diapositiva (`raw/<archivo>.md, diap. N`) cuando la diapositiva respalda la afirmación, y "conocimiento general" cuando no. Lo que proviene del SRS de MANI de muestra se cita a `kb-wiki/muestras/mani-srs-muestra.md`, un extracto sintético que no forma parte del corpus evaluado.
 
 ## Validación de los artefactos
 
