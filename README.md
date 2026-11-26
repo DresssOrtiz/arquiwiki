@@ -161,3 +161,5 @@ Los seis PDF originales están en [`docs/corpus-original/`](docs/corpus-original
 No incluir `experiment/`, `docs/investigacion.pdf`, preguntas, rúbrica ni respuestas de referencia en `raw/`, `wiki/`, el índice vectorial o el contexto de los agentes evaluados. Separar las preguntas del material de aprendizaje no impide enviarlas individualmente durante la prueba.
 
 [C4 de contenedores](docs/diagramas/C4-Contenedores.png).
+
+[C4 de componentes del Gateway MCP](docs/diagramas/C4-Componentes-Gateway.png).
