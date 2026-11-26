@@ -159,3 +159,5 @@ Los seis PDF originales están en [`docs/corpus-original/`](docs/corpus-original
 - [Plantilla vacía de calificación](experiment/plantilla-evaluacion.csv), sin métricas ficticias.
 
 No incluir `experiment/`, `docs/investigacion.pdf`, preguntas, rúbrica ni respuestas de referencia en `raw/`, `wiki/`, el índice vectorial o el contexto de los agentes evaluados. Separar las preguntas del material de aprendizaje no impide enviarlas individualmente durante la prueba.
+
+[C4 de contenedores](docs/diagramas/C4-Contenedores.png).
