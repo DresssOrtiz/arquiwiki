@@ -133,7 +133,32 @@ def test_registro_y_total_input_tokens(env):
     assert row["question_id"] == "P07" and row["total_input_tokens"] == 3210 and row["wall_ms"] >= 0
     assert row["is_error"] is False and row["num_turns"] == 4 and "respuesta" not in row
     assert (root / row["respuesta_path"]).read_text() == "respuesta de prueba"
-    assert row["respuesta_path"].endswith("-consultor-consulta-P07.md")
+    assert row["respuesta_path"].endswith(f"-consultor-consulta-P07-{row['run_id']}.md")
+
+
+def test_run_id_unico_con_misma_marca_de_tiempo(env, monkeypatch):
+    from datetime import datetime, timezone
+    root, _ = env
+    monkeypatch.setattr(ra, "_now", lambda: datetime(2026, 11, 25, 10, 0, 0, tzinfo=timezone.utc))
+    r1 = ra.run_agent("consultor", "consulta", "experimento", pregunta="q", question_id="P01")
+    monkeypatch.setenv("FAKE_MODE", "garbage")  # segunda corrida con otro contenido
+    r2 = ra.run_agent("consultor", "consulta", "experimento", pregunta="q", question_id="P01")
+    assert r1["run_id"] != r2["run_id"] and r1["respuesta_path"] != r2["respuesta_path"]
+    rows = [json.loads(l) for l in (root / "experiment/results/kba_runs.jsonl").read_text().splitlines()]
+    assert [r["run_id"] for r in rows] == [r1["run_id"], r2["run_id"]]
+    assert rows[0]["ts"] == rows[1]["ts"]
+    assert r1["run_id"] in r1["respuesta_path"]
+    assert (root / r1["respuesta_path"]).read_text() == "respuesta de prueba"
+    assert "[stdout]" in (root / r2["respuesta_path"]).read_text()
+    assert len(list((root / "experiment/results/kba_runs").iterdir())) == 2
+
+
+def test_escritura_exclusiva_no_sobrescribe(tmp_path):
+    f = tmp_path / "x.md"
+    ra._write_exclusive(f, "a")
+    with pytest.raises(FileExistsError):
+        ra._write_exclusive(f, "b")
+    assert f.read_text() == "a"
 
 
 def test_token_nunca_aparece(env, capsys, monkeypatch):

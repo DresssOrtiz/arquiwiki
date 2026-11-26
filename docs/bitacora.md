@@ -75,3 +75,9 @@ Corpus: las 4 muestras sintéticas de `raw/`, de unos 1 KB cada una. Motor: `cla
 - Se retiraron las 4 muestras sintéticas. Sus corridas se descartaron del registro del experimento porque eran pruebas del pipeline.
 - Limitación: en las diapositivas que son diagramas (por ejemplo 1.2, diap. 31) `pdftotext -layout` mezcla columnas. El texto se puede leer, pero pierde estructura. Andrés debe cotejar la conversión contra los PDF, según el protocolo del capítulo 4.
 - KB-B reindexado con el corpus real: 189 fragmentos y 14 388 tokens de embeddings en 3,2 s, con 0 tokens de LLM. Comprobación: la pregunta de P03 (SRP y DIP) recupera 1.2, diap. 41 y 42, que es justo la fuente de referencia de A.
+
+## 2026-11-25 · Cambios por revisión del PR #4
+
+- **Muestras separadas del corpus:** las 4 muestras sintéticas se restauraron (desde `e064388^`) en `kb-wiki/muestras/`, fuera de `kb-wiki/vault/`, con un README que aclara que no son parte del corpus evaluado ni se cargan en KB-A/KB-B. `kb-wiki/vault/raw/` queda solo con los 6 archivos reales.
+- **`scripts/seed-demo.sh`:** ahora mapea ATAM a `3-2-atributos-de-calidad-3.md` y "Atributos de calidad" a `2-2-atributos-de-calidad-1.md` (verificado con grep; ATAM solo figura en el temario de 3.2, así que el texto de la página se limitó a lo que dice la fuente). Tras la precarga comprueba con `GET /paginas/{id}` que cada página tenga su fuente, también en la rama idempotente (por título); si falta algo imprime error y sale con código 1. Probado desde cero, segunda corrida y fallo provocado.
+- **`run_agent.py`:** `run_id` único (`uuid4().hex[:12]`) en el nombre del archivo de respuesta, en cada línea de `kba_runs.jsonl` (incluidos errores) y en el dict devuelto; la respuesta se escribe con `open(..., "x")`. Prueba nueva con reloj fijo y dos corridas de P01.

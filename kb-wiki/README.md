@@ -54,7 +54,7 @@ Notas:
 
 ## Cómo se miden los tokens
 
-- `experiment/results/kba_runs.jsonl`: una línea por ejecución con `input_tokens`, `cache_creation_input_tokens`, `cache_read_input_tokens`, `total_input_tokens` (suma de los tres), `output_tokens`, `num_turns`, `duration_ms`, `duration_api_ms`, `wall_ms` (medido por el runner) y `cost_usd_equiv`. La respuesta completa queda en `experiment/results/kba_runs/<ts>-<rol>-<op>[-<qid>].md`.
+- `experiment/results/kba_runs.jsonl`: una línea por ejecución con `run_id` (identificador único de 12 hex por ejecución; también en errores), `input_tokens`, `cache_creation_input_tokens`, `cache_read_input_tokens`, `total_input_tokens` (suma de los tres), `output_tokens`, `num_turns`, `duration_ms`, `duration_api_ms`, `wall_ms` (medido por el runner) y `cost_usd_equiv`. La respuesta completa queda en `experiment/results/kba_runs/<ts>-<rol>-<op>[-<qid>]-<run_id>.md` (se crea en modo exclusivo: nunca sobrescribe).
 - `cost_usd_equiv` es el costo a precio de lista de la API; con suscripción no es lo que se paga, solo sirve para comparar.
 - `experiment/results/gateway.jsonl`: cada llamada MCP con rol, herramienta, ruta y caracteres devueltos. Sirve como estimación de lectura (cerca de 4 caracteres por token), útil para separar "lo que leyó de la wiki" de la sobrecarga del agente.
 

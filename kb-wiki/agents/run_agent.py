@@ -19,6 +19,7 @@ import subprocess
 import sys
 import tempfile
 import time
+import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 from string import Template
@@ -150,6 +151,17 @@ def _results_dir() -> Path:
     return d
 
 
+def _now() -> datetime:
+    """Reloj del registro (las pruebas lo sustituyen)."""
+    return datetime.now(timezone.utc)
+
+
+def _write_exclusive(path: Path, text: str) -> None:
+    """Crea el archivo y falla si ya existe: nunca sobrescribe una respuesta anterior."""
+    with open(path, "x", encoding="utf-8") as f:
+        f.write(text)
+
+
 def _append_jsonl(path: Path, record: dict) -> None:
     with path.open("a", encoding="utf-8") as f:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
@@ -170,14 +182,15 @@ def run_agent(rol: str, op: str, modo: str = "experimento", pregunta: str | None
     results = _results_dir()
 
     prompt = build_prompt(op, modo, pregunta, fuente)
-    now = datetime.now(timezone.utc)
+    now = _now()
     ts = now.strftime("%Y-%m-%dT%H:%M:%SZ")
     stamp = now.strftime("%Y%m%dT%H%M%SZ")
-    resp_name = f"{stamp}-{rol}-{op}" + (f"-{question_id}" if question_id else "") + ".md"
+    run_id = uuid.uuid4().hex[:12]  # único por ejecución, aunque coincida el segundo
+    resp_name = f"{stamp}-{rol}-{op}" + (f"-{question_id}" if question_id else "") + f"-{run_id}.md"
     resp_rel = f"experiment/results/kba_runs/{resp_name}"
 
     record: dict = {
-        "ts": ts, "rol": rol, "motor": "claude", "op": op, "modo": modo,
+        "run_id": run_id, "ts": ts, "rol": rol, "motor": "claude", "op": op, "modo": modo,
         "question_id": question_id, "fuente": fuente, "model": model,
     }
     tmpdir = Path(tempfile.mkdtemp(prefix="kba-"))
@@ -229,12 +242,12 @@ def run_agent(rol: str, op: str, modo: str = "experimento", pregunta: str | None
             "duration_api_ms": data.get("duration_api_ms"), "wall_ms": wall_ms,
             "cost_usd_equiv": data.get("total_cost_usd"), "is_error": is_error,
         })
-        (results / "kba_runs" / resp_name).write_text(result_text, encoding="utf-8")
+        _write_exclusive(results / "kba_runs" / resp_name, result_text)
         record["respuesta_path"] = resp_rel
         record["respuesta"] = result_text
     else:
         raw = _redact(f"[stdout]\n{stdout}\n[stderr]\n{stderr}\n[returncode] {returncode}\n", secrets)
-        (results / "kba_runs" / resp_name).write_text(raw, encoding="utf-8")
+        _write_exclusive(results / "kba_runs" / resp_name, raw)
         record.update({
             "input_tokens": 0, "cache_creation_input_tokens": 0, "cache_read_input_tokens": 0,
             "output_tokens": 0, "total_input_tokens": 0, "num_turns": None, "duration_ms": None,
