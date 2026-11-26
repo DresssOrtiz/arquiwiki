@@ -14,7 +14,7 @@ Esta checklist es un archivo auxiliar del repositorio; no crea un cuarto entrega
 
 ◐ 4. Diagramas arquitectónicos: HLD, C4 de Contexto y UML de paquetes de API, Gateway MCP y RAG ya incorporados al documento (cinco figuras). ☐ Quedan los C4 de Contenedores, Componentes del sistema, Dinámico y Despliegue, sujetos a validar la integración. Existe además una vista C4 de componentes del Gateway que no sustituye sus diagramas UML.
 
-☑ 5a. Quince preguntas redactadas en esquema 5/4/4/2 y referencias cotejadas con las diapositivas del profesor. Corregidas P03 (diapositivas 41–42) y P04 (seis componentes del escenario). ☑ 5b. Rúbrica escrita. ☐ 5c. Carga equivalente de Markdown en KB-A/KB-B. ☐ 5d. Experimento, calificación y análisis pendiente de B/C.
+☑ 5a. Quince preguntas redactadas (5/4/4/2), referencias cotejadas y correcciones de P03/P04 incorporadas. ☑ 5b. Rúbrica de 0–10 definida. ☑ 5c. Preguntas sin respuestas, rúbrica y plantilla de evaluación separadas en `experiment/`, fuera del vault indexado. ☐ 5d. Ejecutar ambas bases, calificar y analizar resultados reales (requiere B/C).
 
 ☑ 6. Presentación conceptual lista en el Canva original: diez diapositivas, un solo HLD, metodología 5/4/4/2 y tres ofertas laborales verificadas. Los resultados experimentales se añadirán únicamente cuando B/C entreguen evidencia auténtica.
 
@@ -30,7 +30,7 @@ Esta checklist es un archivo auxiliar del repositorio; no crea un cuarto entrega
 
 ☑ Capítulo 3: cinco matrices editables revisadas en contenido, consistencia de filas, valoración, términos ISO y presentación. Se corrigieron observabilidad, disponibilidad, seguridad operacional y paginación para evitar tablas partidas.
 
-☑ Capítulo 4: preguntas y claves, rúbrica, protocolo de estados restaurados, conversión de PDF a Markdown y control de fuga de respuestas. ☐ Ejecutar, verificar y analizar.
+☑ Capítulo 4: diseño del experimento, 15 preguntas, claves, rúbrica y protocolo documentados. ☑ Material operativo de preguntas/rúbrica separado en `experiment/`. ☐ Ejecutar, verificar y analizar los resultados auténticos de KB-A y KB-B.
 
 ◐ Capítulo 5: cinco diagramas incorporados (HLD, C4 de Contexto, UML API, UML Gateway MCP y UML RAG). Faltan los otros cuatro modelos C4.
 
@@ -54,15 +54,15 @@ Esta checklist es un archivo auxiliar del repositorio; no crea un cuarto entrega
 
 ☑ Fuente de investigación completa y matrices dentro del documento maestro de Drive.
 
-☑ Preguntas y claves en el capítulo 4. ☐ Al preparar el repositorio, separar la lista enviada a KB-A/KB-B de las respuestas de referencia y excluir las claves de cualquier carpeta indexada o accesible a los agentes.
+☑ Preguntas y respuestas de referencia conservadas en el capítulo 4 del documento principal. ☑ En `experiment/preguntas.md` se publicó SOLO el enunciado de las 15 preguntas. Las claves no están en el vault ni en el archivo que reciben los sistemas; no deben entregarse a los agentes.
 
-☑ Rúbrica del experimento escrita; ☐ convertir a archivo editable del repositorio.
+☑ Rúbrica documentada en Drive y disponible como `experiment/rubrica.md` en GitHub; plantilla vacía de calificación en `experiment/plantilla-evaluacion.csv`. Ninguno de estos archivos forma parte del corpus indexado.
 
 ☑ Guion redactado en Drive y archivo `video/guion.md` presente en GitHub. ☐ Verificar que la última versión en Drive y el Markdown del repositorio coincidan antes de entregar.
 
-☑ Checklist de control escrita en Drive y `checklist.md` sincronizado en GitHub con esta exportación verificada.
+☑ Checklist de control mantenida en Drive y sincronizada con `checklist.md` en GitHub. Se actualizará de nuevo tras la ejecución experimental y el video.
 
-☑ Cinco diagramas PNG publicados en `docs/diagramas/` de GitHub. ☑ Seis PDF originales del curso publicados en `docs/corpus-original/` (commit `9450e164a5`). ☐ Convertir y cotejar el corpus Markdown compartido entre KB-A/KB-B (Santiago y Tomás). ☐ Añadir fuentes editables .drawio, matrices exportadas y resultados únicamente después de medir.
+☑ Cinco diagramas PNG publicados y seis PDF originales en `docs/corpus-original/`. ☑ Santiago convirtió los seis PDF a Markdown: 183 diapositivas conservadas en `kb-wiki/vault/raw/`, sin muestras sintéticas. ☑ Se verificó estructura y numeración; se corrigió la disposición de tres columnas de la diapositiva 31 de 1.2. ☐ Cotejo visual adicional de diapositivas gráficas con Santiago. ☐ Publicar fuentes editables de diagramas y resultados cuando existan (sin crear diagramas en esta etapa).
 
 ☑ Enlace de la presentación publicado en el README. ☐ Publicar el enlace del video cuando esté disponible. ☐ Comprobar enlaces y estructura del README antes de la entrega final.
 
@@ -70,7 +70,7 @@ Esta checklist es un archivo auxiliar del repositorio; no crea un cuarto entrega
 
 ☑ Existen en GitHub archivos de API/CRUD, RAG, Docker y gateway MCP; eso prueba código escrito, NO ejecución integral.
 
-☐ Entregar salida reproducible de Docker Compose y scripts de pruebas.
+◐ Existen evidencias de ejecución local en `docs/bitacora.md`: Docker Compose healthy, `scripts/smoke.sh`, `mcp_check.py` y RAG reindexado con corpus real. ☐ Confirmar reproducción de la demostración final y conservar sus registros reales.
 
 ☐ Demostrar operaciones de Fuente y Página y pruebas de permisos de MCP.
 
@@ -80,11 +80,11 @@ Esta checklist es un archivo auxiliar del repositorio; no crea un cuarto entrega
 
 # 6. Información y evidencia de Santiago (C)
 
-☐ Confirmar vault y corpus convertido a Markdown con referencias a documento y diapositiva. ☐ Mostrar ingesta, consulta, archivado de respuesta y lint. C coordina el video.
+☑ Estructura de vault publicada y seis Markdown reales con referencias por diapositiva. ☐ Santiago debe realizar el cotejo visual de láminas gráficas y mostrar ingesta, consulta con archivado y lint usando el corpus real; coordina el video.
 
 ☐ Demostrar con agentes ingesta, consulta y auditoría; guardar fuentes y registros.
 
-☐ Confirmar agente Ingeniero de Sistemas y sus tres skills con entrada/salida reales; no simular salidas.
+☑ Agente Ingeniero de Sistemas y tres skills disponibles (`modelar`, `criterios-aceptacion`, `evaluar-iso`) con pruebas de instalación y ejemplos. ☐ Validar en demo las tres ejecuciones y las salidas reales correspondientes al caso requerido por el docente.
 
 ☐ Ejecutar las 15 preguntas sobre el mismo corpus y con estado controlado; compartir respuestas, citas, tiempos y tokens disponibles. ☐ Mostrar archivado de una respuesta como página en demostración separada.
 
