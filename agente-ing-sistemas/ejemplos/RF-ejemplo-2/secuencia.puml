@@ -1,0 +1,36 @@
+@startuml
+title Secuencia: RF-02 búsqueda de existencias
+
+actor Usuario
+participant "Aplicación web" as Web
+participant "Controlador de búsqueda" as Ctrl
+participant "Servicio de búsqueda" as Srv
+participant "Adaptador de caché" as Cache
+participant "Repositorio de existencias" as Repo
+database "Base de datos de inventario" as BD
+
+Usuario -> Web : escribe texto de búsqueda
+Web -> Ctrl : GET /productos?texto=...&pagina=1
+Ctrl -> Srv : buscar(texto, pagina)
+Srv -> Cache : obtener(clave)
+
+alt acierto de caché
+  Cache --> Srv : resultados
+else fallo de caché
+  Cache --> Srv : sin resultados
+  Srv -> Repo : buscar(texto, pagina)
+  Repo -> BD : consulta por índice
+  BD --> Repo : filas
+  Repo --> Srv : productos con existencias
+  Srv -> Cache : guardar(clave, resultados, 60 s)
+end
+
+alt texto inválido
+  Ctrl --> Web : 400 "Texto de búsqueda inválido"
+  Web --> Usuario : muestra error
+else resultados
+  Srv --> Ctrl : página de resultados
+  Ctrl --> Web : 200 con resultados paginados
+  Web --> Usuario : muestra resultados
+end
+@enduml
