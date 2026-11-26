@@ -141,3 +141,5 @@ Los diagramas, resultados experimentales y evidencias de ejecución siguen pendi
 [C4 de contexto](docs/diagramas/C4-Contexto.png).
 
 [UML de paquetes de la API](docs/diagramas/UML-Paquetes-API.png).
+
+[UML de paquetes del gateway](docs/diagramas/UML-Paquetes-Gateway.png).
