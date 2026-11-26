@@ -1,0 +1,478 @@
+etiqueta,question_id,pregunta,respuesta_referencia,fuente_verificable,respuesta,exactitud(0-4),trazabilidad(0-3),cobertura(0-2),prudencia(0-1),total,calificador,notas
+R-3dd4,P10,"En una API de consultas de ArquiWiki, 60 solicitudes simultáneas causan demoras. ¿Cómo redactarías un escenario de rendimiento con sus seis componentes y una medida de éxito?","Ejemplo válido: fuente = usuarios; estímulo = 60 consultas concurrentes; artefacto = API de consultas; entorno = funcionamiento normal; respuesta = devolver respuestas o errores controlados; medida = 95 % de consultas atendidas en menos de 3 segundos en el escenario ensayado. 60 y 3 segundos son objetivos ilustrativos de la pregunta, NO mediciones del prototipo. Se aceptan umbrales alternativos explícitos y razonables.","3.1 Atributos de Calidad 2.pdf, diapositiva 6; 2.2 Atributos de Calidad 1.pdf, diapositivas 11–12; 3.2 Atributos de Calidad 3.pdf, diapositivas 18–19.","Redactaría el escenario con los seis componentes de la wiki (raw/3-1-atributos-de-calidad-2.md, diap. 6). Es un escenario de uso: el sistema se usa y se describe su comportamiento en tiempo de ejecución, velocidad de respuesta y throughput (raw/3-1-atributos-de-calidad-2.md, diap. 7). Pertenece al atributo eficiencia de desempeño, que compara el tiempo entre pedido y respuesta con el esperado o el máximo tolerado (raw/2-2-atributos-de-calidad-1.md, diap. 22).
+
+| Componente | Definición en la wiki | Aplicado a tu caso |
+|---|---|---|
+| Fuente | Persona o sistema que inicia el estímulo | Clientes o aplicaciones que consultan la API de ArquiWiki |
+| Estímulo | Evento que requiere que el sistema responda | 60 solicitudes de consulta simultáneas |
+| Artefacto | Parte del sistema o el sistema completo | La API de consultas |
+| Entorno | Circunstancias operativas; siempre debe definirse, incluso si es ""normal"" | Operación normal, con 60 solicitudes concurrentes |
+| Respuesta | Acción visible externamente | La API procesa cada consulta y devuelve su resultado |
+| Medida de respuesta | Criterio de éxito, específico y medible | Ver abajo |
+
+**Medida de éxito.** La wiki no trae el umbral de tu caso. El 5 y el 95 % que uso abajo son valores que propongo yo, no vienen de las fuentes. Una redacción posible sería: «el 95 % de las 60 consultas simultáneas responde en menos de 5 segundos». El ejemplo de la wiki sigue ese patrón: un usuario ve los resultados de búsqueda en menos de 5 segundos con carga de 2 búsquedas por segundo (raw/3-1-atributos-de-calidad-2.md, diap. 10). Ese ejemplo se prioriza como High/High: importancia para el cliente y dificultad para el arquitecto (raw/3-1-atributos-de-calidad-2.md, diap. 10).
+
+**Escenario completo (propuesto).** «Cuando clientes envían 60 consultas simultáneas a la API en operación normal, la API las procesa y responde a cada una; el 95 % se responde en menos de 5 s.»
+
+**Tácticas relacionadas.** Cada escenario se asocia con tácticas que controlan su respuesta (raw/3-2-atributos-de-calidad-3.md, diap. 12). Las de eficiencia de ejecución se agrupan en demanda, gestión y arbitraje de recursos. Entre ellas están concurrencia, réplicas, aumentar recursos y políticas de planificación de tareas (raw/3-2-atributos-de-calidad-3.md, diap. 19). La wiki advierte que la conversión no permite asignar con certeza cada táctica a su categoría.
+
+## Fuentes
+- Wiki: [[wiki/conceptos/escenarios-de-calidad|Escenarios de calidad]], [[wiki/conceptos/eficiencia-de-desempeno|Eficiencia de desempeño]], [[wiki/conceptos/tacticas-de-eficiencia-de-ejecucion|Tácticas de eficiencia de ejecución]]
+- Raw: raw/3-1-atributos-de-calidad-2.md, diap. 6, 7 y 10 (la diap. 6 la verifiqué en el fuente); raw/2-2-atributos-de-calidad-1.md, diap. 22; raw/3-2-atributos-de-calidad-3.md, diap. 12 y 19
+
+Vacíos: la wiki no contiene información sobre umbrales ni percentiles para una API de consultas. Los ejemplos de escenario general de las diap. 8-9 son solo imagen y no están en el texto convertido.",,,,,,,
+R-46d1,P05,¿Cuáles son los dos estilos arquitectónicos de la categoría «flujo de datos»?,Lote secuencial y tubos y filtros; no confundir con los estilos centrados en datos.,"5.1 Estilos y Patrones Arquitecturales 3.pdf, diapositiva 8.","El contexto recuperado no contiene información sobre los estilos arquitectónicos de la categoría «flujo de datos». Los fragmentos solo cubren la agenda de los temas (patrones y estilos arquitectónicos aparecen como simples títulos, sin desarrollo), la diferencia entre arquitectura y diseño, las metodologías tradicionales frente a las ágiles y la arquitectura empresarial (como título), sin clasificar estilos ni mencionar categorías.
+
+## Fuentes
+- Raw: raw/2-1-definiciones-2.md, diap. 2; raw/1-2-definiciones-1.md, diap. 2, 16, 19, 21
+
+Vacíos: no se recuperó ningún fragmento que clasifique los estilos por categorías ni que trate el flujo de datos (p. ej., la diapositiva de estilos arquitectónicos de raw/2-1-definiciones-2.md).",,,,,,,
+R-6f67,P02,¿Qué cuatro categorías de insumos analiza el arquitecto de software antes de diseñar?,"Requisitos funcionales, requisitos no funcionales, riesgos y restricciones. Los atributos de calidad, estilos, patrones y tácticas aparecen como instrumentos de diseño, no como esas cuatro categorías de insumos.","1.2 Definiciones 1.pdf, diapositiva 31.","El arquitecto analiza el contexto de diseño, que tiene cuatro componentes (raw/1-2-definiciones-1.md, diap. 31):
+
+1. **Requerimientos funcionales.**
+2. **Requerimientos no funcionales.**
+3. **Riesgos.**
+4. **Restricciones.**
+
+La diapositiva 31 los agrupa bajo ""Analiza el contexto"". Los separa de las ""herramientas de diseño"" (atributos de calidad, estilos, patrones y tácticas) y de ""diseña la solución"". Esa es mi lectura de la pregunta. Las cuatro categorías son las del contexto y no las de otro grupo de la diapositiva.
+
+Otra página de la wiki da una lista de entradas del proceso de arquitectura que no coincide con esta. Incluye objetivos de diseño, requerimientos funcionales, atributos de calidad, restricciones, riesgos y preocupaciones (concerns) (raw/2-1-definiciones-2.md, diap. 10-11). Son seis entradas, no cuatro. No verifiqué esa fuente en `raw/`, y la wiki no presenta esa lista como ""cuatro categorías"".
+
+## Fuentes
+- Wiki: [[wiki/conceptos/arquitecto-de-software|Arquitecto de software]], [[wiki/conceptos/proceso-de-arquitectura|Proceso de arquitectura]]
+- Raw: raw/1-2-definiciones-1.md, diap. 31 (verificada directamente); raw/2-1-definiciones-2.md, diap. 10-11 (citada desde la wiki)
+
+Vacíos: la wiki no usa la expresión ""cuatro categorías de insumos"". La respuesta sale de la diapositiva 31, que es la que tiene exactamente cuatro elementos de contexto.",,,,,,,
+R-aac3,P10,"En una API de consultas de ArquiWiki, 60 solicitudes simultáneas causan demoras. ¿Cómo redactarías un escenario de rendimiento con sus seis componentes y una medida de éxito?","Ejemplo válido: fuente = usuarios; estímulo = 60 consultas concurrentes; artefacto = API de consultas; entorno = funcionamiento normal; respuesta = devolver respuestas o errores controlados; medida = 95 % de consultas atendidas en menos de 3 segundos en el escenario ensayado. 60 y 3 segundos son objetivos ilustrativos de la pregunta, NO mediciones del prototipo. Se aceptan umbrales alternativos explícitos y razonables.","3.1 Atributos de Calidad 2.pdf, diapositiva 6; 2.2 Atributos de Calidad 1.pdf, diapositivas 11–12; 3.2 Atributos de Calidad 3.pdf, diapositivas 18–19.","Los fragmentos no enumeran los seis componentes de un escenario de calidad (por ejemplo fuente, estímulo, artefacto, entorno, respuesta y medida). No puedo nombrarlos ni definirlos desde este contexto. Sí sustentan una estructura estímulo-respuesta con una medida, que sirve para armar un borrador.
+
+**Qué sí dicen los fragmentos**
+- Los atributos de calidad son características medibles y pueden especificarse mediante escenarios con la técnica estímulo-respuesta (raw/2-2-atributos-de-calidad-1.md, diap. 11).
+- La eficiencia de ejecución compara el tiempo transcurrido entre pedido y respuesta con el tiempo esperado o el máximo tolerado (raw/2-2-atributos-de-calidad-1.md, diap. 22).
+- El tiempo de respuesta forma parte de Rendimiento/Prestación en FURPS+ (raw/2-2-atributos-de-calidad-1.md, diap. 16).
+- Un ejemplo de rendimiento: ""Un usuario puede ver los resultados de búsqueda en menos de 5 segundos cuando el Sistema tiene una carga de 2 búsquedas por seg"" (raw/3-1-atributos-de-calidad-2.md, diap. 10).
+
+**Borrador siguiendo ese patrón**
+> Cuando la API de consultas de ArquiWiki recibe 60 solicitudes simultáneas, un usuario obtiene la respuesta a su consulta en menos de **[X] segundos**.
+
+- Estímulo/carga: 60 solicitudes simultáneas (dato de tu pregunta).
+- Respuesta y medida: tiempo entre pedido y respuesta, comparado con el máximo tolerado (raw/2-2-atributos-de-calidad-1.md, diap. 22). El valor **[X]** no aparece en los fragmentos; debe fijarlo el cliente o el equipo.
+- Prioridad: se asignan dos valores (Low/Medium/High), importancia para el éxito (cliente) y dificultad de alcanzarlo (arquitecto) (raw/3-1-atributos-de-calidad-2.md, diap. 10).
+
+## Fuentes
+- Raw: raw/2-2-atributos-de-calidad-1.md, diap. 11, 16, 22; raw/3-1-atributos-de-calidad-2.md, diap. 10
+
+Vacíos: los fragmentos no definen los seis componentes del escenario ni dan un umbral de tiempo para 60 solicitudes simultáneas.",,,,,,,
+R-fc1a,P13,"Si ArquiWiki cambia de proveedor del modelo de lenguaje, ¿qué principio SOLID y qué tácticas de mantenibilidad ayudarían a evitar cambios en toda la aplicación? ¿Cómo comprobarías esa decisión?","Aplicar DIP mediante interfaz abstracta para el proveedor y adaptador concreto, ocultar detalles, mantener interfaces estables y realizar pruebas de sustitución y regresión. No inferir que LSP se cumple sin verificar un contrato compatible de comportamiento.","1.2 Definiciones 1.pdf, diapositiva 42; 3.2 Atributos de Calidad 3.pdf, diapositiva 17.","**Principio SOLID: DIP (inversión de dependencias), con apoyo de OCP.**
+- DIP dice que hay que depender de abstracciones y no de clases concretas. Los módulos de alto nivel no deben depender de los de bajo nivel, y los detalles deben depender de las abstracciones (raw/1-2-definiciones-1.md, diap. 42).
+- Aplicado al caso: la lógica de ArquiWiki dependería de una interfaz de ""modelo de lenguaje"". Cada proveedor sería un detalle que implementa esa interfaz.
+- OCP encaja con esto. Un proveedor nuevo se añadiría como una extensión, sin modificar las clases existentes, porque deben estar abiertas a extensión y cerradas a modificación (raw/1-2-definiciones-1.md, diap. 41).
+- ISP sirve de complemento. La interfaz debe ser específica para su cliente y con una finalidad concreta (raw/1-2-definiciones-1.md, diap. 42).
+- LSP exige que cualquier proveedor pueda sustituir a otro sin alterar el sistema (raw/1-2-definiciones-1.md, diap. 41).
+- Esta aplicación a ArquiWiki es mi interpretación. La wiki no describe la arquitectura de ArquiWiki ni su uso de un LLM.
+
+**Tácticas de mantenibilidad relevantes.** El escenario de mantenibilidad va del pedido de cambio al cambio hecho, probado y desplegado (raw/3-2-atributos-de-calidad-3.md, diap. 16). El catálogo nombra estas tácticas (raw/3-2-atributos-de-calidad-3.md, diap. 17):
+- **Ocultar información, mantener la interfaz y restringir comunicación:** el resto de la app solo ve la interfaz estable.
+- **Intermediarios:** una capa o adaptador entre la app y el proveedor.
+- **Polimorfismo y diferir enlace:** el proveedor concreto se elige en ejecución o en configuración.
+- **Archivos de configuración:** el proveedor, el modelo y las credenciales salen del código.
+- **Reemplazo de componentes y adherir a protocolos:** se cambia el adaptador y se usa un protocolo común.
+- **Confinar modificaciones, anticipar cambios y abstraer servicios comunes:** el cambio queda en un solo módulo.
+- La wiki advierte que la conversión no permite asignar con certeza cada táctica a su grupo, por ejemplo ""prevenir efectos dominó"". Hay que verificarlo contra el PDF (raw/3-2-atributos-de-calidad-3.md, diap. 17).
+
+**Cómo comprobar la decisión**
+1. **Escenario de calidad:** redactarlo con estímulo ""cambio de proveedor"", respuesta ""cambio hecho, probado y desplegado"" y una medida, como los archivos modificados o el esfuerzo (raw/3-2-atributos-de-calidad-3.md, diap. 16). Esto sigue el esquema estímulo-respuesta de los escenarios.
+2. **Métricas de mantenibilidad:** la cobertura de código en tests y el análisis estático (raw/2-2-atributos-de-calidad-1.md, diap. 38). Una prueba objetiva sería que el cambio solo toque el adaptador y la configuración.
+3. **Tácticas de capacidad de prueba:** separar interfaz de implementación, captura y reproducción, y entradas y salidas (raw/3-2-atributos-de-calidad-3.md, diap. 23). Con un proveedor simulado se comprueba que la app funciona con cualquier implementación de la interfaz (LSP).
+4. **Trade-offs:** evaluar el costo de la abstracción con el análisis de acuerdos, o con ATAM como método para gestionar atributos de calidad (raw/3-2-atributos-de-calidad-3.md, diap. 7).
+
+## Fuentes
+- Wiki: [[wiki/conceptos/principios-solid|Principios SOLID]], [[wiki/conceptos/tacticas-de-mantenibilidad|Tácticas de mantenibilidad]], [[wiki/conceptos/mantenibilidad|Mantenibilidad]], [[wiki/conceptos/tacticas-de-capacidad-de-prueba|Tácticas de capacidad de prueba]]
+- Raw: raw/1-2-definiciones-1.md, diap. 41-42; raw/3-2-atributos-de-calidad-3.md, diap. 7, 16, 17, 23; raw/2-2-atributos-de-calidad-1.md, diap. 38
+
+Vacíos: La wiki no contiene información sobre la arquitectura de ArquiWiki ni sobre su proveedor de LLM. Tampoco da procedimientos concretos para probar un cambio de proveedor ni asigna con certeza las tácticas a sus grupos. Esas partes son mi inferencia a partir de los conceptos. Solo verifiqué en raw/ el archivo 3-2 (diap. 7, 16, 17, 23). Las citas a raw/1-2 (diap. 41-42) y raw/2-2 (diap. 38) las copié de las páginas de la wiki y no las comprobé en las fuentes.",,,,,,,
+R-539b,P04,¿Cuáles son los seis componentes de un escenario de calidad?,"Fuente del estímulo, estímulo, artefacto, entorno, respuesta y medida de la respuesta.","3.1 Atributos de Calidad 2.pdf, diapositiva 6.","Los seis componentes de un escenario de calidad son estos (raw/3-1-atributos-de-calidad-2.md, diap. 6):
+
+1. **Fuente**: la persona o el sistema que inicia el estímulo.
+2. **Estímulo**: el evento que requiere que el sistema responda.
+3. **Artefacto**: la parte del sistema, o el sistema completo, sobre la que actúa el estímulo.
+4. **Entorno**: las circunstancias operativas. Siempre debe definirse, incluso si es ""normal"".
+5. **Respuesta**: la acción visible externamente.
+6. **Medida de respuesta**: el criterio de éxito del escenario. Debe ser específico y medible.
+
+La respuesta debe ser visible externamente y medible (raw/3-1-atributos-de-calidad-2.md, diap. 5).
+
+## Fuentes
+- Wiki: [[wiki/conceptos/escenarios-de-calidad|Escenarios de calidad]]
+- Raw: raw/3-1-atributos-de-calidad-2.md, diap. 5-6. Comprobé en `raw/` la línea de la diap. 6 con la Fuente y la Medida de respuesta. Los otros cuatro componentes los tomé de la página de la wiki.
+
+Vacíos: las diapositivas 8 y 9 traen un ejemplo general y uno de disponibilidad, pero solo como imagen. Ese contenido no está en el texto convertido, así que no puedo confirmar el orden ni la forma gráfica en que se presentan los componentes.",,,,,,,
+R-c783,P11,"En ArquiWiki, los agentes deben consultar `raw/` pero solo algunos pueden editar `wiki/`. ¿Qué restricciones y tácticas de seguridad propondrías?","Separar permisos de lectura y escritura, autenticar el cliente, autorizar operaciones por rol y ruta, limitar acceso, generar trazas de auditoría y probar intentos de escritura rechazados. Son tácticas recomendadas para el caso, no evidencia de que la implementación ya las cumpla.","2.2 Atributos de Calidad 1.pdf, diapositivas 9–10; 3.2 Atributos de Calidad 3.pdf, diapositivas 20–21.","La wiki no trata la seguridad de los agentes de ArquiWiki, ni el control de acceso a `raw/` y `wiki/`, ni la inyección de contenido en las fuentes. Solo cubre las tácticas de seguridad de arquitectura en general. Lo que sigue aplica esas tácticas al caso de ArquiWiki, y esa aplicación es mía, no viene de las fuentes. La política real de permisos del vault tampoco está en la wiki. Los únicos datos que tengo de ella están en `AGENTS.md` y `CONVENCIONES.md`, que son esquemas de operación y no fuentes de la wiki.
+
+**Lo que dice la wiki (tácticas de seguridad)**
+- El escenario de seguridad parte de un ataque y termina en detección, resistencia o recuperación (raw/3-2-atributos-de-calidad-3.md, diap. 20).
+- Las agrupaciones de tácticas son detectar ataques, resistir ataques, limitar exposición, limitar acceso y recuperarse de ataques (raw/3-2-atributos-de-calidad-3.md, diap. 21).
+- Las tácticas nombradas son detectores de intrusos, autenticación, autorización, identificación, confidencialidad de datos, integridad, disponibilidad, restauración y traza de auditoría (raw/3-2-atributos-de-calidad-3.md, diap. 21). La página advierte que la conversión no permite asignar con certeza cada táctica a su agrupación y que conviene verificarlo contra el PDF.
+- El atributo incluye confidencialidad, integridad, autenticidad, responsabilidad y no repudio. También menciona penetration testing como práctica asociada (raw/2-2-atributos-de-calidad-1.md, diap. 18 y 37).
+
+**Propuesta aplicada a ArquiWiki (interpretación mía)**
+- **Limitar acceso y autorización:** `raw/` debe ser de solo lectura para todos los roles, y cada rol debe escribir solo en sus carpetas. `CONVENCIONES.md` ya lo establece así: nadie escribe en `raw/`, y la escritura se limita a las carpetas del rol (§ Reglas de escritura). Esto debe aplicarse en el servidor y no depender de que el agente cumpla las instrucciones.
+- **Autenticación e identificación:** cada agente debe tener un rol vinculado a una identidad. Las ramas `agent/<rol>` ya dan esa separación.
+- **Integridad y limitar exposición:** los cambios deben quedar en una rama y fusionarlos una persona. Eso es una revisión humana antes de llegar a `main`. También conviene restringir el tipo de archivo (solo `.md`), el tamaño (máximo 200 KB) y las rutas relativas. Todo esto está en `CONVENCIONES.md`.
+- **Traza de auditoría:** `wiki/log.md` es solo de añadir al final, y los commits identifican al agente. Esto permite saber quién cambió qué.
+- **Detección:** el auditor (lint) debe revisar que las citas existan en `raw/` y que las páginas no se desvíen de las fuentes. Ya existe un lint en `wiki/auditoria/`.
+- **Recuperación:** como el trabajo está en ramas y bajo control de versiones, se puede revertir una fusión mala.
+- **Contenido no confiable en `raw/`:** las fuentes se deben tratar como datos y no como instrucciones, para resistir la inyección de instrucciones. Esta táctica no está en la wiki ni en las fuentes revisadas.
+
+## Fuentes
+- Wiki: [[wiki/conceptos/tacticas-de-seguridad|Tácticas de seguridad]], [[wiki/conceptos/seguridad|Seguridad]]
+- Raw: raw/3-2-atributos-de-calidad-3.md, diap. 20-21; raw/2-2-atributos-de-calidad-1.md, diap. 18 y 37
+
+Vacíos: la wiki no contiene información sobre seguridad de agentes, control de acceso a `raw/` y `wiki/`, o defensa frente a inyección de instrucciones. No revisé `raw/` más allá de lo citado en las páginas de seguridad.",,,,,,,
+R-3de5,P06,¿Cómo se relacionan la elección de un estilo arquitectónico y los atributos de calidad que deberá cumplir el sistema?,"El estilo reúne decisiones y restricciones de diseño; los atributos de calidad expresan propiedades medibles y guían las decisiones. Una arquitectura en capas puede facilitar modificabilidad, mientras concurrencia y redundancia responden a rendimiento y fiabilidad. Son efectos potenciales que requieren escenarios y comprobación.","2.1 Definiciones 2.pdf, diapositivas 6 y 8; 2.2 Atributos de Calidad 1.pdf, diapositivas 11–12.","Los fragmentos no tratan explícitamente la relación entre ""estilo arquitectónico"" y atributos de calidad; solo permiten una relación indirecta.
+
+- Los atributos de calidad determinan la mayoría de las decisiones de diseño en arquitectura. Si solo importara la funcionalidad, bastaría un sistema monolítico; sin embargo, es habitual ver estructuras redundantes para fiabilidad, concurrentes para rendimiento y capas para modificabilidad (raw/2-2-atributos-de-calidad-1.md, diap. 12). Es decir, las estructuras que se eligen responden a los atributos de calidad buscados.
+- Estos atributos los prioriza el cliente según el éxito del sistema y el arquitecto según el riesgo técnico (raw/2-2-atributos-de-calidad-1.md, diap. 12).
+- En el proceso de arquitectura, los atributos de calidad aparecen junto a objetivos, requerimientos, restricciones y riesgos como entradas, mientras que los estilos figuran entre los elementos que aporta la comunidad (junto a principios, patrones y anti-patrones) y que el arquitecto utiliza para producir la arquitectura (raw/2-1-definiciones-2.md, diap. 11).
+- Las decisiones arquitectónicas principales son costosas de cambiar (raw/1-2-definiciones-1.md, diap. 19), lo que sugiere la importancia de acertar con ellas según los atributos de calidad (inferencia mía a partir de los fragmentos).
+
+## Fuentes
+- Raw: raw/2-2-atributos-de-calidad-1.md, diap. 12; raw/2-1-definiciones-2.md, diap. 11; raw/1-2-definiciones-1.md, diap. 19
+
+Vacíos: El contexto recuperado no contiene información que defina qué es un estilo arquitectónico ni qué atributos de calidad favorece o penaliza cada estilo concreto (por ejemplo, capas, microservicios o cliente-servidor).",,,,,,,
+R-5eef,P12,"Durante una consulta a KB-B, su base de datos deja de responder. ¿Qué tácticas de disponibilidad aplicarías y cómo comprobarías la recuperación?","Proponer detección mediante ping o latido, recuperación por redundancia o reinicio según el diseño y respuesta controlada de error/degradación. Definir un escenario medible con estímulo falla del almacén, respuesta visible y límite de recuperación o fallo controlado. No afirmar que existan réplicas o failover implementados.","3.2 Atributos de Calidad 3.pdf, diapositivas 14–15; 3.1 Atributos de Calidad 2.pdf, diapositiva 6.","El contexto recuperado no contiene información sobre KB-B ni sobre su base de datos. Lo que sigue se limita a lo que traen los fragmentos sobre disponibilidad en general.
+
+**Tácticas de disponibilidad**
+- El catálogo de tácticas se organiza en Detección, Recuperación (preparar/reparar), Recuperación (reintroducción) y Prevención (raw/3-2-atributos-de-calidad-3.md, diap. 15).
+- Las tácticas que aparecen son:
+  - Ping/Eco, Latido, Excepciones y Monitoreo de Procesos.
+  - Votación, Redundancia Activa, Redundancia Pasiva y Repuesto.
+  - Modo Sombra, Sincronización de Estado y Punto de Control/Retroceso.
+  - Quitar de Servicio y Transacciones.
+  (raw/3-2-atributos-de-calidad-3.md, diap. 15)
+- El texto extraído del diagrama no permite asignar con certeza cada táctica a su categoría.
+- Para el caso de una base de datos que no responde, el escenario de calidad de referencia es: registrar el fallo en el log y responder con datos anteriores durante 3 segundos. Su prioridad es High/High (raw/3-1-atributos-de-calidad-2.md, diap. 10).
+- Los fragmentos no indican qué táctica concreta implementa ese escenario.
+
+**Cómo comprobar la recuperación**
+- Contrastar con el escenario: que el fallo quede registrado en el log y que el sistema responda con datos anteriores durante 3 s (raw/3-1-atributos-de-calidad-2.md, diap. 10).
+- Contrastar con el escenario de disponibilidad: el usuario recibe la lista de elementos el 99% del tiempo como media a lo largo del año (raw/3-1-atributos-de-calidad-2.md, diap. 10).
+- Medir con las métricas de confiabilidad:
+  - El tiempo medio hasta la recuperación (raw/2-2-atributos-de-calidad-1.md, diap. 36).
+  - El tiempo medio entre averías (raw/2-2-atributos-de-calidad-1.md, diap. 33).
+  - La cantidad de tiempo fuera de servicio, propia de la disponibilidad (raw/2-2-atributos-de-calidad-1.md, diap. 34).
+
+## Fuentes
+- Raw: raw/3-2-atributos-de-calidad-3.md, diap. 15; raw/3-1-atributos-de-calidad-2.md, diap. 10; raw/2-2-atributos-de-calidad-1.md, diap. 33, 34 y 36
+
+Vacíos: no hay información sobre KB-B, ni sobre procedimientos de prueba de recuperación, ni sobre qué táctica concreta aplicar a una base de datos caída.",,,,,,,
+R-5f1b,P15,¿Cuántos tokens de generación del LLM consumió exactamente KB-B durante las quince consultas del experimento?,No se puede determinar con el material de clase. Solo los registros reales de ejecución permitirían obtenerlo; no confundir tokens del LLM con tokens procesados por embeddings.,"Corpus de presentaciones docentes 1.2–5.1, sin resultados del experimento.","La wiki no contiene información sobre los tokens de generación que consumió KB-B en las quince consultas. Tampoco la contienen las fuentes revisadas de `raw/`.
+
+Revisé `wiki/index.md`, y no hay ninguna página sobre KB-B ni sobre un experimento de consultas. Busqué «KB-B» y «tokens» en todas las notas legibles (wiki y `raw/`) y las dos búsquedas devolvieron 0 resultados. No tengo una cifra que dar y no voy a estimarla.
+
+## Fuentes
+- Wiki: [[wiki/index|Índice de la wiki]]. No hay páginas relacionadas.
+- Raw: ninguna. Las búsquedas en `raw/` no devolvieron coincidencias.
+
+Vacíos: no hay datos sobre KB-B, sobre el consumo de tokens de generación ni sobre las quince consultas del experimento.",,,,,,,
+R-b282,P11,"En ArquiWiki, los agentes deben consultar `raw/` pero solo algunos pueden editar `wiki/`. ¿Qué restricciones y tácticas de seguridad propondrías?","Separar permisos de lectura y escritura, autenticar el cliente, autorizar operaciones por rol y ruta, limitar acceso, generar trazas de auditoría y probar intentos de escritura rechazados. Son tácticas recomendadas para el caso, no evidencia de que la implementación ya las cumpla.","2.2 Atributos de Calidad 1.pdf, diapositivas 9–10; 3.2 Atributos de Calidad 3.pdf, diapositivas 20–21.","El contexto recuperado no contiene información sobre ArquiWiki, sus agentes ni la separación `raw/` / `wiki/`. Solo hay material genérico sobre tácticas de seguridad y restricciones, que puede servir de base para la propuesta.
+
+**Restricciones**
+- Las restricciones vienen impuestas, pueden ser técnicas u organizativas, y limitan las alternativas de diseño (raw/2-2-atributos-de-calidad-1.md, diap. 9). Por tanto, ""los agentes consultan `raw/` y solo algunos editan `wiki/`"" encaja como restricción de diseño, no como una opción más.
+
+**Tácticas de seguridad aplicables**
+
+La diapositiva de seguridad agrupa las tácticas en cuatro familias: detectar ataques, resistir ataques, limitar la exposición o el acceso, y recuperarse de ataques (raw/3-2-atributos-de-calidad-3.md, diap. 21). El texto de la diapositiva está desordenado, así que la asignación exacta es aproximada. Esto es lo que propondría con ella:
+- **Identificación y autenticación** de cada agente, para saber quién consulta o edita (raw/3-2-atributos-de-calidad-3.md, diap. 21).
+- **Autorización** que distinga el permiso de lectura sobre `raw/` del de escritura sobre `wiki/`, concedido solo a los agentes designados (raw/3-2-atributos-de-calidad-3.md, diap. 21).
+- **Limitar acceso y exposición**, es decir, el mínimo de agentes y de contenido accesible (raw/3-2-atributos-de-calidad-3.md, diap. 21).
+- **Confidencialidad e integridad de los datos**, para proteger el contenido (raw/3-2-atributos-de-calidad-3.md, diap. 21).
+- **Traza de auditoría** de lecturas y ediciones (raw/3-2-atributos-de-calidad-3.md, diap. 21).
+- **Detectores de intrusos** para detectar ataques, y **restauración** para recuperarse (raw/3-2-atributos-de-calidad-3.md, diap. 21).
+
+## Fuentes
+- Raw: raw/2-2-atributos-de-calidad-1.md, diap. 9; raw/3-2-atributos-de-calidad-3.md, diap. 21
+
+Vacíos: los fragmentos no describen cómo implementar estas tácticas, ni roles, permisos, control de versiones o mecanismos concretos para `raw/` y `wiki/`. Tampoco detallan qué hace cada táctica de la diapositiva 21, que solo las enumera.",,,,,,,
+R-448f,P03,¿Qué significan los principios SOLID SRP y DIP?,"SRP: una clase debe tener una sola razón para cambiar. DIP: los módulos de alto y bajo nivel deben depender de abstracciones, no de clases concretas.","1.2 Definiciones 1.pdf, diapositivas 41–42.","**SRP (Single Responsibility Principle):** ""una clase debería tener una, y solo una, razón para cambiar"". Robert C. Martin identifica esa ""razón para cambiar"" como ""responsabilidad"" (raw/1-2-definiciones-1.md, diap. 41).
+
+**DIP (Dependency Inversion Principle):** ""Depende de abstracciones, no de clases concretas"". Implica dos ideas: 1) los módulos de alto nivel no deberían depender de módulos de bajo nivel, sino que ambos deberían depender de abstracciones; 2) las abstracciones no deberían depender de los detalles, sino los detalles de las abstracciones (raw/1-2-definiciones-1.md, diap. 42).
+
+## Fuentes
+- Raw: raw/1-2-definiciones-1.md, diap. 41; raw/1-2-definiciones-1.md, diap. 42",,,,,,,
+R-c0ba,P15,¿Cuántos tokens de generación del LLM consumió exactamente KB-B durante las quince consultas del experimento?,No se puede determinar con el material de clase. Solo los registros reales de ejecución permitirían obtenerlo; no confundir tokens del LLM con tokens procesados por embeddings.,"Corpus de presentaciones docentes 1.2–5.1, sin resultados del experimento.","El contexto recuperado no contiene información sobre KB-B, el experimento de quince consultas ni el consumo de tokens de generación del LLM. Los fragmentos tratan solo de atributos de calidad: definición (raw/2-2-atributos-de-calidad-1.md, diap. 11), riesgos (diap. 8), modelos de calidad (diap. 14) y eficiencia de ejecución (diap. 22 y 24).
+
+## Fuentes
+- Raw: raw/2-2-atributos-de-calidad-1.md, diap. 8; raw/2-2-atributos-de-calidad-1.md, diap. 11; raw/2-2-atributos-de-calidad-1.md, diap. 14; raw/2-2-atributos-de-calidad-1.md, diap. 22; raw/2-2-atributos-de-calidad-1.md, diap. 24
+
+Vacíos: no hay datos sobre KB-B, el experimento ni el consumo de tokens; ninguna de las fuentes revisadas los trae.",,,,,,,
+R-975d,P13,"Si ArquiWiki cambia de proveedor del modelo de lenguaje, ¿qué principio SOLID y qué tácticas de mantenibilidad ayudarían a evitar cambios en toda la aplicación? ¿Cómo comprobarías esa decisión?","Aplicar DIP mediante interfaz abstracta para el proveedor y adaptador concreto, ocultar detalles, mantener interfaces estables y realizar pruebas de sustitución y regresión. No inferir que LSP se cumple sin verificar un contrato compatible de comportamiento.","1.2 Definiciones 1.pdf, diapositiva 42; 3.2 Atributos de Calidad 3.pdf, diapositiva 17.","El contexto recuperado no contiene información sobre qué principio SOLID aplicaría, ni sobre tácticas de mantenibilidad concretas (p. ej., abstracciones, interfaces, encapsulación), ni sobre cómo verificar una decisión de ese tipo. Los fragmentos no mencionan SOLID.
+
+Lo que sí aportan, de forma general y sin llegar a responder la pregunta:
+
+- La mantenibilidad, la adaptabilidad, la extensibilidad, la compatibilidad y la configurabilidad se agrupan en ""Capacidad de Soporte"" dentro del modelo de calidad FURPS+ (raw/2-2-atributos-de-calidad-1.md, diap. 16). Son los atributos de calidad relacionados con este cambio de proveedor.
+- Una arquitectura que ""puede reaccionar a cambios en entorno"" es lo que se denomina arquitectura evolutiva, y una buena arquitectura permite agilidad (raw/1-2-definiciones-1.md, diap. 16). Retrasar ciertas decisiones puede ser mejor que deshacerlas (raw/1-2-definiciones-1.md, diap. 16).
+- La tolerancia al cambio se aborda con desarrollo evolutivo (raw/1-2-definiciones-1.md, diap. 7).
+- Las restricciones, como las integraciones técnicas con otros sistemas o el uso de frameworks, limitan las alternativas de diseño (raw/2-2-atributos-de-calidad-1.md, diap. 9 y 10). El arquitecto debe balancear requerimientos y restricciones (raw/2-2-atributos-de-calidad-1.md, diap. 10). Además, a medida que avanza la implementación, el modelo de datos es más difícil de modificar (raw/2-2-atributos-de-calidad-1.md, diap. 10).
+
+## Fuentes
+- Raw: raw/1-2-definiciones-1.md, diap. 7 y 16; raw/2-2-atributos-de-calidad-1.md, diap. 9, 10 y 16
+
+Vacíos: no hay fragmentos sobre SOLID (p. ej., inversión de dependencias), tácticas de mantenibilidad específicas, ni métodos de verificación o pruebas de la decisión (escenarios de calidad, pruebas, evaluación de arquitectura).",,,,,,,
+R-c92c,P07,¿Cómo se combinan los componentes de un escenario de calidad con sus dos criterios de priorización?,"El escenario identifica fuente, estímulo, artefacto, entorno, respuesta y medida verificable. Luego se pondera su importancia para el negocio según el cliente y su dificultad técnica según el arquitecto (Low/Medium/High). Una prioridad no sustituye la medida de respuesta.","3.1 Atributos de Calidad 2.pdf, diapositivas 6 y 10; 2.2 Atributos de Calidad 1.pdf, diapositiva 11.","Según las fuentes, los componentes de un escenario y sus dos criterios de priorización no se combinan. Son dos niveles separados. Primero se define el escenario con sus seis componentes. Después se le asignan dos valores de prioridad.
+
+**1. Componentes del escenario.** Un escenario describe un estímulo sobre el sistema y una respuesta medible (raw/3-1-atributos-de-calidad-2.md, diap. 5). Sus componentes son (raw/3-1-atributos-de-calidad-2.md, diap. 6):
+- fuente;
+- estímulo;
+- artefacto;
+- respuesta;
+- medida de respuesta, que debe ser específica y medible;
+- entorno, que siempre debe definirse, incluso si es ""normal"".
+
+**2. Criterios de priorización.** Cada escenario recibe dos valores, cada uno Low, Medium o High (raw/3-1-atributos-de-calidad-2.md, diap. 10):
+- qué tan importante es para el éxito, según el cliente;
+- qué tan difícil es de alcanzar, según el arquitecto.
+
+**3. Cómo se unen en la práctica.** La tabla de la diap. 10 lista cada escenario ya redactado con su par de valores, escrito como ""importancia, dificultad"" (raw/3-1-atributos-de-calidad-2.md, diap. 10). Dos ejemplos:
+- Rendimiento: los resultados de búsqueda se ven en menos de 5 s con 2 búsquedas por segundo. Su prioridad es High, High.
+- Escalabilidad: se añaden servidores durante la ventana de mantenimiento en menos de 7 h. Su prioridad es Low, Low.
+
+En estos ejemplos la medida de respuesta (5 s, 7 h) es lo que permite juzgar el escenario. La prioridad es una etiqueta aparte.
+
+Las fuentes no dicen cómo decidir entre combinaciones como High/Low o Low/High. Tampoco dan una regla para ordenar los escenarios a partir de los dos valores.
+
+## Fuentes
+- Wiki: [[wiki/conceptos/escenarios-de-calidad|Escenarios de calidad]]
+- Raw: raw/3-1-atributos-de-calidad-2.md, diap. 5, 6 y 10
+
+Vacíos: la wiki y las fuentes revisadas no contienen una regla para combinar los dos valores de prioridad. Tampoco explican cómo se usan para ordenar escenarios. Además, los ejemplos de escenario de las diap. 8-9 son solo imagen y no están en el texto convertido.",,,,,,,
+R-53c7,P12,"Durante una consulta a KB-B, su base de datos deja de responder. ¿Qué tácticas de disponibilidad aplicarías y cómo comprobarías la recuperación?","Proponer detección mediante ping o latido, recuperación por redundancia o reinicio según el diseño y respuesta controlada de error/degradación. Definir un escenario medible con estímulo falla del almacén, respuesta visible y límite de recuperación o fallo controlado. No afirmar que existan réplicas o failover implementados.","3.2 Atributos de Calidad 3.pdf, diapositivas 14–15; 3.1 Atributos de Calidad 2.pdf, diapositiva 6.","**Aviso:** la wiki y `raw/` no contienen información sobre ""KB-B"". Lo busqué y no aparece, así que no sé cómo está construido ese sistema ni su base de datos. Lo que sigue es el catálogo general de tácticas de disponibilidad del curso, que puedes aplicar a KB-B.
+
+**Tácticas de disponibilidad aplicables**
+
+El escenario de disponibilidad parte de una **falla** y debe acabar en **falla ocultada o sistema reparado** (raw/3-2-atributos-de-calidad-3.md, diap. 14). La diapositiva 15 las agrupa en detección, recuperación (preparar/reparar), recuperación (reintroducción) y prevención. Estas son las que encajan con una base de datos que no responde:
+
+- **Detección:** ping/eco, latido (*heartbeat*) y excepciones (raw/3-2-atributos-de-calidad-3.md, diap. 15). Sirven para notar que la base de datos dejó de responder.
+- **Recuperación (preparar/reparar):** redundancia activa, redundancia pasiva, repuesto, votación y punto de control/retroceso (diap. 15). La idea es tener una réplica de la base de datos que tome el relevo, o volver a un estado anterior consistente.
+- **Recuperación (reintroducción):** modo sombra y sincronización de estado (diap. 15). Sirven para reincorporar la instancia reparada sin perder datos.
+- **Prevención:** quitar de servicio, transacciones y monitoreo de procesos (diap. 15).
+
+La diapositiva 15 no permite asignar con certeza cada táctica a su categoría. La wiki lo advierte y recomienda verificar contra el PDF. Por eso el reparto anterior es aproximado.
+
+**Cómo comprobar la recuperación**
+
+La wiki no define un procedimiento de verificación. Solo aporta medidas y una práctica relacionadas con la confiabilidad:
+
+- **Tiempo medio hasta la recuperación** y **cantidad de tiempo fuera de servicio** (raw/2-2-atributos-de-calidad-1.md, diap. 34 y 36).
+- **Chaos testing** (diap. 35).
+- Las diapositivas no indican qué medida corresponde a cada subcaracterística (disponibilidad, tolerancia a fallos, capacidad de recuperación).
+
+Con esto, la comprobación sería provocar el fallo de la base de datos con *chaos testing* y medir el tiempo de caída y el de recuperación. Es una inferencia mía a partir de esas medidas, no un procedimiento que dé la fuente.
+
+Las diapositivas 9 y 10 (escenario de calidad de disponibilidad) son imágenes sin texto convertido, así que no pude consultar el ejemplo concreto.
+
+## Fuentes
+- Wiki: [[wiki/conceptos/tacticas-de-disponibilidad|Tácticas de disponibilidad]], [[wiki/conceptos/confiabilidad|Confiabilidad]]
+- Raw: raw/3-2-atributos-de-calidad-3.md, diap. 14-15; raw/2-2-atributos-de-calidad-1.md, diap. 34-36 (citadas desde la wiki, sin verificarlas en `raw/`)
+
+Vacíos: la wiki y las fuentes no mencionan KB-B. Tampoco describen qué hace cada táctica, ni un procedimiento de pruebas de recuperación, ni cómo asignar cada táctica a su categoría.",,,,,,,
+R-04fb,P14,¿Cuál fue la latencia real registrada por KB-A al ejecutar las quince preguntas del experimento de ArquiWiki?,No se puede determinar con las diapositivas del curso. Se debe expresar que hace falta evidencia de ejecución y no inventar cifras ni afirmar haber medido el sistema.,"Corpus de presentaciones docentes 1.2–5.1, sin resultados del experimento.","El contexto recuperado no contiene información sobre la latencia registrada por KB-A en las quince preguntas del experimento de ArquiWiki. Los fragmentos tratan sobre atributos de calidad en general (riesgos, definición de atributos, componentes de un escenario de calidad, usabilidad y modelos de calidad de software), y ninguno menciona KB-A, el experimento ni mediciones de latencia.
+
+Lo más cercano es que los atributos de calidad se describen como características medibles (raw/2-2-atributos-de-calidad-1.md, diap. 11) y que la medida de respuesta de un escenario debe ser específica y medible (raw/3-1-atributos-de-calidad-2.md, diap. 6), pero esto no aporta ningún valor de latencia.
+
+## Fuentes
+- Raw: raw/2-2-atributos-de-calidad-1.md, diap. 11; raw/3-1-atributos-de-calidad-2.md, diap. 6
+
+Vacíos: no hay datos sobre KB-A, el experimento de las quince preguntas ni la latencia registrada.",,,,,,,
+R-cf9e,P05,¿Cuáles son los dos estilos arquitectónicos de la categoría «flujo de datos»?,Lote secuencial y tubos y filtros; no confundir con los estilos centrados en datos.,"5.1 Estilos y Patrones Arquitecturales 3.pdf, diapositiva 8.","Los dos estilos de la categoría «flujo de datos» son:
+
+1. **Lote secuencial** (batch). Tiene su propia diapositiva, la 9.
+2. **Tubos y filtros** (pipes and filters). Tiene su propia diapositiva, la 10.
+
+Ambos aparecen bajo «Flujo de datos» en el mapa de estilos de la clase 5.1 (raw/5-1-estilos-y-patrones-arquitecturales-3.md, diap. 3 y 8-10). La clase 2.1 los menciona como «batch» y «pipes and filters» dentro de los estilos monolíticos (raw/2-1-definiciones-2.md, diap. 7).
+
+## Fuentes
+- Wiki: [[wiki/conceptos/estilos-de-flujo-de-datos|Estilos de flujo de datos]]
+- Raw: raw/5-1-estilos-y-patrones-arquitecturales-3.md, diap. 3, 8-10; raw/2-1-definiciones-2.md, diap. 7
+
+Vacíos: la wiki solo registra los títulos de las diapositivas 9 y 10, porque los diagramas no se extrajeron. No contiene la descripción ni las características de cada estilo. No abrí `raw/` para verificar las citas: las tomé de la página de la wiki.",,,,,,,
+R-c05c,P02,¿Qué cuatro categorías de insumos analiza el arquitecto de software antes de diseñar?,"Requisitos funcionales, requisitos no funcionales, riesgos y restricciones. Los atributos de calidad, estilos, patrones y tácticas aparecen como instrumentos de diseño, no como esas cuatro categorías de insumos.","1.2 Definiciones 1.pdf, diapositiva 31.","El contexto recuperado no contiene información sobre las cuatro categorías de insumos que analiza el arquitecto de software antes de diseñar.
+
+Los fragmentos solo cubren temas cercanos:
+- Funciones del arquitecto: tomar decisiones arquitectónicas, analizar continuamente la arquitectura, estar al día de las tendencias, asegurar el cumplimiento de decisiones existentes, entre otras (raw/1-2-definiciones-1.md, diap. 32).
+- Identificación de involucrados internos y externos (raw/1-2-definiciones-1.md, diap. 33).
+
+Ninguno de estos puntos enumera cuatro categorías de insumos previos al diseño. La diapositiva 48 solo menciona que en la próxima clase se verán los requerimientos y los modelos de calidad de software, sin detallar su contenido (raw/1-2-definiciones-1.md, diap. 48).
+
+## Fuentes
+- Raw: raw/1-2-definiciones-1.md, diap. 32; raw/1-2-definiciones-1.md, diap. 33; raw/1-2-definiciones-1.md, diap. 48
+
+Vacíos: no se recuperó ningún fragmento que liste las cuatro categorías de insumos (p. ej., requerimientos, restricciones u otros) que el arquitecto analiza antes de diseñar.",,,,,,,
+R-c1f0,P08,¿Cómo se relaciona DIP con las tácticas de mantenibilidad ante el cambio de una dependencia?,"DIP exige depender de abstracciones; ocultar información, mantener interfaces y usar intermediarios son tácticas que confinan modificaciones y reducen efectos dominó. Compartir interfaz no demuestra por sí solo el principio de sustitución de Liskov.","1.2 Definiciones 1.pdf, diapositiva 42; 3.2 Atributos de Calidad 3.pdf, diapositivas 16–17.","El contexto recuperado no contiene información sobre DIP (Principio de Inversión de Dependencias) ni sobre su relación con las tácticas de mantenibilidad ante el cambio de una dependencia.
+
+Lo más cercano en los fragmentos:
+- El escenario de mantenibilidad se plantea como: pedido de cambio → tácticas para controlar la mantenibilidad → cambio hecho, probado y desplegado (raw/3-2-atributos-de-calidad-3.md, diap. 16). No se detallan las tácticas concretas.
+- La modularidad busca dividir la aplicación en módulos independientes del resto (en lo posible), reduciendo la dependencia (raw/1-2-definiciones-1.md, diap. 43).
+
+Ninguno de los fragmentos vincula estas ideas con DIP ni con el cambio de una dependencia específica.
+
+## Fuentes
+- Raw: raw/3-2-atributos-de-calidad-3.md, diap. 16; raw/1-2-definiciones-1.md, diap. 43
+
+Vacíos: DIP no aparece definido ni mencionado; no se listan las tácticas de mantenibilidad ni su relación con dependencias.",,,,,,,
+R-531a,P03,¿Qué significan los principios SOLID SRP y DIP?,"SRP: una clase debe tener una sola razón para cambiar. DIP: los módulos de alto y bajo nivel deben depender de abstracciones, no de clases concretas.","1.2 Definiciones 1.pdf, diapositivas 41–42.","Las citas coinciden con `raw/`.
+
+- **SRP (Single Responsibility, responsabilidad única):** una clase debería tener una, y solo una, razón para cambiar. Robert C. Martin identifica esa ""razón para cambiar"" como la ""responsabilidad"" (raw/1-2-definiciones-1.md, diap. 41).
+- **DIP (Dependency Inversion, inversión de dependencias):** hay que depender de abstracciones y no de clases concretas. Los módulos de alto nivel no deben depender de los de bajo nivel, y los detalles deben depender de las abstracciones (raw/1-2-definiciones-1.md, diap. 42).
+
+Ambos forman parte de SOLID, junto con OCP, LSP e ISP. Son cinco principios de diseño orientado a objetos ([[wiki/conceptos/principios-solid|Principios SOLID]]).
+
+## Fuentes
+- Wiki: [[wiki/conceptos/principios-solid|Principios SOLID]]
+- Raw: raw/1-2-definiciones-1.md, diap. 41 (SRP) y diap. 42 (DIP)
+
+Vacíos: la wiki no trae ejemplos ni más desarrollo de SRP o DIP. Solo da las definiciones de las diapositivas.",,,,,,,
+R-a3d1,P07,¿Cómo se combinan los componentes de un escenario de calidad con sus dos criterios de priorización?,"El escenario identifica fuente, estímulo, artefacto, entorno, respuesta y medida verificable. Luego se pondera su importancia para el negocio según el cliente y su dificultad técnica según el arquitecto (Low/Medium/High). Una prioridad no sustituye la medida de respuesta.","3.1 Atributos de Calidad 2.pdf, diapositivas 6 y 10; 2.2 Atributos de Calidad 1.pdf, diapositiva 11.","El contexto recuperado no contiene información sobre cómo se combinan los componentes de un escenario de calidad con los dos criterios de priorización. Los fragmentos describen ambas cosas por separado y no las relacionan.
+
+- **Componentes del escenario (ADD):** cada escenario relaciona un atributo de calidad con distintas técnicas de implementación. Se estructura en tres partes: (1) estímulo, cualquier hecho que afecte la calidad; (2) técnicas de respuesta, que buscan controlar la respuesta al estímulo; y (3) respuesta, la respuesta esperada o caso de éxito al implementar la técnica (raw/3-1-atributos-de-calidad-2.md, diap. 19; raw/3-2-atributos-de-calidad-3.md, diap. 11).
+- **Criterios de priorización:** los atributos de calidad son priorizados por el cliente, de acuerdo al éxito del sistema, y por el arquitecto, de acuerdo al riesgo técnico (raw/2-2-atributos-de-calidad-1.md, diap. 12).
+- **Relación entre ambos:** ADD busca priorizar en el diseño los requerimientos, riesgos y atributos de calidad definidos para el proyecto (raw/3-1-atributos-de-calidad-2.md, diap. 19). Sin embargo, los fragmentos no indican cómo se aplican los criterios del cliente y del arquitecto a los componentes del escenario.
+
+## Fuentes
+- Raw: raw/3-1-atributos-de-calidad-2.md, diap. 19; raw/3-2-atributos-de-calidad-3.md, diap. 11; raw/2-2-atributos-de-calidad-1.md, diap. 12
+
+Vacíos: no se explica el mecanismo de combinación entre los componentes del escenario (estímulo, técnicas de respuesta, respuesta) y los criterios de priorización (éxito del sistema para el cliente, riesgo técnico para el arquitecto). La diap. 44 de raw/2-2-atributos-de-calidad-1.md solo plantea ""¿Qué son los escenarios de calidad?"" como pregunta pendiente, sin respuesta.",,,,,,,
+R-9dfb,P09,"¿En qué se diferencian el flujo de datos por tubos y filtros y una solución centrada en datos, y cómo influye esa elección en la calidad?","Tubos y filtros organiza transformaciones sucesivas; un enfoque centrado en datos organiza componentes alrededor de información compartida (pizarrón o base). Debe justificarse frente a modificabilidad, desempeño y consistencia con escenarios medibles; ninguna opción asegura automáticamente mejor calidad.","5.1 Estilos y Patrones Arquitecturales 3.pdf, diapositivas 8 y 11–13; 2.2 Atributos de Calidad 1.pdf, diapositivas 11–12.","El contexto recuperado no contiene información sobre las diferencias entre el flujo de datos por tubos y filtros y una solución centrada en datos, ni sobre cómo cada estilo influye en la calidad. Ningún fragmento describe estos estilos arquitectónicos.
+
+Lo único relacionado que traen los fragmentos es información general sobre calidad:
+
+- No se puede satisfacer al 100% todos los atributos de calidad; satisfacer uno puede afectar positiva o negativamente a otros, fenómeno conocido como ""trade-off"" (raw/3-2-atributos-de-calidad-3.md, diap. 7).
+- Para gestionar esos trade-offs se menciona el método ATAM y, en arquitecturas evolutivas, las funciones de encaje (fitness) (raw/3-2-atributos-de-calidad-3.md, diap. 7).
+- Los atributos de calidad se pueden priorizar según su importancia para el cliente y la dificultad para el arquitecto (raw/3-1-atributos-de-calidad-2.md, diap. 10).
+
+Estos puntos no vinculan ningún estilo concreto con atributos de calidad.
+
+## Fuentes
+- Raw: raw/3-2-atributos-de-calidad-3.md, diap. 7; raw/3-1-atributos-de-calidad-2.md, diap. 10
+
+Vacíos: definición y características de tubos y filtros y de arquitecturas centradas en datos, sus diferencias y su impacto en los atributos de calidad.",,,,,,,
+R-babe,P01,¿Cómo define el curso la arquitectura de software y qué elementos la componen?,"Es el conjunto de conceptos o propiedades fundamentales del sistema expresados por sus elementos, relaciones y principios de diseño y evolución. La diapositiva 24 también enumera elementos de software, sus relaciones y las propiedades de ambos.","1.2 Definiciones 1.pdf, diapositivas 24–25.","**Definición.** El curso presenta varias definiciones de arquitectura de software:
+- La estructura del sistema, compuesta por elementos de software, sus propiedades visibles y sus relaciones (Bass, Clements & Kazman, 2003) (raw/1-2-definiciones-1.md, diap. 25).
+- El conjunto de decisiones principales de diseño tomadas para el sistema (Taylor, 2010) (raw/1-2-definiciones-1.md, diap. 25).
+- ""La arquitectura se reduce a las cosas importantes, cualesquiera que sean"" (Fowler, 2002) (raw/1-2-definiciones-1.md, diap. 25).
+- Según ISO/IEC/IEEE 42010:2011: conceptos fundamentales o propiedades de un sistema en su entorno, representados por sus elementos, relaciones y los principios de su diseño y evolución (raw/1-2-definiciones-1.md, diap. 24).
+
+La síntesis del curso la describe como el diseño conceptual de una solución, que muestra los componentes, funciones y estructura general, además de cómo se comunican y relacionan (raw/1-2-definiciones-1.md, diap. 25).
+
+**Elementos que la componen.** La arquitectura comprende elementos de software, las relaciones entre ellos y las propiedades de ambos (raw/1-2-definiciones-1.md, diap. 24).
+
+**Términos relacionados.** La descripción de arquitectura es el producto de trabajo explícito que expresa la arquitectura, normalmente mediante modelos, texto o gráficos. Diseñar una arquitectura (architecting) es el proceso de crearla (raw/1-2-definiciones-1.md, diap. 24).
+
+## Fuentes
+- Raw: raw/1-2-definiciones-1.md, diap. 24; raw/1-2-definiciones-1.md, diap. 25
+
+Vacíos: la pregunta ""¿Qué compone una arquitectura?"" aparece solo como tema de la próxima clase (raw/3-2-atributos-de-calidad-3.md, diap. 32), sin respuesta en los fragmentos recuperados. Tampoco hay detalle sobre los componentes, funciones o estructura general más allá de lo citado.",,,,,,,
+R-70d4,P04,¿Cuáles son los seis componentes de un escenario de calidad?,"Fuente del estímulo, estímulo, artefacto, entorno, respuesta y medida de la respuesta.","3.1 Atributos de Calidad 2.pdf, diapositiva 6.","Los seis componentes de un escenario de calidad son (raw/3-1-atributos-de-calidad-2.md, diap. 6):
+
+1. **Fuente**: persona o sistema que inicia el estímulo.
+2. **Estímulo**: evento que requiere que el sistema responda.
+3. **Artefacto**: parte del sistema o el sistema completo.
+4. **Entorno**: circunstancias operativas; siempre debe definirse, incluso si es ""normal"".
+5. **Respuesta**: acción visible externamente.
+6. **Medida de respuesta**: criterio de éxito del escenario; debe ser específico y medible.
+
+## Fuentes
+- Raw: raw/3-1-atributos-de-calidad-2.md, diap. 6",,,,,,,
+R-6440,P09,"¿En qué se diferencian el flujo de datos por tubos y filtros y una solución centrada en datos, y cómo influye esa elección en la calidad?","Tubos y filtros organiza transformaciones sucesivas; un enfoque centrado en datos organiza componentes alrededor de información compartida (pizarrón o base). Debe justificarse frente a modificabilidad, desempeño y consistencia con escenarios medibles; ninguna opción asegura automáticamente mejor calidad.","5.1 Estilos y Patrones Arquitecturales 3.pdf, diapositivas 8 y 11–13; 2.2 Atributos de Calidad 1.pdf, diapositivas 11–12.","La wiki solo cubre en parte la pregunta. Cubre la clasificación de ambos estilos, pero no cómo se comparan ni cómo influyen en la calidad.
+
+**Lo que sí hay en la wiki**
+- Los estilos de flujo de datos y los centrados en datos son dos familias distintas dentro de la clasificación en cuatro familias de la clase 5.1.
+  - Flujo de datos incluye lote secuencial y tubos y filtros (raw/5-1-estilos-y-patrones-arquitecturales-3.md, diap. 8 y 10). Ver [[wiki/conceptos/estilos-de-flujo-de-datos|Estilos de flujo de datos]].
+  - Centrados en datos incluye pizarrón, centrado en base de datos y sistema experto basado en reglas (raw/5-1-estilos-y-patrones-arquitecturales-3.md, diap. 11-14). Ver [[wiki/conceptos/estilos-centrados-en-datos|Estilos centrados en datos]].
+- La clase 2.1 nombra ambos tipos entre los estilos monolíticos, es decir, un solo equipo y una sola pieza de software.
+  - Flujo de datos aparece como ""batch"" y ""pipes and filters"".
+  - Los centrados en datos aparecen como ""blackboard"", descrito como memoria compartida, e ""intérprete (rule based)"" (raw/2-1-definiciones-2.md, diap. 7). Ver [[wiki/conceptos/estilos-arquitectonicos|Estilos arquitectónicos]].
+- Esa misma diapositiva lista factores que influyen en la elección del estilo: curva de aprendizaje, modularidad, eficiencia, capacidad de prueba, capacidad de modificación, disponibilidad, adaptabilidad y uso de recursos (raw/2-1-definiciones-2.md, diap. 7). La wiki indica que el texto convertido no deja claro a qué grupo corresponde cada ítem.
+- Sobre el contraste entre los dos estilos, lo único que dice la wiki es el nombre de cada uno según su familia: el flujo de datos se nombra por los datos que se mueven entre pasos, y los centrados en datos por los datos que se almacenan. Esto sale de los nombres de las familias, no de una explicación de las fuentes.
+
+**Lo que la wiki no contiene**
+- No hay una descripción de cómo funciona cada estilo. Las diapositivas convertidas solo traen los títulos y los diagramas no se extrajeron (raw/5-1-estilos-y-patrones-arquitecturales-3.md, diap. 10 y 12-14).
+- La wiki no contiene información sobre cómo elegir entre flujo de datos y centrado en datos afecta a atributos de calidad concretos, como modificabilidad, desempeño o disponibilidad. Las fuentes revisadas tampoco la traen.
+- Lo único que sí dicen las fuentes es general: el estilo restringe las decisiones arquitectónicas y se elige según esos factores de calidad (raw/2-1-definiciones-2.md, diap. 6-7). Los atributos están en tensión entre sí, así que hay que tomar decisiones de compromiso. Ver [[wiki/conceptos/acuerdos-trade-offs|Acuerdos (trade-offs)]].
+
+## Fuentes
+- Wiki: [[wiki/conceptos/estilos-de-flujo-de-datos|Estilos de flujo de datos]], [[wiki/conceptos/estilos-centrados-en-datos|Estilos centrados en datos]], [[wiki/conceptos/estilos-arquitectonicos|Estilos arquitectónicos]], [[wiki/conceptos/acuerdos-trade-offs|Acuerdos (trade-offs)]]
+- Raw: raw/5-1-estilos-y-patrones-arquitecturales-3.md, diap. 3, 8-14; raw/2-1-definiciones-2.md, diap. 6-7
+
+Vacíos: no hay descripción del funcionamiento de tubos y filtros ni de los estilos centrados en datos, ni una comparación entre ellos, ni su impacto en atributos de calidad concretos. Haría falta ingerir el contenido de los diagramas o fuentes adicionales.",,,,,,,
+R-7679,P08,¿Cómo se relaciona DIP con las tácticas de mantenibilidad ante el cambio de una dependencia?,"DIP exige depender de abstracciones; ocultar información, mantener interfaces y usar intermediarios son tácticas que confinan modificaciones y reducen efectos dominó. Compartir interfaz no demuestra por sí solo el principio de sustitución de Liskov.","1.2 Definiciones 1.pdf, diapositiva 42; 3.2 Atributos de Calidad 3.pdf, diapositivas 16–17.","La wiki no relaciona DIP con las tácticas de mantenibilidad, ni las fuentes revisadas. Solo puedo darte las dos piezas por separado.
+
+**Qué dice la wiki sobre cada una**
+- **DIP:** consiste en depender de abstracciones y no de clases concretas. Los módulos de alto nivel no deben depender de los de bajo nivel, y los detalles deben depender de las abstracciones (raw/1-2-definiciones-1.md, diap. 42). Está en [[wiki/conceptos/principios-solid|Principios SOLID]].
+- **Tácticas de mantenibilidad:** el escenario va de un pedido de cambio a un cambio hecho, probado y desplegado (raw/3-2-atributos-de-calidad-3.md, diap. 16). Las tácticas nombradas incluyen ocultar información, mantener la interfaz, intermediarios, adherir a protocolos, polimorfismo, diferir enlace, archivos de configuración y reemplazo de componentes (raw/3-2-atributos-de-calidad-3.md, diap. 17). Están en [[wiki/conceptos/tacticas-de-mantenibilidad|Tácticas de mantenibilidad]].
+
+**Qué no dice**
+- Ninguna fuente menciona el cambio de una dependencia en relación con DIP.
+- Ninguna fuente asigna DIP a una táctica concreta, como intermediarios o mantener la interfaz.
+- La conversión de la diap. 17 tampoco permite asignar con certeza cada táctica a su grupo, por ejemplo ""prevenir efectos dominó"". Hay que verificarlo contra el PDF (raw/3-2-atributos-de-calidad-3.md, diap. 17).
+
+Cualquier vínculo que yo propusiera, como ""DIP implementa la táctica de intermediarios"", sería inferencia mía y no aparece en el vault. Por eso no lo afirmo.
+
+## Fuentes
+- Wiki: [[wiki/conceptos/principios-solid|Principios SOLID]], [[wiki/conceptos/tacticas-de-mantenibilidad|Tácticas de mantenibilidad]]
+- Raw: raw/1-2-definiciones-1.md, diap. 42; raw/3-2-atributos-de-calidad-3.md, diap. 16-17
+
+Vacíos: la wiki no contiene información sobre la relación entre DIP y las tácticas de mantenibilidad, ni sobre el cambio de una dependencia, y las fuentes revisadas tampoco.",,,,,,,
+R-1ede,P06,¿Cómo se relacionan la elección de un estilo arquitectónico y los atributos de calidad que deberá cumplir el sistema?,"El estilo reúne decisiones y restricciones de diseño; los atributos de calidad expresan propiedades medibles y guían las decisiones. Una arquitectura en capas puede facilitar modificabilidad, mientras concurrencia y redundancia responden a rendimiento y fiabilidad. Son efectos potenciales que requieren escenarios y comprobación.","2.1 Definiciones 2.pdf, diapositivas 6 y 8; 2.2 Atributos de Calidad 1.pdf, diapositivas 11–12.","Las fuentes no dan una regla directa que ligue cada estilo con ciertos atributos de calidad. Sí dan una relación general, que se apoya en cuatro ideas.
+
+1. **Los atributos de calidad guían las decisiones de diseño.** Determinan la mayoría de las decisiones de arquitectura. Si solo importara la funcionalidad, bastaría un sistema monolítico. Los atributos explican por qué aparecen estructuras redundantes para fiabilidad, concurrentes para rendimiento y en capas para modificabilidad (raw/2-2-atributos-de-calidad-1.md, diap. 12; [[wiki/conceptos/atributos-de-calidad|Atributos de calidad]]).
+
+2. **Un estilo restringe las decisiones y busca beneficios.** Es una colección de decisiones de diseño, aplicables en un contexto, que restringen las decisiones arquitectónicas específicas y obtienen beneficios en cada sistema resultante (raw/2-1-definiciones-2.md, diap. 6; [[wiki/conceptos/estilos-arquitectonicos|Estilos arquitectónicos]]).
+
+3. **La clasificación de estilos menciona atributos.** La diapositiva de clasificación nombra factores que influyen en la elección: curva de aprendizaje, modularidad, eficiencia, capacidad de prueba, capacidad de modificación, disponibilidad, adaptabilidad y uso de recursos (raw/2-1-definiciones-2.md, diap. 7). La wiki señala que el texto convertido no deja claro a qué grupo pertenece cada factor ([[wiki/conceptos/estilos-arquitectonicos|Estilos arquitectónicos]]).
+
+4. **Algunos estilos ya traen técnicas para manejar atributos.** En el marco de escenarios y tácticas de ADD, ""algunos patrones y estilos ya implementan técnicas para el manejo de atributos"" (raw/3-2-atributos-de-calidad-3.md, diap. 12; [[wiki/conceptos/tacticas-de-arquitectura|Tácticas de arquitectura]]). Las tácticas se clasifican por atributo: disponibilidad, mantenibilidad, eficiencia de ejecución, seguridad, capacidad de prueba y usabilidad (raw/3-2-atributos-de-calidad-3.md, diap. 13).
+
+**Consecuencia: hay que negociar.** Los atributos no son independientes. Satisfacer uno puede afectar a otros, y no se puede cumplir todos al 100 %. Por eso elegir un estilo implica un trade-off (raw/3-2-atributos-de-calidad-3.md, diap. 4 y 7; [[wiki/conceptos/acuerdos-trade-offs|Acuerdos (trade-offs)]]). El ejemplo de la fuente es que un sistema muy seguro puede ser menos usable. Los métodos citados para gestionar estos acuerdos son ATAM y, en arquitecturas evolutivas, la función de encaje (raw/3-2-atributos-de-calidad-3.md, diap. 7).
+
+El proceso de arquitectura también lo refleja. Los atributos de calidad son una entrada del arquitecto. Los estilos forman parte de la experiencia y el conocimiento de la comunidad que usa. Las salidas incluyen la arquitectura y los acuerdos (raw/2-1-definiciones-2.md, diap. 10-11; [[wiki/conceptos/proceso-de-arquitectura|Proceso de arquitectura]]). Esta última relación la leí en el texto de las diapositivas, no en la página de la wiki.
+
+## Fuentes
+- Wiki: [[wiki/conceptos/estilos-arquitectonicos|Estilos arquitectónicos]], [[wiki/conceptos/atributos-de-calidad|Atributos de calidad]], [[wiki/conceptos/acuerdos-trade-offs|Acuerdos (trade-offs)]], [[wiki/conceptos/tacticas-de-arquitectura|Tácticas de arquitectura]], [[wiki/conceptos/proceso-de-arquitectura|Proceso de arquitectura]]
+- Raw: raw/2-1-definiciones-2.md, diap. 6, 7, 10-11; raw/2-2-atributos-de-calidad-1.md, diap. 12; raw/3-2-atributos-de-calidad-3.md, diap. 4, 7, 12-13
+
+Vacíos: la wiki no contiene una correspondencia explícita entre estilos concretos, como capas, tubos y filtros o microservicios, y los atributos que favorecen o perjudican. Tampoco indica qué técnicas de atributos implementa cada estilo.",,,,,,,
+R-b45b,P01,¿Cómo define el curso la arquitectura de software y qué elementos la componen?,"Es el conjunto de conceptos o propiedades fundamentales del sistema expresados por sus elementos, relaciones y principios de diseño y evolución. La diapositiva 24 también enumera elementos de software, sus relaciones y las propiedades de ambos.","1.2 Definiciones 1.pdf, diapositivas 24–25.","El curso define la arquitectura de software como la estructura de alto nivel de un sistema. Esa estructura se compone de elementos de software, de las relaciones entre ellos y de las propiedades de ambos. Además incluye las decisiones principales de diseño ([[wiki/conceptos/arquitectura-de-software|Arquitectura de software]]).
+
+**Definiciones que da el curso**
+- **ISO/IEC/IEEE 42010:2011:** son los conceptos fundamentales o propiedades de un sistema en su entorno. Se representan mediante sus elementos, sus relaciones y los principios de su diseño y evolución (raw/1-2-definiciones-1.md, diap. 24). Véase [[wiki/entidades/iso-iec-ieee-42010|ISO/IEC/IEEE 42010]].
+- **Descripción de arquitectura:** es el producto de trabajo explícito, normalmente modelos, texto o gráficos. **Architecting** es el proceso de crear una arquitectura (raw/1-2-definiciones-1.md, diap. 24).
+- **Bass, Clements y Kazman (2003):** es la estructura del sistema, formada por elementos de software, sus propiedades visibles y sus relaciones (raw/1-2-definiciones-1.md, diap. 25).
+- **Taylor (2010):** es el conjunto de decisiones principales de diseño tomadas para el sistema (raw/1-2-definiciones-1.md, diap. 25).
+- **Fowler (2002):** se reduce a las cosas importantes, cualesquiera que sean (raw/1-2-definiciones-1.md, diap. 25).
+- **Definición de la clase:** es el diseño conceptual de una solución. Muestra componentes, funciones y estructura general, y cómo se comunican y relacionan (raw/1-2-definiciones-1.md, diap. 25).
+
+**Elementos que la componen**
+1. Elementos de software o componentes.
+2. Relaciones entre ellos.
+3. Propiedades de los elementos y de las relaciones.
+4. Principios o decisiones principales de diseño y evolución (raw/1-2-definiciones-1.md, diap. 24-25).
+
+**Precisiones del curso**
+- **Frente al diseño:** la arquitectura corresponde a las decisiones principales, y cambiarlas cuesta mucho. Según Booch, toda arquitectura implica diseño, pero no todo diseño es arquitectura (raw/1-2-definiciones-1.md, diap. 19). Véase [[wiki/comparaciones/arquitectura-vs-diseno|Arquitectura vs diseño]].
+- **Frente a patrón y estilo:** un patrón arquitectónico no es una arquitectura. Solo delinea elementos cohesivos, y varias arquitecturas pueden implementar el mismo patrón (raw/2-1-definiciones-2.md, diap. 4). Un estilo restringe las decisiones arquitectónicas propias de un contexto (raw/2-1-definiciones-2.md, diap. 6).
+- **Origen del término:** en sentido general, ""architecture"" es planificar, diseñar y construir estructuras. Sus cualidades son utilitas, firmitas y venustas (raw/1-2-definiciones-1.md, diap. 18).
+
+## Fuentes
+- Wiki: [[wiki/conceptos/arquitectura-de-software|Arquitectura de software]], [[wiki/entidades/iso-iec-ieee-42010|ISO/IEC/IEEE 42010]], [[wiki/comparaciones/arquitectura-vs-diseno|Arquitectura vs diseño]]
+- Raw: raw/1-2-definiciones-1.md, diap. 18, 19, 24, 25; raw/2-1-definiciones-2.md, diap. 4 y 6
+
+Vacíos: no abrí las diapositivas de raw/ una por una. Solo comprobé en raw/ que la fuente de Bass, Clements y Kazman (2003) existe. Las demás citas las tomé de las páginas de la wiki.",,,,,,,
+R-71cc,P14,¿Cuál fue la latencia real registrada por KB-A al ejecutar las quince preguntas del experimento de ArquiWiki?,No se puede determinar con las diapositivas del curso. Se debe expresar que hace falta evidencia de ejecución y no inventar cifras ni afirmar haber medido el sistema.,"Corpus de presentaciones docentes 1.2–5.1, sin resultados del experimento.","La wiki no contiene información sobre la latencia registrada por KB-A en las quince preguntas del experimento de ArquiWiki. Tampoco la contienen las fuentes revisadas de `raw/`. `wiki/index.md` no tiene ninguna página sobre el experimento ni sobre KB-A. Busqué ""latencia"" y ""KB-A"" en todas las notas legibles, `raw/` incluido, y no hubo coincidencias.
+
+La wiki solo trata la latencia en general, como parte de [[wiki/conceptos/eficiencia-de-desempeno|Eficiencia de desempeño]] (comportamiento temporal). Eso no da ningún dato medido del experimento.
+
+## Fuentes
+- Wiki: [[wiki/index|Índice]] (sin páginas del experimento)
+- Raw: ninguna coincidencia en búsquedas de ""latencia"" y ""KB-A""
+
+Vacíos: no hay datos de latencia, de KB-A ni de las quince preguntas del experimento.",,,,,,,

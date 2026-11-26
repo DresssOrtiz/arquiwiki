@@ -22,3 +22,4 @@ kb-wiki/vault/.obsidian/workspace*.json
 
 # Worktrees de agentes de Claude Code
 .claude/worktrees/
+experiment/results/calificacion_mapa.json

@@ -1,0 +1,77 @@
+[
+  {
+    "id": "P01",
+    "fuente_verificable": "1.2 Definiciones 1.pdf, diapositivas 24–25.",
+    "respuesta_referencia": "Es el conjunto de conceptos o propiedades fundamentales del sistema expresados por sus elementos, relaciones y principios de diseño y evolución. La diapositiva 24 también enumera elementos de software, sus relaciones y las propiedades de ambos."
+  },
+  {
+    "id": "P02",
+    "fuente_verificable": "1.2 Definiciones 1.pdf, diapositiva 31.",
+    "respuesta_referencia": "Requisitos funcionales, requisitos no funcionales, riesgos y restricciones. Los atributos de calidad, estilos, patrones y tácticas aparecen como instrumentos de diseño, no como esas cuatro categorías de insumos."
+  },
+  {
+    "id": "P03",
+    "fuente_verificable": "1.2 Definiciones 1.pdf, diapositivas 41–42.",
+    "respuesta_referencia": "SRP: una clase debe tener una sola razón para cambiar. DIP: los módulos de alto y bajo nivel deben depender de abstracciones, no de clases concretas."
+  },
+  {
+    "id": "P04",
+    "fuente_verificable": "3.1 Atributos de Calidad 2.pdf, diapositiva 6.",
+    "respuesta_referencia": "Fuente del estímulo, estímulo, artefacto, entorno, respuesta y medida de la respuesta."
+  },
+  {
+    "id": "P05",
+    "fuente_verificable": "5.1 Estilos y Patrones Arquitecturales 3.pdf, diapositiva 8.",
+    "respuesta_referencia": "Lote secuencial y tubos y filtros; no confundir con los estilos centrados en datos."
+  },
+  {
+    "id": "P06",
+    "fuente_verificable": "2.1 Definiciones 2.pdf, diapositivas 6 y 8; 2.2 Atributos de Calidad 1.pdf, diapositivas 11–12.",
+    "respuesta_referencia": "El estilo reúne decisiones y restricciones de diseño; los atributos de calidad expresan propiedades medibles y guían las decisiones. Una arquitectura en capas puede facilitar modificabilidad, mientras concurrencia y redundancia responden a rendimiento y fiabilidad. Son efectos potenciales que requieren escenarios y comprobación."
+  },
+  {
+    "id": "P07",
+    "fuente_verificable": "3.1 Atributos de Calidad 2.pdf, diapositivas 6 y 10; 2.2 Atributos de Calidad 1.pdf, diapositiva 11.",
+    "respuesta_referencia": "El escenario identifica fuente, estímulo, artefacto, entorno, respuesta y medida verificable. Luego se pondera su importancia para el negocio según el cliente y su dificultad técnica según el arquitecto (Low/Medium/High). Una prioridad no sustituye la medida de respuesta."
+  },
+  {
+    "id": "P08",
+    "fuente_verificable": "1.2 Definiciones 1.pdf, diapositiva 42; 3.2 Atributos de Calidad 3.pdf, diapositivas 16–17.",
+    "respuesta_referencia": "DIP exige depender de abstracciones; ocultar información, mantener interfaces y usar intermediarios son tácticas que confinan modificaciones y reducen efectos dominó. Compartir interfaz no demuestra por sí solo el principio de sustitución de Liskov."
+  },
+  {
+    "id": "P09",
+    "fuente_verificable": "5.1 Estilos y Patrones Arquitecturales 3.pdf, diapositivas 8 y 11–13; 2.2 Atributos de Calidad 1.pdf, diapositivas 11–12.",
+    "respuesta_referencia": "Tubos y filtros organiza transformaciones sucesivas; un enfoque centrado en datos organiza componentes alrededor de información compartida (pizarrón o base). Debe justificarse frente a modificabilidad, desempeño y consistencia con escenarios medibles; ninguna opción asegura automáticamente mejor calidad."
+  },
+  {
+    "id": "P10",
+    "fuente_verificable": "3.1 Atributos de Calidad 2.pdf, diapositiva 6; 2.2 Atributos de Calidad 1.pdf, diapositivas 11–12; 3.2 Atributos de Calidad 3.pdf, diapositivas 18–19.",
+    "respuesta_referencia": "Ejemplo válido: fuente = usuarios; estímulo = 60 consultas concurrentes; artefacto = API de consultas; entorno = funcionamiento normal; respuesta = devolver respuestas o errores controlados; medida = 95 % de consultas atendidas en menos de 3 segundos en el escenario ensayado. 60 y 3 segundos son objetivos ilustrativos de la pregunta, NO mediciones del prototipo. Se aceptan umbrales alternativos explícitos y razonables."
+  },
+  {
+    "id": "P11",
+    "fuente_verificable": "2.2 Atributos de Calidad 1.pdf, diapositivas 9–10; 3.2 Atributos de Calidad 3.pdf, diapositivas 20–21.",
+    "respuesta_referencia": "Separar permisos de lectura y escritura, autenticar el cliente, autorizar operaciones por rol y ruta, limitar acceso, generar trazas de auditoría y probar intentos de escritura rechazados. Son tácticas recomendadas para el caso, no evidencia de que la implementación ya las cumpla."
+  },
+  {
+    "id": "P12",
+    "fuente_verificable": "3.2 Atributos de Calidad 3.pdf, diapositivas 14–15; 3.1 Atributos de Calidad 2.pdf, diapositiva 6.",
+    "respuesta_referencia": "Proponer detección mediante ping o latido, recuperación por redundancia o reinicio según el diseño y respuesta controlada de error/degradación. Definir un escenario medible con estímulo falla del almacén, respuesta visible y límite de recuperación o fallo controlado. No afirmar que existan réplicas o failover implementados."
+  },
+  {
+    "id": "P13",
+    "fuente_verificable": "1.2 Definiciones 1.pdf, diapositiva 42; 3.2 Atributos de Calidad 3.pdf, diapositiva 17.",
+    "respuesta_referencia": "Aplicar DIP mediante interfaz abstracta para el proveedor y adaptador concreto, ocultar detalles, mantener interfaces estables y realizar pruebas de sustitución y regresión. No inferir que LSP se cumple sin verificar un contrato compatible de comportamiento."
+  },
+  {
+    "id": "P14",
+    "fuente_verificable": "Corpus de presentaciones docentes 1.2–5.1, sin resultados del experimento.",
+    "respuesta_referencia": "No se puede determinar con las diapositivas del curso. Se debe expresar que hace falta evidencia de ejecución y no inventar cifras ni afirmar haber medido el sistema."
+  },
+  {
+    "id": "P15",
+    "fuente_verificable": "Corpus de presentaciones docentes 1.2–5.1, sin resultados del experimento.",
+    "respuesta_referencia": "No se puede determinar con el material de clase. Solo los registros reales de ejecución permitirían obtenerlo; no confundir tokens del LLM con tokens procesados por embeddings."
+  }
+]

@@ -81,3 +81,46 @@ Corpus: las 4 muestras sintéticas de `raw/`, de unos 1 KB cada una. Motor: `cla
 - **Muestras separadas del corpus:** las 4 muestras sintéticas se restauraron (desde `e064388^`) en `kb-wiki/muestras/`, fuera de `kb-wiki/vault/`, con un README que aclara que no son parte del corpus evaluado ni se cargan en KB-A/KB-B. `kb-wiki/vault/raw/` queda solo con los 6 archivos reales.
 - **`scripts/seed-demo.sh`:** ahora mapea ATAM a `3-2-atributos-de-calidad-3.md` y "Atributos de calidad" a `2-2-atributos-de-calidad-1.md` (verificado con grep; ATAM solo figura en el temario de 3.2, así que el texto de la página se limitó a lo que dice la fuente). Tras la precarga comprueba con `GET /paginas/{id}` que cada página tenga su fuente, también en la rama idempotente (por título); si falta algo imprime error y sale con código 1. Probado desde cero, segunda corrida y fallo provocado.
 - **`run_agent.py`:** `run_id` único (`uuid4().hex[:12]`) en el nombre del archivo de respuesta, en cada línea de `kba_runs.jsonl` (incluidos errores) y en el dict devuelto; la respuesta se escribe con `open(..., "x")`. Prueba nueva con reloj fijo y dos corridas de P01.
+
+## 2026-11-25 · Experimento comparativo (WP7)
+
+- **Qué se construyó** (`experiment/`): `preguntas.json` y `claves.json` (15 preguntas transcritas del cap. 4.2 con un script de extracción, revisadas contra el PDF), `rubrica.md`, `run.py` (brazos A y B, overhead, dry-run), `calificacion.py` (CSV ciego y destape), `reporte.py` (tablas), `costo_actualizacion.py` y pruebas. Detalle y amenazas en `experiment/README.md`.
+- **Equidad:** mismo modelo y misma invocación aislada de `claude -p` en ambos brazos (solo cambia que A lleva el MCP del consultor y B ninguna herramienta). B recibe los fragmentos de `/query` con `use_llm:false` y reglas de respuesta equivalentes a `AGENTS.md`. Antes de cada pregunta de A se verifica que `main` == `kb-a-baseline` y se resetea la rama del consultor vía `docker compose exec`; si difiere, la corrida aborta.
+- **Decisiones:** `run.py` ignora `ANTHROPIC_API_KEY` para no cobrar la API; `latencia_total_ms` de B suma recuperación y generación; el parseo de la salida JSON de `claude` se replicó en `run.py` porque `run_agent` no lo expone como función (convendría extraerlo).
+- **Verificado:** pruebas con `claude` y RAG falsos (38 en verde junto con las de `run_agent`). No se ejecutó ninguna corrida real ni se consultó el RAG; los números llegarán con la corrida principal.
+- **Pendiente:** corrida de 90 respuestas, calificación ciega por dos personas, y el costo de actualización (después de la corrida principal; cambia la línea base).
+
+## 2026-11-25 · Piloto del experimento (P01, una repetición)
+
+| Brazo | Entrada total | Salida | Latencia total | Fuentes citadas |
+|---|---|---|---|---|
+| A (LLM Wiki) | 40 036 | 1 929 | 15,3 s | 1.2 diap. 18, 19, 24, 25; 2.1 diap. 4 y 6, además de 3 páginas de la wiki |
+| B (RAG, k=5) | 2 956 | 772 | 7,5 s (recuperación + generación) | 1.2 diap. 24 y 25 |
+
+- Las dos respuestas contienen la referencia de Andrés (42010 y elementos, relaciones y propiedades, 1.2 diap. 24-25). A sintetiza más: agrega diseño frente a arquitectura y patrón frente a estilo, porque sigue los enlaces de la wiki. B se limita a los 5 fragmentos y declara como vacío lo que no recuperó.
+- El estado de A se verificó antes de la pregunta: `main` == `kb-a-baseline` (fe38dfd). La consulta no cambió el vault.
+- A gastó unas 13,5 veces más tokens de entrada que B y tardó el doble. Es un solo dato, así que todavía no se generaliza.
+
+## 2026-11-25 · Corrida principal del experimento (15 preguntas, 1 repetición)
+
+Se hizo en 3 tandas (P01 del piloto, P02-P05, P06-P10 y P11-P15) para no agotar el cupo de la suscripción. Son 30 ejecuciones, sin errores. `main` del vault quedó igual a `kb-a-baseline` (fe38dfd) antes y después de cada pregunta de A. Las tablas completas están en `experiment/results/tabla.md`.
+
+| Por consulta (media) | KB-A (wiki) | KB-B (RAG) |
+|---|---|---|
+| Entrada total | 41 417 | 2 962 |
+| Entrada nueva (sin relecturas de caché) | 15 202 | 2 962 |
+| Salida | 1 509 | 684 |
+| Turnos | 7,9 | 1 |
+| Latencia (mediana) | 16,5 s | 7,3 s |
+
+- **Consumo de la corrida:** unos 0,67 millones de tokens de entrada (621 mil de A y 44 mil de B), con un costo equivalente de unos $1,30. Como se usa la suscripción, no hubo costo monetario.
+- **Por tipo de pregunta:** las de síntesis son las más caras para A (58 mil de entrada en promedio y 9,2 turnos), porque el agente sigue enlaces entre páginas. Para B el costo casi no cambia con el tipo de pregunta (unos 3 mil por consulta).
+- **Observaciones cualitativas** (preliminares; la calificación ciega está pendiente):
+  - **P02:** B no recuperó 1.2, diap. 31 (diagrama cuyo texto quedó desordenado) y respondió que no tenía la información. A respondió bien, porque la ingesta había reconstruido el diagrama.
+  - **P09:** B no recuperó ningún fragmento de la clase 5.1 sobre estilos. A encontró las dos familias con sus diapositivas y aclaró qué comparación no está en el corpus.
+  - **P14 y P15 (abstención):** ambos brazos declararon que no tenían evidencia y no inventaron cifras.
+- **Calificación:** `calificacion.csv` se generó con etiquetas ciegas (semilla 20261125). La deben llenar dos evaluadores humanos según la rúbrica de A. El mapa para destapar (`calificacion_mapa.json`) no se versiona hasta terminar la calificación. Hay una amenaza a la ceguera: 16 de las 30 respuestas citan `wiki/` o `[[...]]`, lo que delata a KB-A.
+- **Pendientes:**
+  - El costo de actualización (`costo_actualizacion.py`), después de la calificación, porque cambia la línea base.
+  - La medición del overhead (`run.py --overhead`).
+  - El cotejo PDF→Markdown de A.
