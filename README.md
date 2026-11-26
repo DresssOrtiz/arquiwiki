@@ -145,3 +145,9 @@ Los diagramas, resultados experimentales y evidencias de ejecución siguen pendi
 [UML de paquetes del gateway](docs/diagramas/UML-Paquetes-Gateway.png).
 
 [UML de paquetes del RAG](docs/diagramas/UML-Paquetes-RAG.png).
+
+## Corpus original del curso
+
+Los seis PDF originales del profesor se conservan con sus nombres en [docs/corpus-original/](docs/corpus-original/). Antes de alimentar KB-A (LLM Wiki) y KB-B (RAG), deben convertirse a Markdown revisado y cotejado con los PDF, conservando referencias al documento y a cada diapositiva. Ambas bases deben utilizar las mismas versiones revisadas.
+
+Los archivos de muestra existentes se mantienen para pruebas y no deben mezclarse con el corpus académico de evaluación.
