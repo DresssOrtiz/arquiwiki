@@ -81,3 +81,26 @@ Corpus: las 4 muestras sintéticas de `raw/`, de unos 1 KB cada una. Motor: `cla
 - **Muestras separadas del corpus:** las 4 muestras sintéticas se restauraron (desde `e064388^`) en `kb-wiki/muestras/`, fuera de `kb-wiki/vault/`, con un README que aclara que no son parte del corpus evaluado ni se cargan en KB-A/KB-B. `kb-wiki/vault/raw/` queda solo con los 6 archivos reales.
 - **`scripts/seed-demo.sh`:** ahora mapea ATAM a `3-2-atributos-de-calidad-3.md` y "Atributos de calidad" a `2-2-atributos-de-calidad-1.md` (verificado con grep; ATAM solo figura en el temario de 3.2, así que el texto de la página se limitó a lo que dice la fuente). Tras la precarga comprueba con `GET /paginas/{id}` que cada página tenga su fuente, también en la rama idempotente (por título); si falta algo imprime error y sale con código 1. Probado desde cero, segunda corrida y fallo provocado.
 - **`run_agent.py`:** `run_id` único (`uuid4().hex[:12]`) en el nombre del archivo de respuesta, en cada línea de `kba_runs.jsonl` (incluidos errores) y en el dict devuelto; la respuesta se escribe con `open(..., "x")`. Prueba nueva con reloj fijo y dos corridas de P01.
+
+## 2026-11-25 · Construcción de KB-A con el corpus real (WP5)
+
+Corpus: los 6 PDF del curso (183 diapositivas, 66 KB de markdown). Motor: `claude-sonnet-5-5` sin interfaz. Datos tomados de `experiment/results/kba_runs.jsonl`.
+
+| Operación | Entrada total | Salida | Turnos | Tiempo |
+|---|---|---|---|---|
+| Ingesta 1.2 Definiciones 1 | 136 091 | 16 929 | 26 | 89 s |
+| Ingesta 2.1 Definiciones 2 | 150 797 | 14 599 | 28 | 75 s |
+| Ingesta 2.2 Atributos de calidad 1 | 185 271 | 21 349 | 30 | 106 s |
+| Ingesta 3.1 Atributos de calidad 2 | 142 956 | 14 545 | 24 | 110 s |
+| Ingesta 3.2 Atributos de calidad 3 | 305 256 | 31 706 | 42 | 158 s |
+| Ingesta 5.1 Estilos y patrones 3 | 117 009 | 13 959 | 19 | 70 s |
+| **Subtotal ingesta** | **1 037 380** | **113 087** | 169 | 10 min |
+| Lint (auditor, Claude con `GEMINI.md`) | 603 745 | 24 622 | 70 | 230 s |
+| Corrección (ingestor) | 945 846 | 72 026 | 121 | 327 s |
+| **Total de construcción** | **2 586 971** | **209 735** | 360 | 19 min |
+
+- **Resultado:** 54 páginas (conceptos, entidades y 5 comparaciones), todas con `estado_salud: ok` tras el lint y la corrección. Los 6 commits de ingesta, el lint y la corrección quedaron fusionados en `main` del vault de ejecución, con la etiqueta **`kb-a-baseline`**: es el estado al que vuelve el experimento antes de cada pregunta. La wiki se exportó a `kb-wiki/vault/wiki/` con `scripts/vault-export.sh` para versionarla.
+- **Comparación con KB-B:** la construcción de KB-B costó 14 388 tokens de embeddings y 0 de LLM, en 3,2 s. La de KB-A costó unos 2,6 millones de tokens de entrada del LLM (más del 99 % son relecturas de caché) y 210 mil de salida. Son unidades distintas y no se suman.
+- **Calidad (revisión manual):** `principios-solid` coincide palabra por palabra con 1.2, diap. 41-42 (respuesta de P03). `escenarios-de-calidad` reconstruye bien los seis componentes de 3.1, diap. 6, aunque `pdftotext` había mezclado las columnas. El agente declara qué diapositivas son solo imagen en vez de inventar su contenido.
+- **Lint:** 0 hallazgos altos o medios y 5 bajos (un sinónimo distinto entre páginas, una frase sin cita, `fuentes` y `enlaces` incompletos en el frontmatter y el índice sin el reporte). Los corrigió el ingestor.
+- **Hallazgo de costo:** la corrección costó casi lo mismo que la ingesta completa (946 mil tokens de entrada) para cambiar sobre todo un campo del frontmatter en 54 páginas. La causa es que `write_note` reemplaza el archivo entero, así que cada cambio obliga a leer y reescribir la página completa. Para la discusión del experimento: el mantenimiento de una LLM Wiki es caro con herramientas de escritura de grano grueso. Una herramienta de parche (por ejemplo, actualizar solo el frontmatter) en el gateway lo abarataría; queda como recomendación para B.
