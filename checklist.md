@@ -1,6 +1,6 @@
 # ArquiWiki: cobertura y estado de entrega
 
-Arquitectura de Software · 25 de noviembre de 2026
+Arquitectura de Software · 26 de noviembre de 2026
 
 ☑ Contenido o evidencia disponible · ◐ Desarrollo provisional · ☐ Pendiente de validación o entrega.
 
@@ -12,7 +12,7 @@ Arquitectura de Software · 25 de noviembre de 2026
 
 ☑ Cinco matrices: SOLID, calidad ISO/IEC 25010:2023, tácticas, patrones y mercado laboral. La muestra laboral se limita a tres ofertas verificadas; Mercado Libre permanece sin evaluación.
 
-☑ Matrices editables exportadas en [docs/matrices](docs/matrices/README.md). El documento maestro conserva las cinco matrices y nueve figuras; la exportación publicada requiere actualización.
+☑ Matrices editables exportadas en [docs/matrices](docs/matrices/README.md). El documento maestro y el PDF de entrega conservan las cinco matrices y nueve figuras.
 
 ## 2. Arquitectura y corpus
 
@@ -56,20 +56,16 @@ Arquitectura de Software · 25 de noviembre de 2026
 
 ☑ Documento maestro con investigación, cinco matrices y nueve figuras; [PDF publicado](docs/investigacion.pdf) y fuente editable en Drive disponibles.
 
-☐ Incorporación de resultados, discusión y conclusiones al documento maestro; nueva exportación desde la fuente original.
+☑ Resultados, discusión y conclusiones incorporados al documento maestro; PDF de 44 páginas exportado directamente desde Google Docs y verificado.
 
 ☑ Presentación original de diez diapositivas, con HLD y método 5/4/4/2.
 
-☐ Actualización de resultados y estado de entrega en las láminas 9 y 10; nueva exportación desde el diseño original de Canva.
+☑ PDF de diez diapositivas con resultados exploratorios y límites actualizados en las láminas 9 y 10. Coincide con la última exportación proporcionada del diseño original.
 
-☑ [Guion](video/guion.md) con evidencias verificables y límites de la evaluación exploratoria.
-
-☐ Grabaciones finales, demostración de archivado separada del experimento de solo lectura, demostración del requisito definitivo, montaje y publicación del video.
-
-☐ Enlace público del video y comprobación de reproducción.
+☑ [Video de presentación y demostración publicado](https://www.youtube.com/watch?v=dM8YIQNSeJo), con enlace incorporado al README. Los metadatos públicos de YouTube identifican el video del equipo; el enlace no acredita por sí solo la cobertura completa de cada demostración.
 
 ## 6. Límites de interpretación
 
 La evidencia de implementación se distingue de las propuestas de diseño. Los resultados históricos se conservan separados de las verificaciones posteriores del corpus y del RAG. Una nueva evaluación requiere una versión común congelada y reconstrucción/reindexado de ambas bases; las cifras actuales describen la corrida exploratoria existente.
 
-Fuentes originales: [Documento de investigación](https://docs.google.com/document/d/1uFmCr0120qSVLiMvn05fTBuXrhV1pCGu08XgdMnWA38/edit) · [Presentación](https://www.canva.com/d/kGASGIjBrTgCsAa) · [Guion original](https://docs.google.com/document/d/1ppXKEFwHOFFCjVWrD1GOWT3ME4-x5gSlOXaol0pQpt4/edit).
+Fuentes originales: [Documento de investigación](https://docs.google.com/document/d/1uFmCr0120qSVLiMvn05fTBuXrhV1pCGu08XgdMnWA38/edit) · [Presentación](https://www.canva.com/d/kGASGIjBrTgCsAa).

@@ -2,13 +2,22 @@
 
 ## [Sin publicar]
 
+Versión propuesta: `v1.0.0`. El tag no ha sido creado.
+
+### Documentación de entrega
+- Documento de investigación consolidado, exportado desde Google Docs: 44 páginas, cinco matrices y nueve diagramas.
+- Presentación de diez diapositivas con resultados exploratorios y limitaciones metodológicas.
+- Video de presentación publicado y enlaces de los cuatro entregables reunidos en el README.
+- Retirados los materiales de preparación de la grabación y los marcadores de carpetas ya pobladas.
+- Conservados sin cambios el código, agentes, skills, corpus, diagramas y evidencias experimentales, incluidas las treinta calificaciones asistidas provisionales.
+
 ### Agregado
 - Estructura del repositorio, `docker-compose.yml`, `.env.example` y contrato de contenedores (`docs/contrato-B.md`).
 - `api/`: CRUD de Fuente y Página con relación N:M (FastAPI, SQLAlchemy 2) y pruebas.
 - `kb-rag/`: RAG con fragmentación por encabezados, embeddings locales (fastembed), pgvector, respuesta con Claude y registro de tokens y latencia en `experiment/results/`.
 - `mcp-gateway/`: servidor MCP (streamable HTTP) con permisos por rol, una rama y copia de trabajo de git por agente, y auditoría JSONL.
 - Scripts: `smoke.sh`, `seed-demo.sh`, `merge-agents.sh`, `vault-export.sh`, `mcp_check.py`.
-- Documentos de muestra sintéticos en `kb-wiki/vault/raw/` y guía de demo en `demo/comandos.md`.
+- Seis Markdown del corpus académico en `kb-wiki/vault/raw/`; cuatro documentos sintéticos separados en `kb-wiki/muestras/`, fuera de la evaluación.
 - `README.md` con los pasos de despliegue.
 
 ### Corregido

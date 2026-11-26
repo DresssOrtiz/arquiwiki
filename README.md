@@ -9,7 +9,7 @@ El caso práctico construye dos bases de conocimiento sobre el mismo material de
 
 El experimento dispone de una corrida exploratoria de 30 respuestas para comparar consumo de tokens y calidad; incorpora un agente "Ingeniero de Sistemas" (modelado, criterios de aceptación y evaluación con normas ISO).
 
-> Video de demostración: _pendiente de publicar_ (se enlazará aquí).
+> [Video de presentación y demostración publicado](https://www.youtube.com/watch?v=dM8YIQNSeJo).
 
 ## Requisitos
 
@@ -115,7 +115,6 @@ agente-ing-sistemas/ Agente Ingeniero de Sistemas
 experiment/          Preguntas, rúbrica y resultados
 docs/                Investigación, matrices, diagramas y bitácora
 presentacion/        Presentación
-video/               Guion y enlace del video
 scripts/             Utilidades de despliegue y demo
 ```
 
@@ -123,16 +122,20 @@ scripts/             Utilidades de despliegue y demo
 
 Las cuatro muestras sintéticas están en [`kb-wiki/muestras/`](kb-wiki/muestras/), **fuera del corpus de evaluación**. `kb-wiki/vault/raw/` contiene exclusivamente los seis Markdown derivados de las presentaciones del profesor (183 diapositivas). MANI no forma parte del corpus académico de esta versión.
 
-## Avances de documentación — persona A
+## Entregables
 
-Versiones preliminares revisadas al 25 de noviembre de 2026:
+| Entregable | Acceso |
+|---|---|
+| Documento de investigación | [PDF de 44 páginas](docs/investigacion.pdf) · [Google Docs original](https://docs.google.com/document/d/1uFmCr0120qSVLiMvn05fTBuXrhV1pCGu08XgdMnWA38/edit) |
+| Presentación | [PDF de diez diapositivas](presentacion/presentacion.pdf) · [Diseño original de Canva](https://www.canva.com/design/DAHb9ZDCH9o/pnZFvTz0BX4SO7rZ1X5MRw/edit) |
+| Repositorio | [Código, documentación y evidencias de ArquiWiki](https://github.com/DresssOrtiz/arquiwiki) |
+| Video | [Presentación y demostración del equipo](https://www.youtube.com/watch?v=dM8YIQNSeJo) |
 
-- [Documento de investigación](docs/investigacion.pdf) — fuente editable en [Drive](https://docs.google.com/document/d/1uFmCr0120qSVLiMvn05fTBuXrhV1pCGu08XgdMnWA38/edit); hay cambios editoriales recientes que requieren reexportar el PDF.
-- [Guion del video](video/guion.md).
-- [Checklist de cobertura y pendientes](checklist.md).
-- [Cinco matrices comparativas exportadas a Markdown editable](docs/matrices/README.md), con fuente maestra en Google Drive.
-- [Presentación preliminar en Canva](https://www.canva.com/d/kGASGIjBrTgCsAa).
-- [Presentación exportada en PDF](presentacion/presentacion.pdf) — **reexportación pendiente**, porque el archivo se publicó antes de la última edición del Canva de diez diapositivas.
+El documento consolida investigación, cinco matrices, nueve diagramas, resultados y limitaciones del estudio exploratorio. La presentación conserva diez diapositivas y el video está publicado. Las fuentes editables originales se conservan en Google Docs y Canva. Las [matrices editables](docs/matrices/README.md) y la [checklist de cobertura](checklist.md) complementan la entrega.
+
+Versión propuesta para la entrega: **v1.0.0**. El tag está pendiente de aprobación y creación; no se presenta como una versión ya publicada.
+
+## Estado del proyecto y alcance de los resultados
 
 Ya están publicados los **nueve diagramas**: HLD, cinco vistas C4 (contexto, contenedores, componentes del Gateway, dinámica y despliegue) y tres UML de paquetes. Los PR [#7](https://github.com/DresssOrtiz/arquiwiki/pull/7), [#8](https://github.com/DresssOrtiz/arquiwiki/pull/8) y [#9](https://github.com/DresssOrtiz/arquiwiki/pull/9) están fusionados. Hay [pruebas documentadas de B](docs/evidencia-B.md), [bitácora de C](docs/bitacora.md) y [30 respuestas históricas](experiment/results/respuestas/), una repetición de las quince preguntas por brazo. Las claves de evaluación nunca se entregan a los agentes ni se indexan.
 
