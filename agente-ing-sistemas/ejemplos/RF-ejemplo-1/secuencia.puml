@@ -1,0 +1,39 @@
+@startuml
+title Secuencia: RF-01 inicio de sesión
+
+actor Usuario
+participant "Aplicación web" as Web
+participant "Controlador de autenticación" as Ctrl
+participant "Servicio de autenticación" as Srv
+participant "Cifrador de contraseñas" as Hash
+participant "Emisor de sesiones" as Emisor
+database "Base de datos de usuarios" as BD
+
+Usuario -> Web : envía correo y contraseña
+Web -> Ctrl : POST /sesiones
+Ctrl -> Srv : autenticar(correo, contraseña)
+Srv -> BD : buscar usuario y estado de bloqueo
+BD --> Srv : usuario
+
+alt cuenta bloqueada
+  Srv --> Ctrl : error de bloqueo
+  Ctrl --> Web : 423 "Cuenta bloqueada temporalmente"
+  Web --> Usuario : muestra bloqueo
+else credenciales correctas
+  Srv -> Hash : comparar(contraseña, hash)
+  Hash --> Srv : coincide
+  Srv -> BD : reiniciar contador de intentos
+  Srv -> Emisor : emitir token (expira en 30 min)
+  Emisor --> Srv : token
+  Srv --> Ctrl : token
+  Ctrl --> Web : 200 con token
+  Web --> Usuario : acceso concedido
+else credenciales incorrectas
+  Srv -> Hash : comparar(contraseña, hash)
+  Hash --> Srv : no coincide
+  Srv -> BD : incrementar contador de intentos
+  Srv --> Ctrl : error de credenciales
+  Ctrl --> Web : 401 "Credenciales inválidas"
+  Web --> Usuario : muestra error genérico
+end
+@enduml

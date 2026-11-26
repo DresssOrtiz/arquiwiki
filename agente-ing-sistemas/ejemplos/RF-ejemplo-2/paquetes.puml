@@ -1,0 +1,26 @@
+@startuml
+title Paquetes: RF-02 Búsqueda de existencias
+
+package "Presentación" {
+  [Aplicación web]
+  [Controlador de búsqueda]
+}
+package "Dominio" {
+  [Servicio de búsqueda]
+  [Producto]
+  [Existencia]
+}
+package "Infraestructura" {
+  [Adaptador de caché]
+  [Repositorio de existencias]
+  [Cliente de identidad]
+}
+
+[Aplicación web] --> [Controlador de búsqueda]
+[Controlador de búsqueda] --> [Servicio de búsqueda]
+[Controlador de búsqueda] --> [Cliente de identidad]
+[Servicio de búsqueda] --> [Producto]
+[Servicio de búsqueda] --> [Existencia]
+[Servicio de búsqueda] --> [Adaptador de caché]
+[Servicio de búsqueda] --> [Repositorio de existencias]
+@enduml

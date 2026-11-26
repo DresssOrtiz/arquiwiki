@@ -1,0 +1,28 @@
+@startuml
+title Paquetes: RF-01 Registro e inicio de sesión
+
+package "Presentación" {
+  [Aplicación web]
+  [Controlador de autenticación]
+}
+package "Dominio" {
+  [Servicio de autenticación]
+  [Usuario]
+}
+package "Seguridad" {
+  [Cifrador de contraseñas]
+  [Emisor de sesiones]
+}
+package "Infraestructura" {
+  [Repositorio de usuarios]
+  [Cliente de correo]
+}
+
+[Aplicación web] --> [Controlador de autenticación]
+[Controlador de autenticación] --> [Servicio de autenticación]
+[Servicio de autenticación] --> [Usuario]
+[Servicio de autenticación] --> [Cifrador de contraseñas]
+[Servicio de autenticación] --> [Emisor de sesiones]
+[Servicio de autenticación] --> [Repositorio de usuarios]
+[Servicio de autenticación] --> [Cliente de correo]
+@enduml
